@@ -5,6 +5,11 @@ extends Area2D
 @export var speed: float = 64.0
 @export var is_lethal: bool = true
 
+@export var boundary_left: float = 0.0
+@export var boundary_right: float = 0.0
+@export var boundary_top: float = 0.0
+@export var boundary_bottom: float = 0.0
+
 var velocity: Vector2 = Vector2.ZERO
 
 func _ready():
@@ -33,9 +38,14 @@ func _ready():
 
 	body_entered.connect(_on_body_entered)
 	
-func _process(delta: float) -> void:
-	#To-Do: If outside limits, free_queue
-	return
+func _process(_delta: float) -> void:
+	if (speed > 0.0):
+		if direction == "Right" or direction == "Left":
+			if global_position.x < boundary_left or global_position.x > boundary_right:
+				queue_free()
+		else:
+			if global_position.y < boundary_top or global_position.y > boundary_bottom:
+				queue_free()
 
 func _physics_process(delta):
 	global_position += velocity * delta
