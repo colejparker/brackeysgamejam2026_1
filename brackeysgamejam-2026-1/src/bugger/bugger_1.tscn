@@ -12,10 +12,10 @@
 [node name="Bugger_1" type="Node" unique_id=2105268280]
 
 [node name="BuggerPlayer" parent="." unique_id=2047397625 instance=ExtResource("1_wb1gv")]
-position = Vector2(320, 180)
+position = Vector2(320, 192)
 
 [node name="SpawnerLayer" type="Node2D" parent="." unique_id=1955122083]
-position = Vector2(320, 180)
+position = Vector2(320, 192)
 
 [node name="Spawner_1" parent="SpawnerLayer" unique_id=766132796 instance=ExtResource("2_spawner")]
 position = Vector2(-32, 64)
@@ -60,13 +60,13 @@ boundary_left = -3200.0
 boundary_right = 3200.0
 
 [node name="PickupLayer" type="Node2D" parent="." unique_id=1206891775]
-position = Vector2(320, 180)
+position = Vector2(320, 192)
 
 [node name="Leaf" parent="PickupLayer" unique_id=72098044 instance=ExtResource("5_rsis4")]
 position = Vector2(-96, -32)
 
 [node name="ObstacleLayer" type="Node2D" parent="." unique_id=1486570201]
-position = Vector2(320, 180)
+position = Vector2(320, 192)
 
 [node name="Home" parent="ObstacleLayer" unique_id=47189287 instance=ExtResource("5_w4mas")]
 position = Vector2(0, -32)
