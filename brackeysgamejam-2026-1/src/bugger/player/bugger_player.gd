@@ -18,6 +18,9 @@ var move_tween: Tween = null
 func _ready():
 	target_position = global_position
 
+	collision_layer = 1 
+	collision_mask = 2
+
 func _process(_delta):
 	if (is_moving || is_resetting):
 		return
@@ -45,6 +48,9 @@ func _get_input_direction() -> Vector2:
 func _start_move_to(move_position: Vector2):
 	is_moving = true
 	target_position = move_position
+
+	collision_mask = 0
+
 	move_tween = create_tween()
 	move_tween.tween_property(self, "global_position", target_position, MOVE_TWEEN_DURATION)
 	move_tween.finished.connect(_on_move_tween_complete)
@@ -52,3 +58,25 @@ func _start_move_to(move_position: Vector2):
 
 func _on_move_tween_complete():
 	is_moving = false
+	collision_mask = 2
+
+func die():
+	if is_resetting:
+		return
+
+	is_resetting = true
+
+	#TO-DO: Death Animation, Lose Money
+
+	await get_tree().create_timer(0.5).timeout
+	reset_position()
+
+func reset_position():
+	global_position = START_POS
+	target_position = START_POS
+	sprite_2d.modulate = Color.WHITE
+	is_resetting = false
+	is_moving = false
+
+	if move_tween != null and move_tween.is_running():
+		move_tween.kill()
