@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4exnb3ictcbt"]
+
+[ext_resource type="PackedScene" uid="uid://44mpsq4lktra" path="res://src/bugger/bugger.tscn" id="1_7uq6d"]
+
+[node name="Game" type="Node"]
+
+[node name="Bugger" parent="." instance=ExtResource("1_7uq6d")]
