@@ -4,7 +4,7 @@ extends CharacterBody2D
 @onready var sprite_2d: Sprite2D = $Sprite2D
 const GRID_SIZE: int = 32
 const MOVE_TWEEN_DURATION: float = 0.1
-const START_POS: Vector2 = Vector2(624.0, 704.0)
+const START_POS: Vector2 = Vector2.ZERO
 
 var target_position: Vector2  = Vector2.ZERO
 
@@ -18,8 +18,8 @@ var move_tween: Tween = null
 func _ready():
 	target_position = global_position
 
-	collision_layer = 1 
-	collision_mask = 2
+	collision_layer = 1
+	collision_mask = 2 | 4
 
 func _process(_delta):
 	if (is_moving || is_resetting):
@@ -27,8 +27,10 @@ func _process(_delta):
 	var input_dir: Vector2 = _get_input_direction()
 	if (input_dir != Vector2.ZERO):
 		var new_position: Vector2 = (global_position + input_dir * GRID_SIZE)
-		_start_move_to(new_position)
-		global_position = global_position.snapped(Vector2(GRID_SIZE, GRID_SIZE))
+
+		if not _is_position_blocked(new_position):
+			_start_move_to(new_position)
+			global_position = global_position.snapped(Vector2(GRID_SIZE, GRID_SIZE))
 
 func _get_input_direction() -> Vector2:
 	if (Input.is_action_just_pressed("moveUp")):
@@ -58,7 +60,18 @@ func _start_move_to(move_position: Vector2):
 
 func _on_move_tween_complete():
 	is_moving = false
-	collision_mask = 2
+	collision_mask = 2 | 4
+
+func _is_position_blocked(pos: Vector2) -> bool:
+	var space_state = get_world_2d().direct_space_state
+	var query = PhysicsPointQueryParameters2D.new()
+	query.position = pos
+	query.collision_mask = 4
+	query.collide_with_areas = true
+	query.collide_with_bodies = false
+
+	var result = space_state.intersect_point(query)
+	return result.size() > 0
 
 func die():
 	if is_resetting:
@@ -74,7 +87,6 @@ func die():
 func reset_position():
 	global_position = START_POS
 	target_position = START_POS
-	sprite_2d.modulate = Color.WHITE
 	is_resetting = false
 	is_moving = false
 

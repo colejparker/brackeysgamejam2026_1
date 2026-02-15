@@ -1,36 +1,58 @@
-[gd_scene load_steps=4 format=3 uid="uid://44mpsq4lktra"]
+[gd_scene format=3 uid="uid://44mpsq4lktra"]
 
 [ext_resource type="PackedScene" uid="uid://bkr6mptfitvp6" path="res://src/bugger/player/bugger_player.tscn" id="1_wb1gv"]
 [ext_resource type="PackedScene" uid="uid://bm4x8vn2jgal" path="res://src/bugger/obstacles/obstacle_spawner.tscn" id="2_spawner"]
 [ext_resource type="PackedScene" uid="uid://c8qy7xvh2jf8k" path="res://src/bugger/obstacles/enemy_bug.tscn" id="3_obstacle"]
+[ext_resource type="PackedScene" uid="uid://ba6b8icfowbf2" path="res://src/bugger/obstacles/enemy_bird.tscn" id="4_8imaq"]
+[ext_resource type="PackedScene" uid="uid://dsnre2kwayk2" path="res://src/bugger/obstacles/obstacle_stationary.tscn" id="5_w4mas"]
+[ext_resource type="Texture2D" uid="uid://djddk0ce0ntmc" path="res://enemy_green.png" id="6_q80gb"]
 
-[node name="Bugger" type="Node"]
+[node name="Bugger" type="Node" unique_id=2105268280]
 
-[node name="BuggerPlayer" parent="." instance=ExtResource("1_wb1gv")]
+[node name="BuggerPlayer" parent="." unique_id=2047397625 instance=ExtResource("1_wb1gv")]
 
-[node name="ObstacleLayer" type="Node2D" parent="."]
+[node name="SpawnerLayer" type="Node2D" parent="." unique_id=1955122083]
 
-[node name="Spawner_1" parent="ObstacleLayer" instance=ExtResource("2_spawner")]
+[node name="Spawner_1" parent="SpawnerLayer" unique_id=766132796 instance=ExtResource("2_spawner")]
 position = Vector2(-32, 64)
 obstacle_scene = ExtResource("3_obstacle")
 spawn_interval = 2.5
 obstacle_speed = 80.0
 
-[node name="Spawner_2" parent="ObstacleLayer" instance=ExtResource("2_spawner")]
+[node name="Spawner_2" parent="SpawnerLayer" unique_id=1931560277 instance=ExtResource("2_spawner")]
 position = Vector2(672, 96)
 obstacle_scene = ExtResource("3_obstacle")
 spawn_direction = "Left"
 obstacle_speed = 100.0
 
-[node name="Spawner_3" parent="ObstacleLayer" instance=ExtResource("2_spawner")]
+[node name="Spawner_3" parent="SpawnerLayer" unique_id=585018939 instance=ExtResource("2_spawner")]
 position = Vector2(-32, 128)
 obstacle_scene = ExtResource("3_obstacle")
 spawn_interval = 3.0
 obstacle_speed = 50.0
 
-[node name="Spawner_4" parent="ObstacleLayer" instance=ExtResource("2_spawner")]
+[node name="Spawner_4" parent="SpawnerLayer" unique_id=384727631 instance=ExtResource("2_spawner")]
 position = Vector2(672, 160)
 obstacle_scene = ExtResource("3_obstacle")
 spawn_direction = "Left"
 spawn_interval = 1.8
 obstacle_speed = 120.0
+
+[node name="Spawner_Shadow" parent="SpawnerLayer" unique_id=826405212 instance=ExtResource("2_spawner")]
+position = Vector2(320, -96)
+obstacle_scene = ExtResource("4_8imaq")
+spawn_direction = "Left"
+spawn_interval = 10.0
+obstacle_speed = 30.0
+
+[node name="ObstacleLayer" type="Node2D" parent="." unique_id=1486570201]
+
+[node name="EnemyStationary" parent="ObstacleLayer" unique_id=844447813 instance=ExtResource("5_w4mas")]
+position = Vector2(128, 0)
+sprite_texture = ExtResource("6_q80gb")
+is_lethal = false
+
+[node name="EnemyStationary2" parent="ObstacleLayer" unique_id=1799574267 instance=ExtResource("5_w4mas")]
+position = Vector2(128, -64)
+sprite_texture = ExtResource("6_q80gb")
+is_lethal = false
