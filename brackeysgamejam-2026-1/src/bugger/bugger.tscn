@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://44mpsq4lktra"]
 
-[ext_resource type="PackedScene" uid="uid://bkr6mptfitvp6" path="res://src/bugger/player/buggerPlayer.tscn" id="1_wb1gv"]
+[ext_resource type="PackedScene" uid="uid://bkr6mptfitvp6" path="res://src/bugger/player/bugger_player.tscn" id="1_wb1gv"]
 [ext_resource type="PackedScene" uid="uid://bm4x8vn2jgal" path="res://src/bugger/obstacles/obstacle_spawner.tscn" id="2_spawner"]
-[ext_resource type="PackedScene" uid="uid://c8qy7xvh2jf8k" path="res://src/bugger/obstacles/obstacle.tscn" id="3_obstacle"]
+[ext_resource type="PackedScene" uid="uid://c8qy7xvh2jf8k" path="res://src/bugger/obstacles/enemy_bug.tscn" id="3_obstacle"]
 
 [node name="Bugger" type="Node"]
 
