@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cvgqbkcgdrdt8"]
+
+[ext_resource type="Script" uid="uid://ne2f0b7wf6yg" path="res://src/bugger/pickups/pickup.gd" id="1_csncp"]
+[ext_resource type="Texture2D" uid="uid://b24cxrroyhuoq" path="res://pickup_berry.png" id="2_csncp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_645jh"]
+size = Vector2(30, 30)
+
+[node name="Berry" type="Area2D" unique_id=72098044]
+script = ExtResource("1_csncp")
+value = 5
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=843971179]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_csncp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=752856703]
+shape = SubResource("RectangleShape2D_645jh")

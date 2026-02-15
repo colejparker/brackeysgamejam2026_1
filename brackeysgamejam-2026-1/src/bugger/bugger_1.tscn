@@ -6,13 +6,18 @@
 [ext_resource type="PackedScene" uid="uid://ba6b8icfowbf2" path="res://src/bugger/obstacles/enemy_bird.tscn" id="4_8imaq"]
 [ext_resource type="PackedScene" uid="uid://cf7kpyvsv6ega" path="res://src/bugger/pickups/leaf.tscn" id="5_rsis4"]
 [ext_resource type="PackedScene" uid="uid://dsnre2kwayk2" path="res://src/bugger/obstacles/obstacle_stationary.tscn" id="5_w4mas"]
+[ext_resource type="PackedScene" uid="uid://d018ldktyycwp" path="res://src/bugger/pickups/nut.tscn" id="6_5uis1"]
 [ext_resource type="Texture2D" uid="uid://djddk0ce0ntmc" path="res://enemy_green.png" id="6_q80gb"]
+[ext_resource type="PackedScene" uid="uid://cvgqbkcgdrdt8" path="res://src/bugger/pickups/berry.tscn" id="7_j7ttf"]
 [ext_resource type="PackedScene" uid="uid://cqm8vn2jg4ma" path="res://src/bugger/ui/minimap.tscn" id="7_minimap"]
+[ext_resource type="Script" uid="uid://j5uh71y7ytfl" path="res://src/bugger/money_tracker.gd" id="9_3i68f"]
 
 [node name="Bugger_1" type="Node" unique_id=2105268280]
 
 [node name="BuggerPlayer" parent="." unique_id=2047397625 instance=ExtResource("1_wb1gv")]
 position = Vector2(320, 192)
+START_X = 320
+START_Y = 192
 
 [node name="SpawnerLayer" type="Node2D" parent="." unique_id=1955122083]
 position = Vector2(320, 192)
@@ -65,6 +70,12 @@ position = Vector2(320, 192)
 [node name="Leaf" parent="PickupLayer" unique_id=72098044 instance=ExtResource("5_rsis4")]
 position = Vector2(-96, -32)
 
+[node name="Nut" parent="PickupLayer" unique_id=1700746177 instance=ExtResource("6_5uis1")]
+position = Vector2(320, -97)
+
+[node name="Berry" parent="PickupLayer" unique_id=1996958670 instance=ExtResource("7_j7ttf")]
+position = Vector2(320, 160)
+
 [node name="ObstacleLayer" type="Node2D" parent="." unique_id=1486570201]
 position = Vector2(320, 192)
 
@@ -92,5 +103,10 @@ endItem = NodePath("../../EndItem")
 home = NodePath("../../ObstacleLayer/Home")
 world_size = Vector2(1280, 720)
 
+[node name="Label" type="Label" parent="UILayer" unique_id=2034554446]
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("9_3i68f")
+
 [node name="EndItem" type="Node2D" parent="." unique_id=690263097]
-position = Vector2(640, 360)
+position = Vector2(640, 320)

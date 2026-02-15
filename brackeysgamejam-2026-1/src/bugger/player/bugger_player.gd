@@ -3,7 +3,8 @@ extends CharacterBody2D
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 const GRID_SIZE: int = 32
-const START_POS: Vector2 = Vector2.ZERO
+@export var START_X: int = 0
+@export var START_Y: int = 0
 
 var target_position: Vector2  = Vector2.ZERO
 
@@ -69,6 +70,6 @@ func die():
 	reset_position()
 
 func reset_position():
-	global_position = START_POS
-	target_position = START_POS
+	global_position = Vector2(START_X, START_Y)
+	target_position = Vector2(START_X, START_Y)
 	is_resetting = false

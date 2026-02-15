@@ -1,0 +1,11 @@
+extends Label
+
+func _ready():
+	Game.money_changed.connect(_on_money_changed)
+	_update_display(Game.money)
+
+func _on_money_changed(new_amount: int):
+	_update_display(new_amount)
+
+func _update_display(amount: int):
+	text = "Money: " + str(amount)
