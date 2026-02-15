@@ -9,4 +9,6 @@ var money: int = 5:
 
 func add_money(amount: int):
 	money += amount
-	print("Money: ", money)
+	
+func die_lose_money():
+	money -= floor(money/2)

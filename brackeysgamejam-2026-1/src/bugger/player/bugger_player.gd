@@ -64,7 +64,7 @@ func die():
 
 	is_resetting = true
 
-	#TO-DO: Death Animation, Lose Money
+	Game.die_lose_money()
 
 	await get_tree().create_timer(0.5).timeout
 	reset_position()

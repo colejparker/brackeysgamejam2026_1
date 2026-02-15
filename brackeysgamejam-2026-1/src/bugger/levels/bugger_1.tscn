@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://djddk0ce0ntmc" path="res://enemy_green.png" id="6_q80gb"]
 [ext_resource type="PackedScene" uid="uid://cvgqbkcgdrdt8" path="res://src/bugger/pickups/berry.tscn" id="7_j7ttf"]
 [ext_resource type="PackedScene" uid="uid://cqm8vn2jg4ma" path="res://src/bugger/ui/minimap.tscn" id="7_minimap"]
-[ext_resource type="Script" uid="uid://j5uh71y7ytfl" path="res://src/bugger/money_tracker.gd" id="9_3i68f"]
+[ext_resource type="Script" uid="uid://j5uh71y7ytfl" path="res://src/bugger/ui/money_tracker.gd" id="9_3i68f"]
 
 [node name="Bugger_1" type="Node" unique_id=2105268280]
 
