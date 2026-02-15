@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://dn2p4k0ih7jgv"]
+
+[ext_resource type="Texture2D" uid="uid://ctm74l4og7sv5" path="res://arrow-Sheet.png" id="1_vih68"]
+
+[node name="DesignPlayer" type="CharacterBody2D" unique_id=1416930764]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1542533016]
+texture = ExtResource("1_vih68")
+hframes = 4
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=508088807]
+polygon = PackedVector2Array(0, -14, -15, 9, 0, 31, 15, 9)
