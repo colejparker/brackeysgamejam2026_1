@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bm4x8vn2jgal" path="res://src/bugger/obstacles/obstacle_spawner.tscn" id="2_spawner"]
 [ext_resource type="PackedScene" uid="uid://c8qy7xvh2jf8k" path="res://src/bugger/obstacles/enemy_bug.tscn" id="3_obstacle"]
 [ext_resource type="PackedScene" uid="uid://ba6b8icfowbf2" path="res://src/bugger/obstacles/enemy_bird.tscn" id="4_8imaq"]
+[ext_resource type="PackedScene" uid="uid://cf7kpyvsv6ega" path="res://src/bugger/pickups/leaf.tscn" id="5_rsis4"]
 [ext_resource type="PackedScene" uid="uid://dsnre2kwayk2" path="res://src/bugger/obstacles/obstacle_stationary.tscn" id="5_w4mas"]
 [ext_resource type="Texture2D" uid="uid://djddk0ce0ntmc" path="res://enemy_green.png" id="6_q80gb"]
 [ext_resource type="PackedScene" uid="uid://cqm8vn2jg4ma" path="res://src/bugger/ui/minimap.tscn" id="7_minimap"]
@@ -57,6 +58,12 @@ spawn_interval = 10.0
 obstacle_speed = 30.0
 boundary_left = -3200.0
 boundary_right = 3200.0
+
+[node name="PickupLayer" type="Node2D" parent="." unique_id=1206891775]
+position = Vector2(320, 180)
+
+[node name="Leaf" parent="PickupLayer" unique_id=72098044 instance=ExtResource("5_rsis4")]
+position = Vector2(-96, -32)
 
 [node name="ObstacleLayer" type="Node2D" parent="." unique_id=1486570201]
 position = Vector2(320, 180)
