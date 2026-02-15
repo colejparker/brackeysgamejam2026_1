@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://44mpsq4lktra"]
+
+[ext_resource type="PackedScene" uid="uid://bkr6mptfitvp6" path="res://src/bugger/player/buggerPlayer.tscn" id="1_wb1gv"]
+
+[node name="Bugger" type="Node"]
+
+[node name="BuggerPlayer" parent="." instance=ExtResource("1_wb1gv")]
