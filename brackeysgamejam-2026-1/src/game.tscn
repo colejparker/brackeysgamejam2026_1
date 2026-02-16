@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b4exnb3ictcbt"]
 
-[ext_resource type="PackedScene" uid="uid://44mpsq4lktra" path="res://src/bugger/bugger.tscn" id="1_7uq6d"]
+[ext_resource type="PackedScene" uid="uid://ci0gudkjrl3ad" path="res://src/design/world/design_world.tscn" id="1_7uq6d"]
 
 [node name="Game" type="Node" unique_id=560895814]
 
-[node name="Bugger" parent="." unique_id=430919850 instance=ExtResource("1_7uq6d")]
+[node name="DesignWorld" parent="." unique_id=1925217490 instance=ExtResource("1_7uq6d")]
