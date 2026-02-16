@@ -91,8 +91,23 @@ position = Vector2(128, 0)
 sprite_texture = ExtResource("6_q80gb")
 is_lethal = false
 
+[node name="EnemyStationary3" parent="ObstacleLayer" unique_id=1341377824 instance=ExtResource("5_w4mas")]
+position = Vector2(160, 0)
+sprite_texture = ExtResource("6_q80gb")
+is_lethal = false
+
+[node name="EnemyStationary4" parent="ObstacleLayer" unique_id=2134058082 instance=ExtResource("5_w4mas")]
+position = Vector2(160, -32)
+sprite_texture = ExtResource("6_q80gb")
+is_lethal = false
+
+[node name="EnemyStationary5" parent="ObstacleLayer" unique_id=887952034 instance=ExtResource("5_w4mas")]
+position = Vector2(128, -32)
+sprite_texture = ExtResource("6_q80gb")
+is_lethal = false
+
 [node name="EnemyStationary2" parent="ObstacleLayer" unique_id=1799574267 instance=ExtResource("5_w4mas")]
-position = Vector2(128, -64)
+position = Vector2(128, -96)
 sprite_texture = ExtResource("6_q80gb")
 is_lethal = false
 
@@ -114,6 +129,7 @@ offset_bottom = 23.0
 script = ExtResource("9_3i68f")
 
 [node name="ReturnHomeMenu" type="MarginContainer" parent="." unique_id=932422709]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
