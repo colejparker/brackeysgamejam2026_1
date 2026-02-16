@@ -4,6 +4,9 @@
 [ext_resource type="TileSet" uid="uid://cjdsmsgb2bvy" path="res://testgroundtileset.tres" id="2_wl84k"]
 [ext_resource type="PackedScene" uid="uid://dn2p4k0ih7jgv" path="res://src/design/player/design_player.tscn" id="4_cfd1e"]
 
+[sub_resource type="TileSet" id="TileSet_58ifa"]
+tile_shape = 1
+
 [node name="DesignWorld" type="Node2D" unique_id=1925217490]
 y_sort_enabled = true
 
@@ -56,6 +59,14 @@ tile_set = ExtResource("2_wl84k")
 
 [node name="Furniture" parent="DecorationLayer" unique_id=2085249340 instance=ExtResource("2_58ifa")]
 position = Vector2(351, 79)
+
+[node name="WallLayer" type="TileMapLayer" parent="." unique_id=1455840331]
+position = Vector2(1, 0)
+tile_set = SubResource("TileSet_58ifa")
+
+[node name="Furniture" parent="WallLayer" unique_id=438672004 instance=ExtResource("2_58ifa")]
+position = Vector2(122, 64)
+is_wall = true
 
 [node name="DesignPlayer" parent="." unique_id=1416930764 instance=ExtResource("4_cfd1e")]
 z_index = 1
