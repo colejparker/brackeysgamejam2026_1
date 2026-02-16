@@ -7,6 +7,14 @@ signal marketplace_closed
 
 func _ready():
 	close_button.pressed.connect(_close_marketplace)
+	_populate_cards()
+
+func _populate_cards():
+	for child in cards.get_children():
+		child.queue_free()
+
+	for card in Game.current_cards:
+		cards.add_child(card)
 
 func _close_marketplace():
 	marketplace_closed.emit()

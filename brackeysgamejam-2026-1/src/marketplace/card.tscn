@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://coay0iopkok15"]
+
+[ext_resource type="Texture2D" uid="uid://b7h1d34mgokfi" path="res://assets/ui_cole/marketplace_card.png" id="1_0gvlx"]
+[ext_resource type="Script" uid="uid://8il8ayotibnj" path="res://src/marketplace/card.gd" id="1_hng1h"]
+[ext_resource type="Texture2D" uid="uid://hpkyll4bilxb" path="res://assets/ui_cole/message_button.png" id="2_d1wf7"]
+[ext_resource type="Texture2D" uid="uid://mpl0x0nriwag" path="res://apple.png" id="3_d1wf7"]
+
+[node name="TextureRect" type="TextureRect" unique_id=1223153702]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_0gvlx")
+script = ExtResource("1_hng1h")
+
+[node name="TextureButton" type="TextureButton" parent="." unique_id=561717916]
+layout_mode = 0
+offset_left = 478.0
+offset_top = 72.0
+offset_right = 510.0
+offset_bottom = 105.0
+texture_normal = ExtResource("2_d1wf7")
+texture_pressed = ExtResource("2_d1wf7")
+texture_hover = ExtResource("2_d1wf7")
+
+[node name="Control" type="Control" parent="." unique_id=1996485678]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control" unique_id=702732565]
+layout_mode = 0
+offset_left = 127.15
+offset_top = 17.49
+offset_right = 166.15005
+offset_bottom = 93.49
+
+[node name="SellerLabel" type="Label" parent="Control/VBoxContainer" unique_id=1942660166]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5058824, 0.5921569, 0.5882353, 1)
+text = "Seller:"
+
+[node name="ItemLabel" type="Label" parent="Control/VBoxContainer" unique_id=1906225619]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5058824, 0.5921569, 0.5882353, 1)
+text = "Item:"
+
+[node name="LocationLabel" type="Label" parent="Control/VBoxContainer" unique_id=1862341776]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5058824, 0.5921569, 0.5882353, 1)
+text = "Location:"
+
+[node name="PriceLabel" type="Label" parent="Control/VBoxContainer" unique_id=1144170218]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5058824, 0.5921569, 0.5882353, 1)
+text = "Price:"
+
+[node name="FurniturePicture" type="Sprite2D" parent="." unique_id=1555412586]
+position = Vector2(60, 55.5)
+texture = ExtResource("3_d1wf7")
