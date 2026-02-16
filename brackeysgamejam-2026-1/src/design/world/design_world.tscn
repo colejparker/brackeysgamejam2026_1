@@ -95,6 +95,7 @@ offset_bottom = 88.0
 [node name="InventorySlot" parent="GUI/GridContainer" unique_id=824199867 instance=ExtResource("6_k1s3p")]
 layout_mode = 2
 furniture_data = ExtResource("4_k1s3p")
+is_active = true
 
 [node name="InventoryUI" type="CanvasLayer" parent="." unique_id=894941456]
 visible = false
@@ -106,7 +107,6 @@ offset_bottom = 360.0
 color = Color(0, 0, 0, 1)
 
 [node name="Inv" type="GridContainer" parent="InventoryUI" unique_id=12437318]
-unique_name_in_owner = true
 offset_left = 52.0
 offset_top = 47.0
 offset_right = 318.0

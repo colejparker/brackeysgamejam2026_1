@@ -11,6 +11,11 @@ custom_minimum_size = Vector2(86, 86)
 theme_override_styles/panel = SubResource("StyleBoxEmpty_mpd28")
 script = ExtResource("1_mpd28")
 
+[node name="ActiveSlot" type="ColorRect" parent="." unique_id=1111453072]
+visible = false
+layout_mode = 2
+color = Color(0.4509804, 0.74509805, 0.827451, 1)
+
 [node name="Frame" type="Sprite2D" parent="." unique_id=1912419157]
 position = Vector2(43, 43)
 scale = Vector2(5, 5)
