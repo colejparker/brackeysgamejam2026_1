@@ -94,19 +94,19 @@ position = Vector2(128, -64)
 sprite_texture = ExtResource("6_q80gb")
 is_lethal = false
 
-[node name="UILayer" type="CanvasLayer" parent="." unique_id=942318809]
+[node name="EndItem" type="Node2D" parent="." unique_id=690263097]
+position = Vector2(640, 320)
+
+[node name="BuggerLayer" type="CanvasLayer" parent="." unique_id=721520913]
 layer = 100
 
-[node name="Minimap" parent="UILayer" unique_id=933667967 node_paths=PackedStringArray("player", "endItem", "home") instance=ExtResource("7_minimap")]
+[node name="Minimap" parent="BuggerLayer" unique_id=699996784 node_paths=PackedStringArray("player", "endItem", "home") instance=ExtResource("7_minimap")]
 player = NodePath("../../BuggerPlayer")
 endItem = NodePath("../../EndItem")
 home = NodePath("../../ObstacleLayer/Home")
 world_size = Vector2(1280, 720)
 
-[node name="Label" type="Label" parent="UILayer" unique_id=2034554446]
+[node name="Label" type="Label" parent="BuggerLayer" unique_id=2072066828]
 offset_right = 40.0
 offset_bottom = 23.0
 script = ExtResource("9_3i68f")
-
-[node name="EndItem" type="Node2D" parent="." unique_id=690263097]
-position = Vector2(640, 320)
