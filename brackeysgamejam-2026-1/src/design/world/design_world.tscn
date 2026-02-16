@@ -2,7 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://r1m77majxk00" path="res://src/design/furniture/furniture.tscn" id="2_58ifa"]
 [ext_resource type="TileSet" uid="uid://cjdsmsgb2bvy" path="res://testgroundtileset.tres" id="2_wl84k"]
+[ext_resource type="Resource" uid="uid://clgkmt32bd35e" path="res://src/global/Furniture(Resources)/apple.tres" id="3_cfd1e"]
 [ext_resource type="PackedScene" uid="uid://dn2p4k0ih7jgv" path="res://src/design/player/design_player.tscn" id="4_cfd1e"]
+[ext_resource type="Resource" uid="uid://boc4fqv6k6vb7" path="res://src/global/Furniture(Resources)/poster.tres" id="4_k1s3p"]
 
 [sub_resource type="TileSet" id="TileSet_58ifa"]
 tile_shape = 1
@@ -59,9 +61,11 @@ tile_set = ExtResource("2_wl84k")
 
 [node name="Furniture" parent="DecorationLayer" unique_id=2085249340 instance=ExtResource("2_58ifa")]
 position = Vector2(351, 79)
+furniture_data = ExtResource("3_cfd1e")
 
 [node name="DoorOut" parent="DecorationLayer" unique_id=438672004 instance=ExtResource("2_58ifa")]
 position = Vector2(321, 321)
+furniture_data = ExtResource("3_cfd1e")
 
 [node name="WallLayer" type="TileMapLayer" parent="." unique_id=1455840331]
 position = Vector2(1, 0)
@@ -69,8 +73,10 @@ tile_set = SubResource("TileSet_58ifa")
 
 [node name="Furniture" parent="WallLayer" unique_id=294327000 instance=ExtResource("2_58ifa")]
 position = Vector2(122, 64)
-is_wall = true
+furniture_data = ExtResource("4_k1s3p")
 
 [node name="DesignPlayer" parent="." unique_id=1416930764 instance=ExtResource("4_cfd1e")]
 z_index = 1
 position = Vector2(360, 197)
+
+[node name="GUI" type="CanvasLayer" parent="." unique_id=1463266298]
