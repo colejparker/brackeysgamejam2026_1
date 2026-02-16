@@ -11,10 +11,9 @@ const GRID_SIZE: int = 32
 var target_position: Vector2  = Vector2.ZERO
 
 var is_resetting: bool = false
-
-@onready var return_home_menu: MarginContainer = $"../ReturnHomeMenu"
-@onready var return_home: Button = $"../ReturnHomeMenu/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/ReturnHome"
-@onready var cancel_return: Button = $"../ReturnHomeMenu/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/CancelReturn"
+@onready var return_home_menu: CanvasLayer = $"../ReturnHomeMenu"
+@onready var cancel_return: Button = $"../ReturnHomeMenu/ReturnHomeMenuBase/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/CancelReturn"
+@onready var return_home: Button = $"../ReturnHomeMenu/ReturnHomeMenuBase/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/ReturnHome"
 @onready var home: Area2D = $"../ObstacleLayer/Home"
 
 func _ready():
@@ -33,7 +32,7 @@ func _process(_delta):
 	if is_resetting:
 		return
 	var input_dir: Vector2 = _get_input_direction()
-	if (input_dir != Vector2.ZERO):
+	if (input_dir != Vector2.ZERO) and !return_home_menu.visible:
 		var new_position: Vector2 = (global_position + input_dir * GRID_SIZE).snapped(Vector2(GRID_SIZE, GRID_SIZE))
 
 		if not _is_position_blocked(new_position):
