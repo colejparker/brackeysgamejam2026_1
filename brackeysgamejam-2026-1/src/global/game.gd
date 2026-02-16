@@ -3,14 +3,11 @@ extends Node
 @export var next_bugger_level: PackedScene = preload("res://src/bugger/levels/bugger_1.tscn")
 @export var next_furniture_item: Array[FurnitureData]
 @export var cost_of_next_item: float = 1.0
-<<<<<<< HEAD
+@export var available_furniture: Array[FurnitureData]
 var inventory: Array[FurnitureData] = []
 var selected_inventory_slot = 0
-=======
-@export var available_furniture: Array[FurnitureData]
 
 var current_cards: Array[Node] = []
->>>>>>> bc79c923dfb5e73648eaf517b454745118066736
 
 var pause_menu: PackedScene = preload("res://src/global/ui/pause_menu.tscn")
 var card_scene: PackedScene = preload("res://src/marketplace/card.tscn")
@@ -26,14 +23,11 @@ var furniture_catalog: Dictionary[String, FurnitureData] = {}
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
-<<<<<<< HEAD
 	prepare_furniture_catalog()
 	add_item_to_inventory.connect(_on_add_item_to_inventory)
 	remove_item_from_inventory.connect(_on_remove_item_from_inventory)
-=======
 	load_available_furniture()
 	generate_new_cards()
->>>>>>> bc79c923dfb5e73648eaf517b454745118066736
 
 var money: int = 5:
 	set(value):
