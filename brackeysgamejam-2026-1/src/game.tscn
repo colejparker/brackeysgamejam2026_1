@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://b4exnb3ictcbt"]
 
 [ext_resource type="Script" uid="uid://csjww0aw25tv" path="res://src/global/game.gd" id="1_3msxb"]
-[ext_resource type="PackedScene" uid="uid://44mpsq4lktra" path="res://src/bugger/levels/bugger_1.tscn" id="1_7uq6d"]
+[ext_resource type="PackedScene" uid="uid://dlhqtilh4hekm" path="res://src/global/ui/main_menu_ui.tscn" id="2_3msxb"]
 
 [node name="Game" type="Node" unique_id=560895814]
 script = ExtResource("1_3msxb")
 
-[node name="Bugger" parent="." unique_id=1415637452 instance=ExtResource("1_7uq6d")]
+[node name="InGameUI" parent="." unique_id=75778351 instance=ExtResource("2_3msxb")]

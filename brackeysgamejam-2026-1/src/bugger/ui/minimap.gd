@@ -10,7 +10,6 @@ extends Control
 @onready var end_indicator: ColorRect = $Panel/EndIndicator
 @onready var home_indicator: ColorRect = $Panel/HomeIndicator
 
-
 func _ready():
 	size = map_size
 

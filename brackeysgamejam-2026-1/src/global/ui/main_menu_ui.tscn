@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://dlhqtilh4hekm"]
+
+[ext_resource type="Texture2D" uid="uid://dnlw4jljv21g3" path="res://placeholder_background.JPG" id="1_74k8w"]
+[ext_resource type="Script" uid="uid://dcjp3traotr3v" path="res://src/global/ui/ui_control.gd" id="1_fywnt"]
+[ext_resource type="Theme" uid="uid://kvftxgmpx6vs" path="res://default_theme.tres" id="2_u22hs"]
+
+[node name="MainMenuUI" type="Control" unique_id=75778351]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fywnt")
+
+[node name="MainMenu" type="MarginContainer" parent="." unique_id=832354995]
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 360.0
+
+[node name="TextureRect" type="TextureRect" parent="MainMenu" unique_id=224865578]
+custom_minimum_size = Vector2(640, 360)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("1_74k8w")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu" unique_id=691897697]
+custom_minimum_size = Vector2(640, 360)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="MainMenu/VBoxContainer" unique_id=1941564367]
+layout_mode = 2
+theme_override_constants/margin_top = 100
+
+[node name="StartGame" type="Button" parent="MainMenu/VBoxContainer/MarginContainer" unique_id=1397437365]
+custom_minimum_size = Vector2(150, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("2_u22hs")
+text = "Start Game"
+
+[node name="MarginContainer2" type="MarginContainer" parent="MainMenu/VBoxContainer" unique_id=1619423692]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+
+[node name="Credits" type="Button" parent="MainMenu/VBoxContainer/MarginContainer2" unique_id=1654602289]
+custom_minimum_size = Vector2(150, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("2_u22hs")
+text = "Credits"
+
+[node name="MarginContainer3" type="MarginContainer" parent="MainMenu/VBoxContainer" unique_id=1757143085]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+
+[node name="Settings" type="Button" parent="MainMenu/VBoxContainer/MarginContainer3" unique_id=1905089171]
+custom_minimum_size = Vector2(150, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("2_u22hs")
+text = "Settings"
