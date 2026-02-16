@@ -5,6 +5,8 @@
 [ext_resource type="Resource" uid="uid://clgkmt32bd35e" path="res://src/global/Furniture(Resources)/apple.tres" id="3_cfd1e"]
 [ext_resource type="PackedScene" uid="uid://dn2p4k0ih7jgv" path="res://src/design/player/design_player.tscn" id="4_cfd1e"]
 [ext_resource type="Resource" uid="uid://boc4fqv6k6vb7" path="res://src/global/Furniture(Resources)/poster.tres" id="4_k1s3p"]
+[ext_resource type="PackedScene" uid="uid://ed6vn467no5r" path="res://src/design/world/inventory_slot.tscn" id="6_k1s3p"]
+[ext_resource type="Script" uid="uid://bcwnxlurhav2k" path="res://src/design/world/inventory_ui.gd" id="7_owkdv"]
 
 [sub_resource type="TileSet" id="TileSet_58ifa"]
 tile_shape = 1
@@ -13,18 +15,21 @@ tile_shape = 1
 y_sort_enabled = true
 
 [node name="TopBorderArea" type="StaticBody2D" parent="." unique_id=1290043342]
+position = Vector2(32, 0)
 
 [node name="TopBorders" type="CollisionPolygon2D" parent="TopBorderArea" unique_id=1162866942]
 z_index = 2
 polygon = PackedVector2Array(66, 208, 352, 65, 610, 194, 621, 188, 352, 57, 59, 202)
 
 [node name="LeftBorder" type="StaticBody2D" parent="." unique_id=389452714]
+position = Vector2(32, 0)
 
 [node name="TopBorders" type="CollisionPolygon2D" parent="LeftBorder" unique_id=1006641503]
 z_index = 2
 polygon = PackedVector2Array(65, 197, 59, 202, 60, -1, 617, 0, 619, 193, 608, 192, 608, 6, 66, 5)
 
 [node name="BottomBorderArea" type="StaticBody2D" parent="." unique_id=160533654]
+position = Vector2(32, 0)
 
 [node name="BottomBorders" type="CollisionPolygon2D" parent="BottomBorderArea" unique_id=2042852773]
 z_index = 2
@@ -36,19 +41,19 @@ offset_bottom = 360.0
 color = Color(0, 0, 0, 1)
 
 [node name="Wall" type="ColorRect" parent="." unique_id=68030018]
-offset_left = 66.0
-offset_right = 608.0
+offset_left = 96.0
+offset_right = 639.0
 offset_bottom = 211.0
 
 [node name="WallLine" type="ColorRect" parent="." unique_id=414590734]
-offset_left = 350.0
-offset_right = 356.0
+offset_left = 382.0
+offset_right = 388.0
 offset_bottom = 66.0
 color = Color(0, 0, 0, 1)
 
 [node name="GroundLayer" type="TileMapLayer" parent="." unique_id=1885438664]
 y_sort_enabled = true
-position = Vector2(1, 1)
+position = Vector2(32, 1)
 tile_map_data = PackedByteArray("AAABAAsAAAADAAAAAAABAAwAAAADAAAAAAABAA0AAAADAAAAAAACAAkAAAADAAAAAAACAAoAAAADAAAAAAACAAsAAAADAAAAAAACAAwAAAADAAAAAAACAA0AAAADAAAAAAACAA4AAAADAAAAAAACAA8AAAADAAAAAAADAAcAAAADAAAAAAADAAgAAAADAAAAAAADAAkAAAADAAAAAAADAAoAAAADAAAAAAADAAsAAAADAAAAAAADAAwAAAADAAAAAAADAA0AAAADAAAAAAADAA4AAAADAAAAAAADAA8AAAADAAAAAAADABAAAAADAAAAAAADABEAAAADAAAAAAAEAAUAAAADAAAAAAAEAAYAAAADAAAAAAAEAAcAAAADAAAAAAAEAAgAAAADAAAAAAAEAAkAAAADAAAAAAAEAAoAAAADAAAAAAAEAAsAAAADAAAAAAAEAAwAAAADAAAAAAAEAA0AAAADAAAAAAAEAA4AAAADAAAAAAAEAA8AAAADAAAAAAAEABAAAAADAAAAAAAEABEAAAADAAAAAAAEABIAAAADAAAAAAAEABMAAAADAAAAAAAFAAQAAAADAAAAAAAFAAUAAAADAAAAAAAFAAYAAAADAAAAAAAFAAcAAAADAAAAAAAFAAgAAAADAAAAAAAFAAkAAAADAAAAAAAFAAoAAAADAAAAAAAFAAsAAAADAAAAAAAFAAwAAAADAAAAAAAFAA0AAAADAAAAAAAFAA4AAAADAAAAAAAFAA8AAAADAAAAAAAFABAAAAADAAAAAAAFABEAAAADAAAAAAAFABIAAAADAAAAAAAGAAYAAAADAAAAAAAGAAcAAAADAAAAAAAGAAgAAAADAAAAAAAGAAkAAAADAAAAAAAGAAoAAAADAAAAAAAGAAsAAAADAAAAAAAGAAwAAAADAAAAAAAGAA0AAAADAAAAAAAGAA4AAAADAAAAAAAGAA8AAAADAAAAAAAGABAAAAADAAAAAAAHAAgAAAADAAAAAAAHAAkAAAADAAAAAAAHAAoAAAADAAAAAAAHAAsAAAADAAAAAAAHAAwAAAADAAAAAAAHAA0AAAADAAAAAAAHAA4AAAADAAAAAAAIAAoAAAADAAAAAAAIAAsAAAADAAAAAAAIAAwAAAADAAAAAAA=")
 tile_set = ExtResource("2_wl84k")
 
@@ -60,11 +65,11 @@ tile_map_data = PackedByteArray("AAABAAsAAAAAAAUAAAACAAwAAAAAAAUAAAACAAoAAAAAAAU
 tile_set = ExtResource("2_wl84k")
 
 [node name="Furniture" parent="DecorationLayer" unique_id=2085249340 instance=ExtResource("2_58ifa")]
-position = Vector2(351, 79)
+position = Vector2(383, 84)
 furniture_data = ExtResource("3_cfd1e")
 
 [node name="DoorOut" parent="DecorationLayer" unique_id=438672004 instance=ExtResource("2_58ifa")]
-position = Vector2(321, 321)
+position = Vector2(370, 287)
 furniture_data = ExtResource("3_cfd1e")
 
 [node name="WallLayer" type="TileMapLayer" parent="." unique_id=1455840331]
@@ -72,7 +77,7 @@ position = Vector2(1, 0)
 tile_set = SubResource("TileSet_58ifa")
 
 [node name="Furniture" parent="WallLayer" unique_id=294327000 instance=ExtResource("2_58ifa")]
-position = Vector2(122, 64)
+position = Vector2(225, 67)
 furniture_data = ExtResource("4_k1s3p")
 
 [node name="DesignPlayer" parent="." unique_id=1416930764 instance=ExtResource("4_cfd1e")]
@@ -80,3 +85,30 @@ z_index = 1
 position = Vector2(360, 197)
 
 [node name="GUI" type="CanvasLayer" parent="." unique_id=1463266298]
+
+[node name="GridContainer" type="GridContainer" parent="GUI" unique_id=1565200743]
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 88.0
+offset_bottom = 88.0
+
+[node name="InventorySlot" parent="GUI/GridContainer" unique_id=824199867 instance=ExtResource("6_k1s3p")]
+layout_mode = 2
+furniture_data = ExtResource("4_k1s3p")
+
+[node name="InventoryUI" type="CanvasLayer" parent="." unique_id=894941456]
+visible = false
+script = ExtResource("7_owkdv")
+
+[node name="TextureRect" type="ColorRect" parent="InventoryUI" unique_id=1542083720]
+offset_right = 640.0
+offset_bottom = 360.0
+color = Color(0, 0, 0, 1)
+
+[node name="Inv" type="GridContainer" parent="InventoryUI" unique_id=12437318]
+unique_name_in_owner = true
+offset_left = 52.0
+offset_top = 47.0
+offset_right = 318.0
+offset_bottom = 313.0
+columns = 6

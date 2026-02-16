@@ -26,7 +26,7 @@ func _physics_process(delta: float) -> void:
 		sprite.frame = (sprite.frame + 1) % sprite.hframes
 	
 	if furniture_data.is_wall:
-		sprite.frame = 0 if position.x <= 350 else 1
+		sprite.frame = 0 if position.x <= 382 else 1
 	
 	if state == State.MOVING:
 		var desired_position = get_desired_position(Input.is_action_pressed("snapToGrid"))
@@ -40,8 +40,8 @@ func get_desired_position(snap: bool) -> Vector2:
 	var desired_pos = get_global_mouse_position()
 	if snap:
 		return parent_tile_map_layer.map_to_local(parent_tile_map_layer.local_to_map(desired_pos))
-	if desired_pos.x >= 338 and desired_pos.x <= 362 and furniture_data.is_wall:
-		desired_pos.x = 338
+	if desired_pos.x >= 370 and desired_pos.x <= 394 and furniture_data.is_wall:
+		desired_pos.x = 370
 	return desired_pos
 
 func _ready():

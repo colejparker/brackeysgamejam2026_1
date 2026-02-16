@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://ed6vn467no5r"]
+
+[ext_resource type="Script" uid="uid://bym1ycyvs6pok" path="res://inventory_slot.gd" id="1_mpd28"]
+[ext_resource type="Texture2D" uid="uid://c3uto7ohirkj0" path="res://assets/ui_cole/rect.png" id="2_5aoeu"]
+[ext_resource type="Texture2D" uid="uid://drnap4nwfhevq" path="res://applesheet.png" id="3_hg4w0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mpd28"]
+
+[node name="InventorySlot" type="PanelContainer" unique_id=824199867]
+custom_minimum_size = Vector2(86, 86)
+theme_override_styles/panel = SubResource("StyleBoxEmpty_mpd28")
+script = ExtResource("1_mpd28")
+
+[node name="Frame" type="Sprite2D" parent="." unique_id=1912419157]
+position = Vector2(43, 43)
+scale = Vector2(5, 5)
+texture = ExtResource("2_5aoeu")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=935160447]
+position = Vector2(43, 43)
+texture = ExtResource("3_hg4w0")
+hframes = 4
