@@ -1,7 +1,6 @@
 extends Node
 
 @export var next_bugger_level: PackedScene = preload("res://src/bugger/levels/bugger_1.tscn")
-
 @export var next_furniture_item: PackedScene
 @export var cost_of_next_item: float = 1.0
 

@@ -6,14 +6,23 @@ const GRID_SIZE: int = 32
 @export var START_X: int = 0
 @export var START_Y: int = 0
 
+@onready var load_room = preload("res://src/design/world/design_world.tscn")
+
 var target_position: Vector2  = Vector2.ZERO
 
 var is_resetting: bool = false
-var is_in_water: bool = false
 
-var current_water_obstacle: Node2D = null
+@onready var return_home_menu: MarginContainer = $"../ReturnHomeMenu"
+@onready var return_home: Button = $"../ReturnHomeMenu/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/ReturnHome"
+@onready var cancel_return: Button = $"../ReturnHomeMenu/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/CancelReturn"
+@onready var home: Area2D = $"../ObstacleLayer/Home"
 
 func _ready():
+	return_home_menu.visible = false
+	
+	cancel_return.pressed.connect(_dismiss_return_menu)
+	return_home.pressed.connect(_return_home)
+	
 	global_position = global_position.snapped(Vector2(GRID_SIZE, GRID_SIZE))
 	target_position = global_position
 
@@ -30,6 +39,8 @@ func _process(_delta):
 		if not _is_position_blocked(new_position):
 			global_position = new_position
 			target_position = new_position
+		elif _is_touching_home(new_position):
+			return_home_menu.visible = true
 
 func _get_input_direction() -> Vector2:
 	if (Input.is_action_just_pressed("moveUp")):
@@ -57,6 +68,15 @@ func _is_position_blocked(pos: Vector2) -> bool:
 
 	var result = space_state.intersect_point(query)
 	return result.size() > 0
+
+func _is_touching_home(pos: Vector2) -> bool:
+	return home.global_position == pos
+	
+func _dismiss_return_menu():
+	return_home_menu.visible = false
+	
+func _return_home():
+	get_tree().change_scene_to_packed(load_room)
 
 func die():
 	if is_resetting:
