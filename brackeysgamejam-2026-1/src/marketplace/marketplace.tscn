@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dq1mwy4obx7vv" path="res://assets/ui_cole/marketplace_background.png" id="1_i5wjv"]
 [ext_resource type="Script" uid="uid://cds7dwan0akeo" path="res://src/marketplace/marketplace.gd" id="1_tm7s7"]
 [ext_resource type="Texture2D" uid="uid://dypemrquvykom" path="res://assets/ui_cole/close_marketplace.png" id="2_tm7s7"]
+[ext_resource type="Texture2D" uid="uid://b7h1d34mgokfi" path="res://assets/ui_cole/marketplace_card.png" id="4_xlqdp"]
 
 [node name="Marketplace" type="Node" unique_id=706726760]
 script = ExtResource("1_tm7s7")
@@ -33,6 +34,26 @@ layout_mode = 2
 
 [node name="Cards" type="VBoxContainer" parent="CanvasLayer/MarginContainer/ScrollContainer" unique_id=711705458]
 layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginContainer/ScrollContainer/Cards" unique_id=313791581]
+layout_mode = 2
+texture = ExtResource("4_xlqdp")
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/MarginContainer/ScrollContainer/Cards" unique_id=1772966377]
+layout_mode = 2
+texture = ExtResource("4_xlqdp")
+
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/MarginContainer/ScrollContainer/Cards" unique_id=1414762528]
+layout_mode = 2
+texture = ExtResource("4_xlqdp")
+
+[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/MarginContainer/ScrollContainer/Cards" unique_id=1016748906]
+layout_mode = 2
+texture = ExtResource("4_xlqdp")
+
+[node name="TextureRect5" type="TextureRect" parent="CanvasLayer/MarginContainer/ScrollContainer/Cards" unique_id=1396555143]
+layout_mode = 2
+texture = ExtResource("4_xlqdp")
 
 [node name="Label" type="Label" parent="CanvasLayer" unique_id=397584343]
 offset_left = 13.0
