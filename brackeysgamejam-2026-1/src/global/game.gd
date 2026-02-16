@@ -34,9 +34,7 @@ func _input(event):
 		if get_tree().paused:
 			var pause_node = pause_menu.instantiate()
 			get_tree().current_scene.add_child(pause_node)
-			print("Game Paused")
 		else:
 			var pause_node = get_tree().current_scene.get_node_or_null("PauseMenu")
 			if pause_node:
 				pause_node.queue_free()
-			print("Game Resumed")

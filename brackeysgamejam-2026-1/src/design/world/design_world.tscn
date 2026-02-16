@@ -64,7 +64,7 @@ position = Vector2(1, 0)
 tile_map_data = PackedByteArray("AAABAAsAAAAAAAUAAAACAAwAAAAAAAUAAAACAAoAAAAAAAUAAAA=")
 tile_set = ExtResource("2_wl84k")
 
-[node name="Furniture" parent="DecorationLayer" unique_id=2085249340 instance=ExtResource("2_58ifa")]
+[node name="Computer" parent="DecorationLayer" unique_id=2085249340 instance=ExtResource("2_58ifa")]
 position = Vector2(383, 84)
 furniture_data = ExtResource("3_cfd1e")
 

@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://bhpbx7scybmi6"]
+
+[ext_resource type="Texture2D" uid="uid://dq1mwy4obx7vv" path="res://assets/ui_cole/marketplace_background.png" id="1_i5wjv"]
+[ext_resource type="Script" uid="uid://cds7dwan0akeo" path="res://src/marketplace/marketplace.gd" id="1_tm7s7"]
+[ext_resource type="Texture2D" uid="uid://dypemrquvykom" path="res://assets/ui_cole/close_marketplace.png" id="2_tm7s7"]
+
+[node name="Marketplace" type="Node" unique_id=706726760]
+script = ExtResource("1_tm7s7")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1245778498]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=1358333541]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_i5wjv")
+
+[node name="CloseButton" type="TextureButton" parent="CanvasLayer" unique_id=1327355340]
+offset_left = 624.0
+offset_right = 640.0
+offset_bottom = 16.0
+texture_normal = ExtResource("2_tm7s7")
+texture_pressed = ExtResource("2_tm7s7")
+texture_hover = ExtResource("2_tm7s7")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer" unique_id=1056038618]
+offset_left = 112.0
+offset_top = 63.0
+offset_right = 640.0
+offset_bottom = 360.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/MarginContainer" unique_id=625620835]
+layout_mode = 2
+
+[node name="Cards" type="VBoxContainer" parent="CanvasLayer/MarginContainer/ScrollContainer" unique_id=711705458]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=397584343]
+offset_left = 13.0
+offset_top = 18.0
+offset_right = 182.0
+offset_bottom = 34.0
+theme_override_colors/font_color = Color(0.5058824, 0.5921569, 0.5882353, 1)
+text = "https://www.bugbook.com"
+
+[node name="Label" type="Label" parent="CanvasLayer/Label" unique_id=8360194]
+layout_mode = 0
+offset_top = -16.0
+offset_right = 169.0
+theme_override_colors/font_color = Color(0.5058824, 0.5921569, 0.5882353, 1)
+theme_override_font_sizes/font_size = 12
+text = "The Worldwide Web"

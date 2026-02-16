@@ -18,10 +18,8 @@ func _ready():
 
 	if is_lethal:
 		collision_layer = 2
-		add_to_group("enemies")
 	else:
 		collision_layer = 4 
-		add_to_group("obstacles")
 		
 
 	collision_mask = 1
