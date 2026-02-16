@@ -3,7 +3,8 @@ extends CharacterBody2D
 @onready var parent_tile_map_layer = get_parent() as TileMapLayer
 @onready var collection_shape = $CollisionShape2D
 @onready var sprite = $Sprite2D
-@export var is_wall = false
+
+@export var furniture_data: FurnitureData
 
 enum State {
 	STATIONARY,
@@ -21,10 +22,10 @@ func _physics_process(delta: float) -> void:
 	if !Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		state = State.STATIONARY
 		
-	if Input.is_action_just_pressed("rotate") and (mouse_in_rect() or state == State.MOVING) and !is_wall:
+	if Input.is_action_just_pressed("rotate") and (mouse_in_rect() or state == State.MOVING) and !furniture_data.is_wall:
 		sprite.frame = (sprite.frame + 1) % sprite.hframes
 	
-	if is_wall:
+	if furniture_data.is_wall:
 		sprite.frame = 0 if position.x <= 350 else 1
 	
 	if state == State.MOVING:
@@ -39,11 +40,11 @@ func get_desired_position(snap: bool) -> Vector2:
 	var desired_pos = get_global_mouse_position()
 	if snap:
 		return parent_tile_map_layer.map_to_local(parent_tile_map_layer.local_to_map(desired_pos))
-	if desired_pos.x >= 338 and desired_pos.x <= 362:
+	if desired_pos.x >= 338 and desired_pos.x <= 362 and furniture_data.is_wall:
 		desired_pos.x = 338
 	return desired_pos
 
 func _ready():
-	if is_wall:
-		sprite.texture = preload("res://poster.png")
+	sprite.texture = furniture_data.texture
+	if furniture_data.is_wall:
 		sprite.hframes = 2
