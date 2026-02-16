@@ -28,7 +28,9 @@ func _ready():
 	_generate_seller_name()
 	
 func _generate_price():
-	price = rng.randf_range(3.0, 10.0)
+	price = (rng.randf_range(3.0, 10.0)*(furniture_data.size()*0.75))
+	price = round(price*100.0) / 100.0
+	price_label.text = "Price: " + str(price)
 
 func _generate_seller_name():
 	seller_name = first_names.pick_random() + " " + last_names.pick_random()
