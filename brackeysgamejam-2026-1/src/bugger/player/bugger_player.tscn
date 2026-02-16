@@ -1,20 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://bkr6mptfitvp6"]
+[gd_scene format=3 uid="uid://bkr6mptfitvp6"]
 
 [ext_resource type="Script" uid="uid://bum24225kggkt" path="res://src/bugger/player/bugger_player.gd" id="1_2tvdx"]
 [ext_resource type="Texture2D" uid="uid://c7jcaonogiwiu" path="res://icon.svg" id="1_upnm8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_upnm8"]
-size = Vector2(32, 32)
+size = Vector2(30, 30)
 
-[node name="BuggerPlayer" type="CharacterBody2D"]
+[node name="BuggerPlayer" type="CharacterBody2D" unique_id=2142677464]
 script = ExtResource("1_2tvdx")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1289994634]
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_upnm8")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1800468807]
 shape = SubResource("RectangleShape2D_upnm8")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=183733717]
 position_smoothing_enabled = true

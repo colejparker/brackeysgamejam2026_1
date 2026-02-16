@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://cqm8vn2jg4ma"]
+
+[ext_resource type="Script" uid="uid://n2m6xihttqua" path="res://src/bugger/ui/minimap.gd" id="1_minimap"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg"]
+bg_color = Color(0, 0, 0, 0.7)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 0.8)
+
+[node name="Minimap" type="Control" unique_id=699996784]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -120.0
+offset_bottom = 100.0
+grow_horizontal = 0
+script = ExtResource("1_minimap")
+
+[node name="Panel" type="Panel" parent="." unique_id=1149115502]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bg")
+
+[node name="PlayerIndicator" type="ColorRect" parent="Panel" unique_id=1785351943]
+layout_mode = 0
+offset_right = 4.0
+offset_bottom = 4.0
+color = Color(0.7400798, 0.2397877, 0.31529745, 1)
+
+[node name="EndIndicator" type="ColorRect" parent="Panel" unique_id=1943687987]
+layout_mode = 0
+offset_right = 4.0
+offset_bottom = 4.0
+color = Color(0.62902904, 0.8635661, 0.99999994, 1)
+
+[node name="HomeIndicator" type="ColorRect" parent="Panel" unique_id=1990580657]
+layout_mode = 0
+offset_right = 4.0
+offset_bottom = 4.0
+color = Color(0.008598174, 0.9998825, 0, 1)

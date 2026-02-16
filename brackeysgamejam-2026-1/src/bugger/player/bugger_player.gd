@@ -3,32 +3,33 @@ extends CharacterBody2D
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 const GRID_SIZE: int = 32
-const MOVE_TWEEN_DURATION: float = 0.1
-const START_POS: Vector2 = Vector2(624.0, 704.0)
+@export var START_X: int = 0
+@export var START_Y: int = 0
 
 var target_position: Vector2  = Vector2.ZERO
 
-var is_moving: bool = false
 var is_resetting: bool = false
 var is_in_water: bool = false
 
 var current_water_obstacle: Node2D = null
-var move_tween: Tween = null
 
 func _ready():
+	global_position = global_position.snapped(Vector2(GRID_SIZE, GRID_SIZE))
 	target_position = global_position
 
-	collision_layer = 1 
-	collision_mask = 2
+	collision_layer = 1
+	collision_mask = 2 | 4
 
 func _process(_delta):
-	if (is_moving || is_resetting):
+	if is_resetting:
 		return
 	var input_dir: Vector2 = _get_input_direction()
 	if (input_dir != Vector2.ZERO):
-		var new_position: Vector2 = (global_position + input_dir * GRID_SIZE)
-		_start_move_to(new_position)
-		global_position = global_position.snapped(Vector2(GRID_SIZE, GRID_SIZE))
+		var new_position: Vector2 = (global_position + input_dir * GRID_SIZE).snapped(Vector2(GRID_SIZE, GRID_SIZE))
+
+		if not _is_position_blocked(new_position):
+			global_position = new_position
+			target_position = new_position
 
 func _get_input_direction() -> Vector2:
 	if (Input.is_action_just_pressed("moveUp")):
@@ -45,20 +46,17 @@ func _get_input_direction() -> Vector2:
 		return Vector2.LEFT
 	return Vector2.ZERO
 	
-func _start_move_to(move_position: Vector2):
-	is_moving = true
-	target_position = move_position
 
-	collision_mask = 0
+func _is_position_blocked(pos: Vector2) -> bool:
+	var space_state = get_world_2d().direct_space_state
+	var query = PhysicsPointQueryParameters2D.new()
+	query.position = pos
+	query.collision_mask = 4
+	query.collide_with_areas = true
+	query.collide_with_bodies = false
 
-	move_tween = create_tween()
-	move_tween.tween_property(self, "global_position", target_position, MOVE_TWEEN_DURATION)
-	move_tween.finished.connect(_on_move_tween_complete)
-
-
-func _on_move_tween_complete():
-	is_moving = false
-	collision_mask = 2
+	var result = space_state.intersect_point(query)
+	return result.size() > 0
 
 func die():
 	if is_resetting:
@@ -66,17 +64,12 @@ func die():
 
 	is_resetting = true
 
-	#TO-DO: Death Animation, Lose Money
+	Game.die_lose_money()
 
 	await get_tree().create_timer(0.5).timeout
 	reset_position()
 
 func reset_position():
-	global_position = START_POS
-	target_position = START_POS
-	sprite_2d.modulate = Color.WHITE
+	global_position = Vector2(START_X, START_Y)
+	target_position = Vector2(START_X, START_Y)
 	is_resetting = false
-	is_moving = false
-
-	if move_tween != null and move_tween.is_running():
-		move_tween.kill()

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cf7kpyvsv6ega"]
+
+[ext_resource type="Script" uid="uid://ne2f0b7wf6yg" path="res://src/bugger/pickups/pickup.gd" id="1_645jh"]
+[ext_resource type="Texture2D" uid="uid://ci1n1mq03ry0g" path="res://pickup.png" id="1_kd66m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_645jh"]
+size = Vector2(30, 30)
+
+[node name="Leaf" type="Area2D" unique_id=72098044]
+script = ExtResource("1_645jh")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=843971179]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_kd66m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=752856703]
+shape = SubResource("RectangleShape2D_645jh")
