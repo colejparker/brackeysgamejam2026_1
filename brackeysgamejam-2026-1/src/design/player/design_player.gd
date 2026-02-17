@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 var input_vector = Vector2.ZERO
+var last_direction = Vector2.ZERO
 
 const SPEED = 100.0
 
@@ -20,6 +21,7 @@ func _physics_process(delta: float) -> void:
 	input_vector = Input.get_vector("moveLeft", "moveRight", "moveUp", "moveDown")
 
 	if input_vector != Vector2.ZERO:
+		last_direction = input_vector
 		var animation_direction_vector = Vector2(input_vector.x, -input_vector.y)
 		update_blend_positions(animation_direction_vector)
 

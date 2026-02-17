@@ -258,6 +258,7 @@ hframes = 4
 frame = 3
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=508088807]
+position = Vector2(0, -9)
 polygon = PackedVector2Array(0, -14, -15, 9, 0, 31, 15, 9)
 
 [node name="AnimationTree" type="AnimationTree" parent="." unique_id=1744685054]
