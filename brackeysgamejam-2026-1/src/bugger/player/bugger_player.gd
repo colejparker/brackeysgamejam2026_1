@@ -21,9 +21,7 @@ var is_resetting: bool = false
 
 func _ready():
 	return_home_menu.visible = false
-	
-	print(home.global_position)
-	
+		
 	START_X = home.global_position[0]
 	START_Y = home.global_position[1]+32.0
 	global_position[0] = START_X
