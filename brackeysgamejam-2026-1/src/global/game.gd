@@ -59,7 +59,12 @@ func generate_new_cards():
 	for n in num_cards:
 		var card = card_scene.instantiate()
 
-		var num_items = rng.randi_range(1, 3)
+		var ran_num_items = rng.randi_range(1, 10)
+		var num_items = 1
+		if ran_num_items == 10:
+			num_items = 3
+		elif ran_num_items >= 8:
+			num_items = 2
 		var random_furniture = furniture_catalog.values().pick_random()
 		var furniture_for_card: Array[FurnitureData] = []
 

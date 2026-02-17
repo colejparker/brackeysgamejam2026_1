@@ -7,10 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://cf7kpyvsv6ega" path="res://src/bugger/pickups/leaf.tscn" id="5_rsis4"]
 [ext_resource type="PackedScene" uid="uid://dsnre2kwayk2" path="res://src/bugger/obstacles/obstacle_stationary.tscn" id="5_w4mas"]
 [ext_resource type="PackedScene" uid="uid://d018ldktyycwp" path="res://src/bugger/pickups/nut.tscn" id="6_5uis1"]
-[ext_resource type="Texture2D" uid="uid://djddk0ce0ntmc" path="res://enemy_green.png" id="6_q80gb"]
 [ext_resource type="PackedScene" uid="uid://cvgqbkcgdrdt8" path="res://src/bugger/pickups/berry.tscn" id="7_j7ttf"]
 [ext_resource type="PackedScene" uid="uid://cqm8vn2jg4ma" path="res://src/bugger/ui/minimap.tscn" id="7_minimap"]
 [ext_resource type="Script" uid="uid://j5uh71y7ytfl" path="res://src/bugger/ui/money_tracker.gd" id="9_3i68f"]
+[ext_resource type="Texture2D" uid="uid://no1qy7mobcbl" path="res://assets/sprites/lilypad.png" id="9_ssxma"]
+[ext_resource type="Texture2D" uid="uid://2x1c42ygrg07" path="res://assets/sprites/treequarter.png" id="10_ssxma"]
 [ext_resource type="Texture2D" uid="uid://c3uto7ohirkj0" path="res://assets/ui_cole/rect.png" id="12_2lyqb"]
 [ext_resource type="Theme" uid="uid://kvftxgmpx6vs" path="res://default_theme.tres" id="13_ssxma"]
 
@@ -83,32 +84,30 @@ position = Vector2(320, 192)
 
 [node name="Home" parent="ObstacleLayer" unique_id=47189287 instance=ExtResource("5_w4mas")]
 position = Vector2(0, -32)
-sprite_texture = ExtResource("6_q80gb")
+sprite_texture = ExtResource("9_ssxma")
 is_lethal = false
 
 [node name="EnemyStationary" parent="ObstacleLayer" unique_id=844447813 instance=ExtResource("5_w4mas")]
 position = Vector2(128, 0)
-sprite_texture = ExtResource("6_q80gb")
+sprite_texture = ExtResource("10_ssxma")
 is_lethal = false
 
 [node name="EnemyStationary3" parent="ObstacleLayer" unique_id=1341377824 instance=ExtResource("5_w4mas")]
 position = Vector2(160, 0)
-sprite_texture = ExtResource("6_q80gb")
+sprite_texture = ExtResource("10_ssxma")
+direction = "Up"
 is_lethal = false
 
 [node name="EnemyStationary4" parent="ObstacleLayer" unique_id=2134058082 instance=ExtResource("5_w4mas")]
 position = Vector2(160, -32)
-sprite_texture = ExtResource("6_q80gb")
+sprite_texture = ExtResource("10_ssxma")
+direction = "Left"
 is_lethal = false
 
 [node name="EnemyStationary5" parent="ObstacleLayer" unique_id=887952034 instance=ExtResource("5_w4mas")]
 position = Vector2(128, -32)
-sprite_texture = ExtResource("6_q80gb")
-is_lethal = false
-
-[node name="EnemyStationary2" parent="ObstacleLayer" unique_id=1799574267 instance=ExtResource("5_w4mas")]
-position = Vector2(128, -96)
-sprite_texture = ExtResource("6_q80gb")
+sprite_texture = ExtResource("10_ssxma")
+direction = "Down"
 is_lethal = false
 
 [node name="EndItem" type="Node2D" parent="." unique_id=690263097]
@@ -130,6 +129,7 @@ text = "Bugbucks: 5"
 script = ExtResource("9_3i68f")
 
 [node name="ReturnHomeMenu" type="CanvasLayer" parent="." unique_id=636775368]
+visible = false
 
 [node name="ReturnHomeMenuBase" type="MarginContainer" parent="ReturnHomeMenu" unique_id=932422709]
 anchors_preset = 8

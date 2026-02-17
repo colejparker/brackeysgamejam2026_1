@@ -12,8 +12,8 @@ var seller_name: String = ""
 
 var rng = RandomNumberGenerator.new()
 
-var first_names: Array[String] = ["Grub"]
-var last_names: Array[String] = ["Bub"]
+var first_names: Array[String] = ["Grub", "Anthony", "Beeatrice", "Buzz", "Bugs", "Mariposa", "Archer", "Phoebee", "Luna", "Flutter", "Jiminy", "Honey", "Lady", "Dotty", "June", "Hercules"]
+var last_names: Array[String] = ["Bub", "Beedle", "Queen", "Schmetterling", "Papillon", "Cricket", "Scarab", "Hornet", "Moth"]
 
 func _ready():
 	furniture_picture.texture = furniture_data[0].texture

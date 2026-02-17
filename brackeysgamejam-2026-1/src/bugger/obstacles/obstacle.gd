@@ -9,30 +9,34 @@ extends Area2D
 @export var boundary_right: float = 0.0
 @export var boundary_top: float = 0.0
 @export var boundary_bottom: float = 0.0
+@onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var enemy: Area2D = $"."
 
 var velocity: Vector2 = Vector2.ZERO
 
 func _ready():
 	if sprite_texture != null and has_node("Sprite2D"):
-		$Sprite2D.texture = sprite_texture
+		sprite_2d.texture = sprite_texture
 
 	if is_lethal:
 		collision_layer = 2
 	else:
 		collision_layer = 4 
-		
-
 	collision_mask = 1
 
 	match direction:
 		"Left":
 			velocity = Vector2.LEFT * speed
+			enemy.rotation_degrees = 270
 		"Right":
 			velocity = Vector2.RIGHT * speed
+			enemy.rotation_degrees = 90
 		"Up":
 			velocity = Vector2.UP * speed
+			enemy.rotation_degrees = 0
 		"Down":
 			velocity = Vector2.DOWN * speed
+			enemy.rotation_degrees = 180
 
 	body_entered.connect(_on_body_entered)
 	

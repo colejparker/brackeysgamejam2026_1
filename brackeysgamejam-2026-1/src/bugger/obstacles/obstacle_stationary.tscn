@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dsnre2kwayk2"]
 
 [ext_resource type="Script" uid="uid://buih6uh4p0yjv" path="res://src/bugger/obstacles/obstacle.gd" id="1_6wk25"]
-[ext_resource type="Texture2D" uid="uid://ua3552vsx1d8" path="res://enemy.png" id="2_am71e"]
+[ext_resource type="Texture2D" uid="uid://2x1c42ygrg07" path="res://assets/sprites/treequarter.png" id="2_70foi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_obstacle"]
 size = Vector2(30, 30)
@@ -11,8 +11,7 @@ script = ExtResource("1_6wk25")
 speed = 0.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1704416990]
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("2_am71e")
+texture = ExtResource("2_70foi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1013835858]
 shape = SubResource("RectangleShape2D_obstacle")

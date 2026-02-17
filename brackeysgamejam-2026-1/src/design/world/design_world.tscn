@@ -80,7 +80,7 @@ position = Vector2(1, 0)
 tile_set = SubResource("TileSet_58ifa")
 
 [node name="Furniture" parent="WallLayer" unique_id=294327000 instance=ExtResource("2_58ifa")]
-position = Vector2(225, 67)
+position = Vector2(203, 81)
 furniture_data = ExtResource("4_k1s3p")
 
 [node name="DesignPlayer" parent="." unique_id=1416930764 instance=ExtResource("4_cfd1e")]

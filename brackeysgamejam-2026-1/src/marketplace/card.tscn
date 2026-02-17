@@ -11,7 +11,7 @@ offset_bottom = 40.0
 texture = ExtResource("1_0gvlx")
 script = ExtResource("1_hng1h")
 
-[node name="TextureButton" type="TextureButton" parent="." unique_id=561717916]
+[node name="MessageButton" type="TextureButton" parent="." unique_id=561717916]
 layout_mode = 0
 offset_left = 478.0
 offset_top = 72.0
