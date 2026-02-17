@@ -9,6 +9,7 @@ var card_scene: PackedScene = preload("res://src/marketplace/card.tscn")
 
 func _ready():
 	close_button.pressed.connect(_close_marketplace)
+	Game.card_selected.connect(_close_marketplace)
 	_populate_cards()
 
 func _populate_cards():

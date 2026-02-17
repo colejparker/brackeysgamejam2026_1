@@ -7,6 +7,7 @@ var card_data: CardData
 @onready var price_label: Label = $Control/VBoxContainer/PriceLabel
 @onready var seller_label: Label = $Control/VBoxContainer/SellerLabel
 @onready var furniture_picture: Sprite2D = $FurniturePicture
+@onready var message_button: TextureButton = $MessageButton
 
 func _ready():
 	furniture_picture.texture = card_data.furniture.texture
@@ -19,3 +20,9 @@ func _ready():
 		item_label.text += "s"
 	price_label.text = "Price: " + str(card_data.price)
 	seller_label.text = "Seller: " + card_data.seller_name
+	location_label.text = "Location: " + card_data.location
+	message_button.pressed.connect(_click_card)
+
+func _click_card():
+	Game.select_card_data(card_data)
+	
