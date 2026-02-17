@@ -6,7 +6,7 @@ extends Node
 var inventory: Array[FurnitureData] = []
 var selected_inventory_slot = 0
 
-var current_cards: Array[Node] = []
+var current_cards: Array[CardData] = []
 
 var pause_menu: PackedScene = preload("res://src/global/ui/pause_menu.tscn")
 var card_scene: PackedScene = preload("res://src/marketplace/card.tscn")
@@ -48,6 +48,9 @@ func prepare_furniture_catalog():
 			var furniture_data = ResourceLoader.load(FURNITURE_RESOURCE_DIR + file_name) as FurnitureData
 			furniture_catalog.set(furniture_data.name, furniture_data)
 
+var first_names: Array[String] = ["Grub", "Anthony", "Beeatrice", "Buzz", "Bugs", "Mariposa", "Archer", "Phoebee", "Luna", "Flutter", "Jiminy", "Honey", "Lady", "Dotty", "June", "Hercules"]
+var last_names: Array[String] = ["Bub", "Beedle", "Queen", "Schmetterling", "Papillon", "Cricket", "Scarab", "Hornet", "Moth"]
+
 func generate_new_cards():
 	current_cards.clear()
 
@@ -57,23 +60,21 @@ func generate_new_cards():
 	var num_cards = rng.randi_range(3, 6)
 
 	for n in num_cards:
-		var card = card_scene.instantiate()
-
 		var ran_num_items = rng.randi_range(1, 10)
 		var num_items = 1
 		if ran_num_items == 10:
 			num_items = 3
 		elif ran_num_items >= 8:
 			num_items = 2
-		var random_furniture = furniture_catalog.values().pick_random()
-		var furniture_for_card: Array[FurnitureData] = []
 
-		for i in num_items:
-			furniture_for_card.append(random_furniture)
+		var card_data = CardData.new()
+		card_data.furniture = furniture_catalog.values().pick_random()
+		card_data.quantity = num_items
+		card_data.price = rng.randf_range(3.0, 10.0) * (num_items * 0.75)
+		card_data.price = round(card_data.price * 100.0) / 100.0
+		card_data.seller_name = first_names.pick_random() + " " + last_names.pick_random()
 
-		card.furniture_data = furniture_for_card
-
-		current_cards.append(card)
+		current_cards.append(card_data)
 
 
 func _input(event):
