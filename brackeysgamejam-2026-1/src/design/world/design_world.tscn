@@ -11,9 +11,6 @@
 [ext_resource type="Script" uid="uid://bcwnxlurhav2k" path="res://src/design/world/inventory_ui.gd" id="7_owkdv"]
 [ext_resource type="Texture2D" uid="uid://dypemrquvykom" path="res://assets/ui_cole/close_marketplace.png" id="10_gaaai"]
 
-[sub_resource type="TileSet" id="TileSet_58ifa"]
-tile_shape = 1
-
 [node name="DesignWorld" type="Node2D" unique_id=1925217490]
 y_sort_enabled = true
 
@@ -87,12 +84,8 @@ furniture_data = ExtResource("3_cfd1e")
 position = Vector2(322, 320)
 furniture_data = ExtResource("3_cfd1e")
 
-[node name="WallLayer" type="TileMapLayer" parent="." unique_id=1455840331]
-position = Vector2(1, 0)
-tile_set = SubResource("TileSet_58ifa")
-
-[node name="Furniture" parent="WallLayer" unique_id=294327000 instance=ExtResource("2_58ifa")]
-position = Vector2(203, 81)
+[node name="Furniture" parent="DecorationLayer" unique_id=294327000 instance=ExtResource("2_58ifa")]
+position = Vector2(172, 81)
 furniture_data = ExtResource("4_k1s3p")
 
 [node name="DesignPlayer" parent="." unique_id=1416930764 instance=ExtResource("4_cfd1e")]
