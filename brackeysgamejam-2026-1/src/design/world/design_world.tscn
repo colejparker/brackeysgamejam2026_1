@@ -67,6 +67,18 @@ y_sort_enabled = true
 position = Vector2(32, 0)
 tile_set = ExtResource("2_wl84k")
 
+[node name="WallPolygon" type="Polygon2D" parent="DecorationLayer" unique_id=1206934633]
+unique_name_in_owner = true
+visible = false
+position = Vector2(0, 1.0204082)
+scale = Vector2(1, 0.99489796)
+polygon = PackedVector2Array(65, 4, 66, 200, 352, 60, 606, 183, 606.99994, 6.0102563)
+
+[node name="FloorPolygon" type="Polygon2D" parent="DecorationLayer" unique_id=265029955]
+unique_name_in_owner = true
+visible = false
+polygon = PackedVector2Array(69, 207, 322, 333, 603, 193, 351, 66)
+
 [node name="Computer" parent="DecorationLayer" unique_id=2085249340 instance=ExtResource("2_58ifa")]
 position = Vector2(353, 81)
 furniture_data = ExtResource("3_cfd1e")

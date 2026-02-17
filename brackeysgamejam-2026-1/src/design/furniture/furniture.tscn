@@ -3,17 +3,15 @@
 [ext_resource type="Script" uid="uid://c5yx25ns5ekqj" path="res://src/design/furniture/furniture.gd" id="1_mt2d8"]
 [ext_resource type="Texture2D" uid="uid://drnap4nwfhevq" path="res://applesheet.png" id="2_mt2d8"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_mt2d8"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mt2d8"]
 
 [node name="Furniture" type="CharacterBody2D" unique_id=438672004]
 motion_mode = 1
 script = ExtResource("1_mt2d8")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=112837345]
-position = Vector2(0, -5)
 texture = ExtResource("2_mt2d8")
 hframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2087875814]
-position = Vector2(0, -4)
-shape = SubResource("CircleShape2D_mt2d8")
+shape = SubResource("RectangleShape2D_mt2d8")

@@ -16,15 +16,17 @@ var state = State.STATIONARY
 func _physics_process(delta: float) -> void:
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		var mouse_pos = get_local_mouse_position()
-		if state == State.STATIONARY and mouse_in_rect():
+		if state == State.STATIONARY and mouse_in_rect() and !Game.holding_object:
+			Game.holding_object = true
 			state = State.MOVING
 			
 	if !Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		state = State.STATIONARY
+		Game.holding_object = false
 		
 	if Input.is_action_just_pressed("rotate") and (mouse_in_rect() or state == State.MOVING) and !furniture_data.is_wall:
 		sprite.frame = (sprite.frame + 1) % sprite.hframes
-	
+
 	if furniture_data.is_wall:
 		sprite.frame = 0 if position.x <= 382 else 1
 	
