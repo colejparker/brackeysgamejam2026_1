@@ -3,7 +3,8 @@ extends Node
 @export var next_bugger_level: PackedScene = preload("res://src/bugger/levels/bugger_1.tscn")
 @export var next_furniture_item: Array[FurnitureData]
 @export var cost_of_next_item: float = 1.0
-@export var available_furniture: Array[FurnitureData]
+var inventory: Array[FurnitureData] = []
+var selected_inventory_slot = 0
 
 var current_cards: Array[Node] = []
 
@@ -13,11 +14,18 @@ var card_scene: PackedScene = preload("res://src/marketplace/card.tscn")
 var rng = RandomNumberGenerator.new()
 
 signal money_changed(new_amount: int)
+signal add_item_to_inventory(name: String)
+signal remove_item_from_inventory(name: String)
+signal inventory_updated()
+
+var furniture_catalog: Dictionary[String, FurnitureData] = {}
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	load_available_furniture()
+	prepare_furniture_catalog()
 	generate_new_cards()
+	add_item_to_inventory.connect(_on_add_item_to_inventory)
+	remove_item_from_inventory.connect(_on_remove_item_from_inventory)
 
 var money: int = 5:
 	set(value):
@@ -32,33 +40,18 @@ func die_lose_money():
 	
 func load_next_bugger_level():
 	get_tree().change_scene_to_packed(next_bugger_level)
-
-func load_available_furniture():
-	available_furniture.clear()
-
-	var furniture_dir = "res://src/global/Furniture(Resources)/"
-	var dir = DirAccess.open(furniture_dir)
-
-	if dir:
-		dir.list_dir_begin()
-		var file_name = dir.get_next()
-
-		while file_name != "":
-			if !dir.current_is_dir() and file_name.ends_with(".tres"):
-				var full_path = furniture_dir + file_name
-				var furniture = load(full_path) as FurnitureData
-
-				if furniture:
-					available_furniture.append(furniture)
-
-			file_name = dir.get_next()
-
-		dir.list_dir_end()
+	
+func prepare_furniture_catalog():
+	const FURNITURE_RESOURCE_DIR = "res://src/global/Furniture(Resources)/"
+	for file_name in DirAccess.get_files_at(FURNITURE_RESOURCE_DIR):
+		if file_name.ends_with(".tres"):
+			var furniture_data = ResourceLoader.load(FURNITURE_RESOURCE_DIR + file_name) as FurnitureData
+			furniture_catalog.set(furniture_data.name, furniture_data)
 
 func generate_new_cards():
 	current_cards.clear()
 
-	if available_furniture.is_empty():
+	if furniture_catalog.is_empty():
 		return
 
 	var num_cards = rng.randi_range(3, 6)
@@ -67,7 +60,7 @@ func generate_new_cards():
 		var card = card_scene.instantiate()
 
 		var num_items = rng.randi_range(1, 3)
-		var random_furniture = available_furniture.pick_random()
+		var random_furniture = furniture_catalog.values().pick_random()
 		var furniture_for_card: Array[FurnitureData] = []
 
 		for i in num_items:
@@ -91,3 +84,17 @@ func _input(event):
 			var pause_node = get_tree().current_scene.get_node_or_null("PauseMenu")
 			if pause_node:
 				pause_node.queue_free()
+				
+func _on_add_item_to_inventory(name: String):
+	inventory.append(furniture_catalog.get(name))
+	inventory_updated.emit()
+	
+func _on_remove_item_from_inventory(name: String):
+	var index_to_remove = -1
+	for i in inventory.size():
+		if inventory[i].name == name:
+			index_to_remove = i
+			break
+	if index_to_remove >= 0:
+		inventory.remove_at(index_to_remove)
+	inventory_updated.emit()
