@@ -88,7 +88,6 @@ func _input(event):
 func _on_add_item_to_inventory(name: String):
 	inventory.append(furniture_catalog.get(name))
 	inventory_updated.emit()
-	print(inventory)
 	
 func _on_remove_item_from_inventory(name: String):
 	var index_to_remove = -1

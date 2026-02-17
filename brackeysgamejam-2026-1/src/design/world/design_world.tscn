@@ -5,7 +5,9 @@
 [ext_resource type="Resource" uid="uid://clgkmt32bd35e" path="res://src/global/Furniture(Resources)/apple.tres" id="3_cfd1e"]
 [ext_resource type="PackedScene" uid="uid://dn2p4k0ih7jgv" path="res://src/design/player/design_player.tscn" id="4_cfd1e"]
 [ext_resource type="Resource" uid="uid://boc4fqv6k6vb7" path="res://src/global/Furniture(Resources)/poster.tres" id="4_k1s3p"]
+[ext_resource type="Script" uid="uid://iiqcu7cpas7" path="res://src/design/world/design_gui.gd" id="6_j4jsl"]
 [ext_resource type="PackedScene" uid="uid://ed6vn467no5r" path="res://src/design/world/inventory_slot.tscn" id="6_k1s3p"]
+[ext_resource type="Theme" uid="uid://kvftxgmpx6vs" path="res://default_theme.tres" id="7_dsxsq"]
 [ext_resource type="Script" uid="uid://bcwnxlurhav2k" path="res://src/design/world/inventory_ui.gd" id="7_owkdv"]
 
 [sub_resource type="TileSet" id="TileSet_58ifa"]
@@ -38,7 +40,7 @@ polygon = PackedVector2Array(59, 203, 322, 333, 619, 187, 619, 205, 321, 351, 61
 [node name="Void" type="ColorRect" parent="." unique_id=1038339942]
 offset_right = 640.0
 offset_bottom = 360.0
-color = Color(0, 0, 0, 1)
+color = Color(0.37665847, 0.37665847, 0.37665847, 1)
 
 [node name="Wall" type="ColorRect" parent="." unique_id=68030018]
 offset_left = 96.0
@@ -53,23 +55,23 @@ color = Color(0, 0, 0, 1)
 
 [node name="GroundLayer" type="TileMapLayer" parent="." unique_id=1885438664]
 y_sort_enabled = true
-position = Vector2(32, 1)
+position = Vector2(32, 0)
 tile_map_data = PackedByteArray("AAABAAsAAAADAAAAAAABAAwAAAADAAAAAAABAA0AAAADAAAAAAACAAkAAAADAAAAAAACAAoAAAADAAAAAAACAAsAAAADAAAAAAACAAwAAAADAAAAAAACAA0AAAADAAAAAAACAA4AAAADAAAAAAACAA8AAAADAAAAAAADAAcAAAADAAAAAAADAAgAAAADAAAAAAADAAkAAAADAAAAAAADAAoAAAADAAAAAAADAAsAAAADAAAAAAADAAwAAAADAAAAAAADAA0AAAADAAAAAAADAA4AAAADAAAAAAADAA8AAAADAAAAAAADABAAAAADAAAAAAADABEAAAADAAAAAAAEAAUAAAADAAAAAAAEAAYAAAADAAAAAAAEAAcAAAADAAAAAAAEAAgAAAADAAAAAAAEAAkAAAADAAAAAAAEAAoAAAADAAAAAAAEAAsAAAADAAAAAAAEAAwAAAADAAAAAAAEAA0AAAADAAAAAAAEAA4AAAADAAAAAAAEAA8AAAADAAAAAAAEABAAAAADAAAAAAAEABEAAAADAAAAAAAEABIAAAADAAAAAAAEABMAAAADAAAAAAAFAAQAAAADAAAAAAAFAAUAAAADAAAAAAAFAAYAAAADAAAAAAAFAAcAAAADAAAAAAAFAAgAAAADAAAAAAAFAAkAAAADAAAAAAAFAAoAAAADAAAAAAAFAAsAAAADAAAAAAAFAAwAAAADAAAAAAAFAA0AAAADAAAAAAAFAA4AAAADAAAAAAAFAA8AAAADAAAAAAAFABAAAAADAAAAAAAFABEAAAADAAAAAAAFABIAAAADAAAAAAAGAAYAAAADAAAAAAAGAAcAAAADAAAAAAAGAAgAAAADAAAAAAAGAAkAAAADAAAAAAAGAAoAAAADAAAAAAAGAAsAAAADAAAAAAAGAAwAAAADAAAAAAAGAA0AAAADAAAAAAAGAA4AAAADAAAAAAAGAA8AAAADAAAAAAAGABAAAAADAAAAAAAHAAgAAAADAAAAAAAHAAkAAAADAAAAAAAHAAoAAAADAAAAAAAHAAsAAAADAAAAAAAHAAwAAAADAAAAAAAHAA0AAAADAAAAAAAHAA4AAAADAAAAAAAIAAoAAAADAAAAAAAIAAsAAAADAAAAAAAIAAwAAAADAAAAAAA=")
 tile_set = ExtResource("2_wl84k")
 
 [node name="DecorationLayer" type="TileMapLayer" parent="." unique_id=1775596092]
+unique_name_in_owner = true
 z_index = 1
 y_sort_enabled = true
-position = Vector2(1, 0)
-tile_map_data = PackedByteArray("AAABAAsAAAAAAAUAAAACAAwAAAAAAAUAAAACAAoAAAAAAAUAAAA=")
+position = Vector2(32, 0)
 tile_set = ExtResource("2_wl84k")
 
 [node name="Computer" parent="DecorationLayer" unique_id=2085249340 instance=ExtResource("2_58ifa")]
-position = Vector2(383, 84)
+position = Vector2(353, 81)
 furniture_data = ExtResource("3_cfd1e")
 
 [node name="DoorOut" parent="DecorationLayer" unique_id=438672004 instance=ExtResource("2_58ifa")]
-position = Vector2(370, 287)
+position = Vector2(322, 320)
 furniture_data = ExtResource("3_cfd1e")
 
 [node name="WallLayer" type="TileMapLayer" parent="." unique_id=1455840331]
@@ -84,20 +86,28 @@ furniture_data = ExtResource("4_k1s3p")
 z_index = 1
 position = Vector2(360, 197)
 
-[node name="GUI" type="CanvasLayer" parent="." unique_id=1463266298]
+[node name="DesignGUI" type="CanvasLayer" parent="." unique_id=1463266298]
+script = ExtResource("6_j4jsl")
 
-[node name="GridContainer" type="GridContainer" parent="GUI" unique_id=1565200743]
+[node name="InventorySlot" parent="DesignGUI" unique_id=824199867 instance=ExtResource("6_k1s3p")]
 offset_left = 2.0
 offset_top = 2.0
 offset_right = 88.0
 offset_bottom = 88.0
-
-[node name="InventorySlot" parent="GUI/GridContainer" unique_id=824199867 instance=ExtResource("6_k1s3p")]
-layout_mode = 2
 furniture_data = ExtResource("4_k1s3p")
 is_active = true
 
+[node name="PlaceButton" type="Button" parent="DesignGUI" unique_id=117102537]
+offset_left = 27.0
+offset_top = 91.0
+offset_right = 63.0
+offset_bottom = 110.0
+theme = ExtResource("7_dsxsq")
+theme_override_font_sizes/font_size = 16
+text = "Place"
+
 [node name="InventoryUI" type="CanvasLayer" parent="." unique_id=894941456]
+unique_name_in_owner = true
 visible = false
 script = ExtResource("7_owkdv")
 

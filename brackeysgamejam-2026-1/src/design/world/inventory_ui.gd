@@ -10,6 +10,7 @@ var slots = []
 func _ready():
 	for i in range(INVSIZE):
 		var slot := inv_slot_scene.instantiate()
+		slot.slot_id = i
 		inv.add_child(slot)
 		slots.append(slot)
 	update_with_inventory()

@@ -38,6 +38,7 @@ func mouse_in_rect() -> bool:
 	
 func get_desired_position(snap: bool) -> Vector2:
 	var desired_pos = get_global_mouse_position()
+	desired_pos.x -= 32
 	if snap:
 		return parent_tile_map_layer.map_to_local(parent_tile_map_layer.local_to_map(desired_pos))
 	if desired_pos.x >= 370 and desired_pos.x <= 394 and furniture_data.is_wall:
