@@ -9,7 +9,7 @@ var marketplace: PackedScene = preload("res://src/marketplace/marketplace.tscn")
 var marketplace_open: bool = false
 var can_trigger_computer: bool = true
 var is_touching_computer: bool = false
-@onready var gui: CanvasLayer = $"../GUI"
+@onready var gui: CanvasLayer = $"../DesignGUI"
 
 func _physics_process(delta: float) -> void:
 	if marketplace_open:
