@@ -8,6 +8,7 @@ var current_cards: Array[CardData] = []
 
 var pause_menu: PackedScene = preload("res://src/global/ui/pause_menu.tscn")
 var card_scene: PackedScene = preload("res://src/marketplace/card.tscn")
+var holding_object = false
 
 var rng = RandomNumberGenerator.new()
 

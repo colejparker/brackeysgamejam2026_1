@@ -24,23 +24,39 @@ func open_inventory():
 
 func place():
 	if Game.selected_inventory_slot >= Game.inventory.size():
+		current_shake = shake_amount
 		return
-	var proposed_position = get_place_position()
-	for child in %DecorationLayer.get_children():
-		if child.point_in_rect(proposed_position - child.position):
-			current_shake = shake_amount
-			return
 	var furniture_data = Game.inventory[Game.selected_inventory_slot]
+	var proposed_position = get_place_position(furniture_data)
+	if !can_place(furniture_data, proposed_position):
+		current_shake = shake_amount
+		return
+	
 	var packed_scene = preload("res://src/design/furniture/furniture.tscn").instantiate()
 	packed_scene.furniture_data = furniture_data
-	packed_scene.position = get_place_position()
+	packed_scene.position = proposed_position
 	%DecorationLayer.add_child(packed_scene)
 	Game.remove_item_from_inventory.emit(furniture_data.name)
 
-func get_place_position() -> Vector2:
-	return %DesignPlayer.position - Vector2(32, 0) + (%DesignPlayer.last_direction) * 30
+func get_place_position(furniture_data: FurnitureData) -> Vector2:
+	return %DesignPlayer.position - Vector2(32, 0) + (%DesignPlayer.last_direction) * (30 if !furniture_data.is_wall else 100)
 	
 func _physics_process(delta: float) -> void:
 	current_shake = max(0, current_shake - (shake_amount * delta / shake_duration))
-	
 	place_button.position = base_place_button_position + Vector2(randf_range(-current_shake, current_shake), randf_range(-current_shake, current_shake))
+	
+func can_place(furniture_data: FurnitureData, proposed_position: Vector2) -> bool:
+	const BOX_VECTOR_OFFSET = 8
+	const BOX_VECTORS = [Vector2(-BOX_VECTOR_OFFSET, -BOX_VECTOR_OFFSET), Vector2(-BOX_VECTOR_OFFSET, BOX_VECTOR_OFFSET), Vector2(BOX_VECTOR_OFFSET, BOX_VECTOR_OFFSET), Vector2(BOX_VECTOR_OFFSET, -BOX_VECTOR_OFFSET)]
+	var boxed_points = [proposed_position, proposed_position + BOX_VECTORS[0], proposed_position + BOX_VECTORS[1], proposed_position + BOX_VECTORS[2], proposed_position + BOX_VECTORS[3]]
+	for point in boxed_points:
+		if !furniture_data.is_wall and !Geometry2D.is_point_in_polygon(point, %FloorPolygon.polygon):
+			return false
+		if furniture_data.is_wall and !Geometry2D.is_point_in_polygon(point, %WallPolygon.polygon):
+			return false
+		for child in %DecorationLayer.get_children():
+			if !child.is_class("CharacterBody2D"):
+				continue
+			if child.point_in_rect(point - child.position):
+				return false
+	return true
