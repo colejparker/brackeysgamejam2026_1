@@ -8,4 +8,4 @@ func _on_money_changed(new_amount: int):
 	_update_display(new_amount)
 
 func _update_display(amount: int):
-	text = "Money: " + str(amount)
+	text = "Bugbucks: " + str(amount)

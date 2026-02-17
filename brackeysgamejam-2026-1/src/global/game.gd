@@ -1,8 +1,6 @@
 extends Node
 
-@export var next_bugger_level: PackedScene = preload("res://src/bugger/levels/bugger_1.tscn")
-@export var next_furniture_item: Array[FurnitureData]
-@export var cost_of_next_item: float = 1.0
+@export var selected_card_data: CardData
 var inventory: Array[FurnitureData] = []
 var selected_inventory_slot = 0
 
@@ -18,8 +16,11 @@ signal money_changed(new_amount: int)
 signal add_item_to_inventory(name: String)
 signal remove_item_from_inventory(name: String)
 signal inventory_updated()
+signal card_selected()
 
 var furniture_catalog: Dictionary[String, FurnitureData] = {}
+
+@export var garden_level: PackedScene = preload("res://src/bugger/levels/bugger_1.tscn")
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -40,7 +41,9 @@ func die_lose_money():
 	money -= floor(money/2)
 	
 func load_next_bugger_level():
-	get_tree().change_scene_to_packed(next_bugger_level)
+	if selected_card_data:
+		if selected_card_data.location == "Garden":
+			get_tree().change_scene_to_packed(garden_level)
 	
 func prepare_furniture_catalog():
 	const FURNITURE_RESOURCE_DIR = "res://src/global/Furniture(Resources)/"
@@ -73,6 +76,7 @@ func generate_new_cards():
 		card_data.quantity = num_items
 		card_data.price = rng.randf_range(3.0, 10.0) * (num_items * 0.75)
 		card_data.price = round(card_data.price * 100.0) / 100.0
+		card_data.location = "Garden"
 		card_data.seller_name = first_names.pick_random() + " " + last_names.pick_random()
 
 		current_cards.append(card_data)
@@ -105,3 +109,7 @@ func _on_remove_item_from_inventory(name: String):
 	if index_to_remove >= 0:
 		inventory.remove_at(index_to_remove)
 	inventory_updated.emit()
+
+func select_card_data(card_data: CardData):
+	selected_card_data = card_data
+	card_selected.emit()
