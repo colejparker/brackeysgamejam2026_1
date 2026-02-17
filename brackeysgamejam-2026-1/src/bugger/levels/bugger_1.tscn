@@ -92,8 +92,6 @@ layer_0/tile_data = PackedInt32Array(393225, 131072, 1, 393226, 131072, 1, 72091
 
 [node name="BuggerPlayer" parent="." unique_id=2047397625 instance=ExtResource("1_wb1gv")]
 position = Vector2(320, 192)
-START_X = 320
-START_Y = 192
 
 [node name="SpawnerLayer" type="Node2D" parent="." unique_id=1955122083]
 
@@ -155,7 +153,7 @@ position = Vector2(320, 160)
 position = Vector2(320, 192)
 
 [node name="Home" parent="ObstacleLayer" unique_id=47189287 instance=ExtResource("5_w4mas")]
-position = Vector2(0, -32)
+position = Vector2(-289, -160)
 sprite_texture = ExtResource("9_ssxma")
 is_lethal = false
 

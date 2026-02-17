@@ -3,8 +3,8 @@ extends CharacterBody2D
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 const GRID_SIZE: int = 32
-@export var START_X: int = 0
-@export var START_Y: int = 0
+var START_X: int = 0
+var START_Y: int = 0
 
 var texture_alive: Texture2D = preload("res://assets/sprites/mainbugguy.png")
 var texture_dead: Texture2D = preload("res://assets/sprites/mainbugguy-dead.png")
@@ -21,6 +21,13 @@ var is_resetting: bool = false
 
 func _ready():
 	return_home_menu.visible = false
+	
+	print(home.global_position)
+	
+	START_X = home.global_position[0]
+	START_Y = home.global_position[1]+32.0
+	global_position[0] = START_X
+	global_position[1] = START_Y
 	
 	cancel_return.pressed.connect(_dismiss_return_menu)
 	return_home.pressed.connect(_return_home)
