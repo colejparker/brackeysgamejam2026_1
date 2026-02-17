@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @onready var parent_tile_map_layer = get_parent() as TileMapLayer
-@onready var collection_shape = $CollisionShape2D
+@onready var collision_shape = $CollisionShape2D
 @onready var sprite = $Sprite2D
 
 @export var furniture_data: FurnitureData
@@ -34,7 +34,10 @@ func _physics_process(delta: float) -> void:
 		move_and_collide(motion)
 
 func mouse_in_rect() -> bool:
-	return collection_shape.get_shape().get_rect().has_point(get_local_mouse_position())
+	return point_in_rect(get_local_mouse_position())
+	
+func point_in_rect(point: Vector2) -> bool:
+	return collision_shape.get_shape().get_rect().has_point(point)
 	
 func get_desired_position(snap: bool) -> Vector2:
 	var desired_pos = get_global_mouse_position()
