@@ -6,6 +6,9 @@ const GRID_SIZE: int = 32
 @export var START_X: int = 0
 @export var START_Y: int = 0
 
+var texture_alive: Texture2D = preload("res://assets/sprites/mainbugguy.png")
+var texture_dead: Texture2D = preload("res://assets/sprites/mainbugguy-dead.png")
+
 @onready var load_room = preload("res://src/design/world/design_world.tscn")
 
 var target_position: Vector2  = Vector2.ZERO
@@ -82,6 +85,7 @@ func die():
 		return
 
 	is_resetting = true
+	sprite_2d.texture = texture_dead
 
 	Game.die_lose_money()
 
@@ -91,4 +95,5 @@ func die():
 func reset_position():
 	global_position = Vector2(START_X, START_Y)
 	target_position = Vector2(START_X, START_Y)
+	sprite_2d.texture = texture_alive
 	is_resetting = false
