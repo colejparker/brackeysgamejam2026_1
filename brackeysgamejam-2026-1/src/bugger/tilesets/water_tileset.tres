@@ -1,0 +1,22 @@
+[gd_resource type="TileSet" format=3 uid="uid://dxd1ifamio4qr"]
+
+[ext_resource type="Texture2D" uid="uid://dc8uqntsjurna" path="res://assets/sprites/wateranimation.png" id="1_2fa4t"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5fgvd"]
+texture = ExtResource("1_2fa4t")
+texture_region_size = Vector2i(32, 32)
+0:0/animation_columns = 8
+0:0/animation_speed = 4.0
+0:0/animation_frame_0/duration = 1.0
+0:0/animation_frame_1/duration = 1.0
+0:0/animation_frame_2/duration = 1.0
+0:0/animation_frame_3/duration = 1.0
+0:0/animation_frame_4/duration = 1.0
+0:0/animation_frame_5/duration = 1.0
+0:0/animation_frame_6/duration = 1.0
+0:0/animation_frame_7/duration = 1.0
+0:0/0 = 0
+
+[resource]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_5fgvd")

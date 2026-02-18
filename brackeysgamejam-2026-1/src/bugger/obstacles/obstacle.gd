@@ -4,6 +4,7 @@ extends Area2D
 @export_enum("Left", "Right", "Up", "Down") var direction: String = "Right"
 @export var speed: float = 64.0
 @export var is_lethal: bool = true
+@export var is_water_safe: bool = false
 
 @export var boundary_left: float = 0.0
 @export var boundary_right: float = 0.0
@@ -18,10 +19,12 @@ func _ready():
 	if sprite_texture != null and has_node("Sprite2D"):
 		sprite_2d.texture = sprite_texture
 
-	if is_lethal:
+	if is_water_safe:
+		collision_layer = 8
+	elif is_lethal:
 		collision_layer = 2
 	else:
-		collision_layer = 4 
+		collision_layer = 4
 	collision_mask = 1
 
 	match direction:

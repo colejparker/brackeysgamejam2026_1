@@ -18,6 +18,7 @@ var is_resetting: bool = false
 @onready var cancel_return: Button = $"../ReturnHomeMenu/ReturnHomeMenuBase/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/CancelReturn"
 @onready var return_home: Button = $"../ReturnHomeMenu/ReturnHomeMenuBase/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/ReturnHome"
 @onready var home: Area2D = $"../ObstacleLayer/Home"
+@onready var water_layer: TileMapLayer = $"../TileMap/WaterLayer"
 
 func _ready():
 	return_home_menu.visible = false
@@ -46,6 +47,8 @@ func _process(_delta):
 		if not _is_position_blocked(new_position):
 			global_position = new_position
 			target_position = new_position
+			if _is_on_water(new_position):
+				die()
 		elif _is_touching_home(new_position):
 			return_home_menu.visible = true
 
@@ -65,16 +68,22 @@ func _get_input_direction() -> Vector2:
 	return Vector2.ZERO
 	
 
-func _is_position_blocked(pos: Vector2) -> bool:
+func _has_area_at(pos: Vector2, mask: int) -> bool:
 	var space_state = get_world_2d().direct_space_state
 	var query = PhysicsPointQueryParameters2D.new()
 	query.position = pos
-	query.collision_mask = 4
+	query.collision_mask = mask
 	query.collide_with_areas = true
 	query.collide_with_bodies = false
+	return space_state.intersect_point(query).size() > 0
 
-	var result = space_state.intersect_point(query)
-	return result.size() > 0
+func _is_position_blocked(pos: Vector2) -> bool:
+	return _has_area_at(pos, 4)
+
+func _is_on_water(pos: Vector2) -> bool:
+	var tile_pos: Vector2i = water_layer.local_to_map(water_layer.to_local(pos))
+	var has_water_tile = water_layer.get_cell_source_id(tile_pos) != -1
+	return has_water_tile and not _has_area_at(pos, 8)
 
 func _is_touching_home(pos: Vector2) -> bool:
 	return home.global_position == pos

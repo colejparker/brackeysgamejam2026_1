@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dc2eek2ni5lap" path="res://assets/sprites/frogger_tileset.png" id="1_l7hx8"]
 [ext_resource type="PackedScene" uid="uid://bkr6mptfitvp6" path="res://src/bugger/player/bugger_player.tscn" id="1_wb1gv"]
-[ext_resource type="Texture2D" uid="uid://dc8uqntsjurna" path="res://assets/sprites/wateranimation.png" id="2_47b2f"]
+[ext_resource type="TileSet" uid="uid://dxd1ifamio4qr" path="res://src/bugger/tilesets/water_tileset.tres" id="2_47b2f"]
 [ext_resource type="PackedScene" uid="uid://bm4x8vn2jgal" path="res://src/bugger/obstacles/obstacle_spawner.tscn" id="2_spawner"]
 [ext_resource type="PackedScene" uid="uid://c8qy7xvh2jf8k" path="res://src/bugger/obstacles/enemy_bug.tscn" id="3_obstacle"]
 [ext_resource type="PackedScene" uid="uid://ba6b8icfowbf2" path="res://src/bugger/obstacles/enemy_bird.tscn" id="4_8imaq"]
@@ -12,11 +12,13 @@
 [ext_resource type="PackedScene" uid="uid://cvgqbkcgdrdt8" path="res://src/bugger/pickups/berry.tscn" id="7_j7ttf"]
 [ext_resource type="PackedScene" uid="uid://cqm8vn2jg4ma" path="res://src/bugger/ui/minimap.tscn" id="7_minimap"]
 [ext_resource type="Script" uid="uid://j5uh71y7ytfl" path="res://src/bugger/ui/money_tracker.gd" id="9_3i68f"]
-[ext_resource type="Texture2D" uid="uid://no1qy7mobcbl" path="res://assets/sprites/lilypad.png" id="9_ssxma"]
 [ext_resource type="Texture2D" uid="uid://2x1c42ygrg07" path="res://assets/sprites/treequarter.png" id="10_ssxma"]
+[ext_resource type="Texture2D" uid="uid://dn1gjj4jalhyf" path="res://assets/sprites/ourbugshouse.png" id="11_47b2f"]
 [ext_resource type="Texture2D" uid="uid://c3uto7ohirkj0" path="res://assets/ui_cole/rect.png" id="12_2lyqb"]
 [ext_resource type="Texture2D" uid="uid://be0c8yqcb8lby" path="res://assets/sprites/thorns.png" id="12_acv4o"]
 [ext_resource type="Theme" uid="uid://kvftxgmpx6vs" path="res://default_theme.tres" id="13_ssxma"]
+[ext_resource type="PackedScene" path="res://src/bugger/obstacles/log.tscn" id="18_5uudm"]
+[ext_resource type="Texture2D" uid="uid://bs2eo6bloist" path="res://assets/sprites/floatinglog.png" id="19_swf3x"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_acv4o"]
 texture = ExtResource("1_l7hx8")
@@ -150,24 +152,6 @@ texture = ExtResource("1_l7hx8")
 [sub_resource type="TileSet" id="TileSet_5fgvd"]
 sources/0 = SubResource("TileSetAtlasSource_47b2f")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5fgvd"]
-texture = ExtResource("2_47b2f")
-texture_region_size = Vector2i(32, 32)
-0:0/animation_columns = 8
-0:0/animation_frame_0/duration = 1.0
-0:0/animation_frame_1/duration = 1.0
-0:0/animation_frame_2/duration = 1.0
-0:0/animation_frame_3/duration = 1.0
-0:0/animation_frame_4/duration = 1.0
-0:0/animation_frame_5/duration = 1.0
-0:0/animation_frame_6/duration = 1.0
-0:0/animation_frame_7/duration = 1.0
-0:0/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_5uudm"]
-tile_size = Vector2i(32, 32)
-sources/0 = SubResource("TileSetAtlasSource_5fgvd")
-
 [node name="Bugger_1" type="Node" unique_id=2105268280]
 
 [node name="TileMap" type="TileMap" parent="." unique_id=748957609]
@@ -185,8 +169,9 @@ tile_map_data = PackedByteArray("AAAJAAYAAAACAAEAAAAKAAYAAAACAAEAAAATAAsAAAACAAE
 tile_set = SubResource("TileSet_47b2f")
 
 [node name="WaterLayer" type="TileMapLayer" parent="TileMap" unique_id=1816249721]
+position = Vector2(-16, -16)
 tile_map_data = PackedByteArray("AAD+/wIAAAAAAAAAAAD//wIAAAAAAAAAAAD//wMAAAAAAAAAAAD+/wMAAAAAAAAAAAD+/wQAAAAAAAAAAAD//wQAAAAAAAAAAAD//wUAAAAAAAAAAAD+/wUAAAAAAAAAAAD+/wYAAAAAAAAAAAD//wYAAAAAAAAAAAD//wcAAAAAAAAAAAD+/wcAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAIAAAAAAAAAAAD+/wgAAAAAAAAAAAD//wgAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAkAAAAAAAAAAAD//wkAAAAAAAAAAAD+/wkAAAAAAAAAAAD+/woAAAAAAAAAAAD//woAAAAAAAAAAAAAAAoAAAAAAAAAAAABAAoAAAAAAAAAAAACAAoAAAAAAAAAAAADAAoAAAAAAAAAAAAEAAoAAAAAAAAAAAAFAAoAAAAAAAAAAAAGAAoAAAAAAAAAAAAHAAoAAAAAAAAAAAA=")
-tile_set = SubResource("TileSet_5uudm")
+tile_set = ExtResource("2_47b2f")
 rendering_quadrant_size = 18
 
 [node name="BuggerPlayer" parent="." unique_id=2047397625 instance=ExtResource("1_wb1gv")]
@@ -195,7 +180,7 @@ position = Vector2(320, 192)
 [node name="SpawnerLayer" type="Node2D" parent="." unique_id=1955122083]
 
 [node name="Spawner_1" parent="SpawnerLayer" unique_id=766132796 instance=ExtResource("2_spawner")]
-position = Vector2(-32, 64)
+position = Vector2(-32, 96)
 obstacle_scene = ExtResource("3_obstacle")
 spawn_interval = 2.5
 obstacle_speed = 80.0
@@ -203,7 +188,7 @@ boundary_left = -3200.0
 boundary_right = 3200.0
 
 [node name="Spawner_2" parent="SpawnerLayer" unique_id=1931560277 instance=ExtResource("2_spawner")]
-position = Vector2(672, 96)
+position = Vector2(672, 128)
 obstacle_scene = ExtResource("3_obstacle")
 spawn_direction = "Left"
 obstacle_speed = 100.0
@@ -211,7 +196,7 @@ boundary_left = -3200.0
 boundary_right = 3200.0
 
 [node name="Spawner_3" parent="SpawnerLayer" unique_id=585018939 instance=ExtResource("2_spawner")]
-position = Vector2(-32, 128)
+position = Vector2(-32, 160)
 obstacle_scene = ExtResource("3_obstacle")
 spawn_interval = 3.0
 obstacle_speed = 50.0
@@ -219,7 +204,7 @@ boundary_left = -3200.0
 boundary_right = 3200.0
 
 [node name="Spawner_4" parent="SpawnerLayer" unique_id=384727631 instance=ExtResource("2_spawner")]
-position = Vector2(672, 160)
+position = Vector2(672, 192)
 obstacle_scene = ExtResource("3_obstacle")
 spawn_direction = "Left"
 spawn_interval = 1.8
@@ -253,7 +238,8 @@ position = Vector2(320, 192)
 
 [node name="Home" parent="ObstacleLayer" unique_id=47189287 instance=ExtResource("5_w4mas")]
 position = Vector2(-288, -160)
-sprite_texture = ExtResource("9_ssxma")
+sprite_texture = ExtResource("11_47b2f")
+direction = "Up"
 is_lethal = false
 
 [node name="EnemyStationary" parent="ObstacleLayer" unique_id=844447813 instance=ExtResource("5_w4mas")]
@@ -283,6 +269,13 @@ is_lethal = false
 position = Vector2(-131, 103)
 sprite_texture = ExtResource("12_acv4o")
 direction = "Up"
+
+[node name="WaterObjectLayer" type="Node2D" parent="." unique_id=1799492599]
+
+[node name="Log" parent="WaterObjectLayer" unique_id=93152405 instance=ExtResource("18_5uudm")]
+position = Vector2(1, 57)
+sprite_texture = ExtResource("19_swf3x")
+direction = "Down"
 
 [node name="EndItem" type="Node2D" parent="." unique_id=690263097]
 position = Vector2(640, 320)

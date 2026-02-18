@@ -1,0 +1,18 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" uid="uid://buih6uh4p0yjv" path="res://src/bugger/obstacles/obstacle.gd" id="1_log"]
+[ext_resource type="Texture2D" path="res://assets/sprites/floatinglog.png" id="2_log"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_log"]
+size = Vector2(30, 14)
+
+[node name="Log" type="Area2D"]
+script = ExtResource("1_log")
+is_lethal = false
+is_water_safe = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_log")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_log")
