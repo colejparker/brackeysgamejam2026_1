@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var sprite = $Sprite2D
 
 @export var furniture_data: FurnitureData
+@export var starting_frame: int = 0
 
 enum State {
 	STATIONARY,
@@ -14,6 +15,7 @@ enum State {
 var state = State.STATIONARY
 
 func _physics_process(delta: float) -> void:
+	var has_changed = false
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		var mouse_pos = get_local_mouse_position()
 		if state == State.STATIONARY and mouse_in_rect() and !Game.holding_object:
@@ -21,14 +23,17 @@ func _physics_process(delta: float) -> void:
 			state = State.MOVING
 			
 	if !Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		has_changed = (state == State.MOVING)
 		state = State.STATIONARY
 		Game.holding_object = false
 		
 	if Input.is_action_just_pressed("rotate") and (mouse_in_rect() or state == State.MOVING) and !furniture_data.is_wall:
 		sprite.frame = (sprite.frame + 1) % sprite.hframes
+		has_changed = true
 		
 	if Input.is_action_just_pressed("stash") and (mouse_in_rect() or state == State.MOVING):
 		Game.add_item_to_inventory.emit(furniture_data.name)
+		Game.remove_item_from_room.emit(name)
 		queue_free()
 		return
 
@@ -39,6 +44,8 @@ func _physics_process(delta: float) -> void:
 		var desired_position = get_desired_position(Input.is_action_pressed("snapToGrid"))
 		var motion = (desired_position - position)
 		move_and_collide(motion)
+	if has_changed:
+		Game.update_item_in_room.emit(name, furniture_data, position, sprite.frame)
 
 func mouse_in_rect() -> bool:
 	return point_in_rect(get_local_mouse_position())
@@ -59,3 +66,4 @@ func _ready():
 	sprite.texture = furniture_data.texture
 	if furniture_data.is_wall:
 		sprite.hframes = 2
+	sprite.frame = starting_frame
