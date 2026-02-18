@@ -36,10 +36,11 @@ position = Vector2(43, 43)
 texture = ExtResource("3_hg4w0")
 hframes = 4
 
-[node name="Button" type="Button" parent="." unique_id=1284956537]
+[node name="ButtonLeft" type="Button" parent="." unique_id=1284956537]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_5aoeu")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_hg4w0")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_sghpy")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_2tt4v")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_lfrif")
+button_mask = 3
