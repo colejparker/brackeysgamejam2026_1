@@ -36,7 +36,7 @@ func _physics_process(delta: float) -> void:
 	for i in range(get_slide_collision_count()):
 		var collision = get_slide_collision(i)
 		var collider = collision.get_collider()
-
+		
 		if collider and collider.name == "DoorOut":
 			Game.load_next_bugger_level()
 		elif collider and collider.name == "Computer":

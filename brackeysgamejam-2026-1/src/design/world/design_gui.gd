@@ -37,6 +37,7 @@ func place():
 	packed_scene.position = proposed_position
 	%DecorationLayer.add_child(packed_scene)
 	Game.remove_item_from_inventory.emit(furniture_data.name)
+	Game.update_item_in_room.emit(packed_scene.name, furniture_data, proposed_position, 0)
 
 func get_place_position(furniture_data: FurnitureData) -> Vector2:
 	return %DesignPlayer.position - Vector2(32, 0) + (%DesignPlayer.last_direction) * (30 if !furniture_data.is_wall else 100)

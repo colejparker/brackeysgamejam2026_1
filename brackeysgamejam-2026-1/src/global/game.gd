@@ -2,6 +2,7 @@ extends Node
 
 @export var selected_card_data: CardData
 var inventory: Array[FurnitureData] = []
+var room: Dictionary[String, RoomEntry] = {}
 var selected_inventory_slot = 0
 
 var current_cards: Array[CardData] = []
@@ -15,6 +16,8 @@ var rng = RandomNumberGenerator.new()
 signal money_changed(new_amount: int)
 signal add_item_to_inventory(name: String)
 signal remove_item_from_inventory(name: String)
+signal remove_item_from_room(name: String)
+signal update_item_in_room(name: String, furniture: FurnitureData, location: Vector2, frame: int)
 signal inventory_updated()
 signal card_selected()
 
@@ -25,9 +28,12 @@ var furniture_catalog: Dictionary[String, FurnitureData] = {}
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	prepare_furniture_catalog()
+	create_initial_room()
 	generate_new_cards()
 	add_item_to_inventory.connect(_on_add_item_to_inventory)
 	remove_item_from_inventory.connect(_on_remove_item_from_inventory)
+	remove_item_from_room.connect(_on_remove_item_from_room)
+	update_item_in_room.connect(_on_update_item_in_room)
 
 var money: int = 5:
 	set(value):
@@ -109,7 +115,29 @@ func _on_remove_item_from_inventory(name: String):
 	if index_to_remove >= 0:
 		inventory.remove_at(index_to_remove)
 	inventory_updated.emit()
+	
+func create_initial_room():
+	var computer = RoomEntry.new().initialize("Computer", preload("res://src/global/Furniture(Resources)/apple.tres"), Vector2(352,80), 0)
+	var door = RoomEntry.new().initialize("DoorOut", preload("res://src/global/Furniture(Resources)/apple.tres"), Vector2(322,316), 2)
+	var poster = RoomEntry.new().initialize("Poster", preload("res://src/global/Furniture(Resources)/poster.tres"), Vector2(170,80), 0)
+	room.set(computer.name, computer)
+	room.set(door.name, door)
+	room.set(poster.name, poster)
 
 func select_card_data(card_data: CardData):
 	selected_card_data = card_data
 	card_selected.emit()
+
+func _on_remove_item_from_room(name: String) -> void:
+	room.erase(name)
+	print(room)
+	
+func _on_update_item_in_room(name: String, furniture: FurnitureData, location: Vector2, frame: int) -> void:
+	var room_entry: RoomEntry
+	if room.has(name):
+		room_entry = room.get(name)
+	else:
+		room_entry = RoomEntry.new()
+	room_entry.initialize(name, furniture, location, frame)
+	room.set(name, room_entry)
+	print(room)
