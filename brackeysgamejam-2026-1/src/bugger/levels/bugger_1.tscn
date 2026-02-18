@@ -17,8 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://c3uto7ohirkj0" path="res://assets/ui_cole/rect.png" id="12_2lyqb"]
 [ext_resource type="Texture2D" uid="uid://be0c8yqcb8lby" path="res://assets/sprites/thorns.png" id="12_acv4o"]
 [ext_resource type="Theme" uid="uid://kvftxgmpx6vs" path="res://default_theme.tres" id="13_ssxma"]
-[ext_resource type="PackedScene" path="res://src/bugger/obstacles/log.tscn" id="18_5uudm"]
-[ext_resource type="Texture2D" uid="uid://bs2eo6bloist" path="res://assets/sprites/floatinglog.png" id="19_swf3x"]
+[ext_resource type="PackedScene" path="res://src/bugger/obstacles/lilypad.tscn" id="14_5fgvd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_acv4o"]
 texture = ExtResource("1_l7hx8")
@@ -175,6 +174,7 @@ tile_set = ExtResource("2_47b2f")
 rendering_quadrant_size = 18
 
 [node name="BuggerPlayer" parent="." unique_id=2047397625 instance=ExtResource("1_wb1gv")]
+z_index = 1
 position = Vector2(320, 192)
 
 [node name="SpawnerLayer" type="Node2D" parent="." unique_id=1955122083]
@@ -272,10 +272,8 @@ direction = "Up"
 
 [node name="WaterObjectLayer" type="Node2D" parent="." unique_id=1799492599]
 
-[node name="Log" parent="WaterObjectLayer" unique_id=93152405 instance=ExtResource("18_5uudm")]
-position = Vector2(1, 57)
-sprite_texture = ExtResource("19_swf3x")
-direction = "Down"
+[node name="Lilypad" parent="WaterObjectLayer" unique_id=2078553679 instance=ExtResource("14_5fgvd")]
+position = Vector2(1, 63)
 
 [node name="EndItem" type="Node2D" parent="." unique_id=690263097]
 position = Vector2(640, 320)
