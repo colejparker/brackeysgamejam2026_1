@@ -12,7 +12,7 @@ var current_shake = 0
 func _ready():
 	update_with_inventory()
 	Game.inventory_updated.connect(update_with_inventory)
-	inventory_slot.button.button_up.connect(open_inventory)
+	inventory_slot.button_left.button_up.connect(open_inventory)
 	place_button.button_up.connect(place)
 
 func update_with_inventory() -> void:

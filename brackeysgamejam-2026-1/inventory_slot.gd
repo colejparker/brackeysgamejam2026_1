@@ -4,12 +4,12 @@ extends PanelContainer
 @export var is_active: bool = false
 @export var slot_id: int = -1
 @onready var sprite = $Sprite2D
+@onready var frame_sprite = $Frame
 @onready var active_slot = $ActiveSlot
-@onready var button = $Button
+@onready var button_left = $ButtonLeft
 
 func _ready() -> void:
 	update_for_change()
-	button.button_up.connect(_on_pressed_button)
 
 func update_for_change() -> void:
 	if furniture_data != null:
@@ -19,8 +19,20 @@ func update_for_change() -> void:
 	else:
 		sprite.texture = null
 	active_slot.visible = is_active
+	
+func _input(event):
+	if event is InputEventMouseButton and event.pressed:
+		if frame_sprite.get_rect().has_point(frame_sprite.to_local(event.position)):
+			if event.button_index == MOUSE_BUTTON_LEFT:
+				_on_pressed_button_left()
+			elif event.button_index == MOUSE_BUTTON_RIGHT:
+				_on_pressed_button_right()
 
-func _on_pressed_button() -> void:
+func _on_pressed_button_left() -> void:
 	if slot_id >= 0:
 		Game.selected_inventory_slot = slot_id
 		Game.inventory_updated.emit()
+
+func _on_pressed_button_right() -> void:
+	if slot_id >= 0:
+		Game.remove_item_from_inventory.emit(furniture_data.name)
