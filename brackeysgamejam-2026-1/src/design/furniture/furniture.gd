@@ -1,11 +1,12 @@
 extends CharacterBody2D
 
 @onready var parent_tile_map_layer = get_parent() as TileMapLayer
-@onready var collision_shape = $CollisionShape2D
 @onready var sprite = $Sprite2D
 
 @export var furniture_data: FurnitureData
 @export var starting_frame: int = 0
+
+var selected_collision_shapes: Array[CollisionPolygon2D] = []
 
 enum State {
 	STATIONARY,
@@ -26,9 +27,12 @@ func _physics_process(delta: float) -> void:
 		has_changed = (state == State.MOVING)
 		state = State.STATIONARY
 		Game.holding_object = false
-		
-	if Input.is_action_just_pressed("rotate") and (mouse_in_rect() or state == State.MOVING) and !furniture_data.is_wall:
+
+	
+	if Input.is_action_just_pressed("rotate") and state == State.MOVING and !furniture_data.is_wall:
+		get_collision_shape().disabled = true
 		sprite.frame = (sprite.frame + 1) % sprite.hframes
+		get_collision_shape().disabled = false
 		has_changed = true
 		
 	if Input.is_action_just_pressed("stash") and (mouse_in_rect() or state == State.MOVING):
@@ -51,8 +55,14 @@ func mouse_in_rect() -> bool:
 	return point_in_rect(get_local_mouse_position())
 	
 func point_in_rect(point: Vector2) -> bool:
-	return collision_shape.get_shape().get_rect().has_point(point)
+	return Geometry2D.is_point_in_polygon(point, get_collision_shape().polygon)
 	
+func get_collision_shape() -> CollisionPolygon2D:
+	if selected_collision_shapes.size() > 1:
+		return selected_collision_shapes[sprite.frame]
+	else:
+		return selected_collision_shapes[0]
+
 func get_desired_position(snap: bool) -> Vector2:
 	var desired_pos = get_global_mouse_position()
 	desired_pos.x -= 32
@@ -62,8 +72,21 @@ func get_desired_position(snap: bool) -> Vector2:
 		desired_pos.x = 338
 	return desired_pos
 
+func prepare_collision_shapes(size_config: FurnitureData.SizeConfig):
+	match size_config:
+		FurnitureData.SizeConfig.ONE_BY_ONE: selected_collision_shapes = [$OneByOneCollision]
+		FurnitureData.SizeConfig.TWO_BY_ONE: 
+			selected_collision_shapes = [
+				$TwoByOneCollisionOne,
+				$TwoByOneCollisionTwo,
+				$TwoByOneCollisionThree,
+				$TwoByOneCollisionFour,
+			]
+
 func _ready():
+	prepare_collision_shapes(furniture_data.size_config)
 	sprite.texture = furniture_data.texture
 	if furniture_data.is_wall:
 		sprite.hframes = 2
 	sprite.frame = starting_frame
+	get_collision_shape().disabled = false

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="FurnitureData" format=3 uid="uid://dfpgvxfqk3cum"]
+
+[ext_resource type="Script" uid="uid://d016a04k3j3ob" path="res://src/global/Furniture(Resources)/FurnitureData.gd" id="1_7vtgu"]
+[ext_resource type="Texture2D" uid="uid://bk0px62wyxmdc" path="res://assets/sprites/Matchbox.bed.png" id="2_7vtgu"]
+
+[resource]
+script = ExtResource("1_7vtgu")
+name = "Bed"
+texture = ExtResource("2_7vtgu")
+size_config = 1
+metadata/_custom_type_script = "uid://d016a04k3j3ob"

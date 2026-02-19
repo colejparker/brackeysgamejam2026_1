@@ -120,9 +120,11 @@ func create_initial_room():
 	var computer = RoomEntry.new().initialize("Computer", preload("res://src/global/Furniture(Resources)/apple.tres"), Vector2(352,80), 0)
 	var door = RoomEntry.new().initialize("DoorOut", preload("res://src/global/Furniture(Resources)/apple.tres"), Vector2(322,316), 2)
 	var poster = RoomEntry.new().initialize("Poster", preload("res://src/global/Furniture(Resources)/poster.tres"), Vector2(170,80), 0)
+	var bed = RoomEntry.new().initialize("Bed", preload("res://src/global/Furniture(Resources)/bed.tres"), Vector2(200,200), 0)
 	room.set(computer.name, computer)
 	room.set(door.name, door)
 	room.set(poster.name, poster)
+	room.set(bed.name, bed)
 
 func select_card_data(card_data: CardData):
 	selected_card_data = card_data
