@@ -252,7 +252,7 @@ nodes/StateMachine/position = Vector2(253.33333, 66.666664)
 node_connections = [&"output", 0, &"StateMachine"]
 
 [node name="DesignPlayer" type="CharacterBody2D" unique_id=1416930764]
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.6, 0.6)
 motion_mode = 1
 script = ExtResource("1_quvic")
 
