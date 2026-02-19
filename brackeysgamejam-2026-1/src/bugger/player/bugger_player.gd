@@ -15,6 +15,7 @@ var target_position: Vector2  = Vector2.ZERO
 var current_log: Area2D = null
 var last_log_position: Vector2 = Vector2.ZERO
 var picked_up_furniture: bool = false
+@onready var help_button: TextureButton = $"../BuggerLayer/HelpButton"
 
 var is_resetting: bool = false
 @onready var return_home_menu: CanvasLayer = $"../ReturnHomeMenu"
@@ -24,6 +25,7 @@ var is_resetting: bool = false
 @onready var end_house: Area2D = $"../ObstacleLayer/EndHouse"
 @onready var water_layer: TileMapLayer = $"../TileMap/WaterLayer"
 @onready var pop_up_menu: CanvasLayer = $"../PopUp Menu"
+@onready var money_tracker: Label = $"../BuggerLayer/MoneyTracker"
 
 func _ready():
 	if Game.first_time_in_frogger:
@@ -44,6 +46,8 @@ func _ready():
 
 	collision_layer = 1
 	collision_mask = 2 | 4
+	
+	help_button.pressed.connect(open_popup)
 
 func _process(_delta):
 	if is_resetting:
@@ -77,10 +81,12 @@ func _process(_delta):
 		elif _is_touching_home(new_position):
 			return_home_menu.visible = true
 		elif _is_touching_end_house(new_position) and !picked_up_furniture:
-			picked_up_furniture = true
 			if (Game._attempt_purchase_furniture()):
+				picked_up_furniture = true
 				START_X = end_house.global_position[0]
 				START_Y = end_house.global_position[1]+32.0
+			else:
+				money_tracker._cannot_afford()
 			
 			
 
@@ -153,3 +159,6 @@ func reset_position():
 	target_position = Vector2(START_X, START_Y)
 	sprite_2d.texture = texture_alive
 	is_resetting = false
+
+func open_popup():
+	pop_up_menu.visible = true

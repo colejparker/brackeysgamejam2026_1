@@ -12,4 +12,4 @@ func _ready() -> void:
 	body.text = body_text
 	
 func close_popup():
-	queue_free()
+	self.visible = false

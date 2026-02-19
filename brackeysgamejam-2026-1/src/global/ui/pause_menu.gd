@@ -3,6 +3,9 @@ extends CanvasLayer
 @onready var resume: Button = $PauseMenuBase/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Resume
 @onready var settings: Button = $PauseMenuBase/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Settings
 @onready var exit_game: Button = $PauseMenuBase/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/ExitGame
+@onready var pause_menu_base: MarginContainer = $PauseMenuBase
+@onready var texture_rect: TextureRect = $TextureRect
+@onready var selected_card_label: Label = $SelectedCardLabel
 
 var settings_menu: PackedScene = preload("res://src/global/ui/settings.tscn")
 
@@ -11,6 +14,9 @@ func _ready() -> void:
 	resume.pressed.connect(_unpause)
 	settings.pressed.connect(_open_settings)
 	exit_game.pressed.connect(_quit_game)
+	if Game.selected_card_data == null:
+		pause_menu_base.global_position[1] = 50
+		selected_card_label.visible = false
 
 func _unpause():
 	get_tree().paused = !get_tree().paused

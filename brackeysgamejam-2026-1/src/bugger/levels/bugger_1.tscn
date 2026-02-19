@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" path="res://src/bugger/obstacles/lilypad.tscn" id="14_5fgvd"]
 [ext_resource type="Texture2D" uid="uid://b48sbwcfvqhue" path="res://assets/sprites/mushroomhouse.png" id="14_swf3x"]
 [ext_resource type="PackedScene" path="res://src/bugger/obstacles/log.tscn" id="18_5uudm"]
+[ext_resource type="Texture2D" uid="uid://b852b1ufmmm7o" path="res://assets/ui_cole/qm_beige.png" id="19_rxbuw"]
 [ext_resource type="PackedScene" uid="uid://c2ivy5l3tce6" path="res://src/global/ui/popup.tscn" id="21_6qsc3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_acv4o"]
@@ -302,11 +303,18 @@ endItem = NodePath("../../ObstacleLayer/EndHouse")
 home = NodePath("../../ObstacleLayer/Home")
 world_size = Vector2(1280, 720)
 
-[node name="Label" type="Label" parent="BuggerLayer" unique_id=2072066828]
+[node name="MoneyTracker" type="Label" parent="BuggerLayer" unique_id=2072066828]
 offset_right = 40.0
 offset_bottom = 23.0
 text = "Bugbucks: 5"
 script = ExtResource("9_3i68f")
+
+[node name="HelpButton" type="TextureButton" parent="BuggerLayer" unique_id=1524447363]
+offset_left = 484.0
+offset_top = 2.0
+offset_right = 516.0
+offset_bottom = 34.0
+texture_normal = ExtResource("19_rxbuw")
 
 [node name="ReturnHomeMenu" type="CanvasLayer" parent="." unique_id=636775368]
 visible = false

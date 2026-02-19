@@ -9,3 +9,8 @@ func _on_money_changed(new_amount: float):
 
 func _update_display(amount: float):
 	text = "Bugbucks: " + ("%.2f" % amount)
+
+func _cannot_afford():
+	var tween = create_tween()
+	modulate = Color("#a53030")
+	tween.tween_property(self, "modulate", Color.WHITE, 1.0)

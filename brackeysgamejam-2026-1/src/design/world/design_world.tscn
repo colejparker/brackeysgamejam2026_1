@@ -8,8 +8,18 @@
 [ext_resource type="PackedScene" uid="uid://ed6vn467no5r" path="res://src/design/world/inventory_slot.tscn" id="6_k1s3p"]
 [ext_resource type="Theme" uid="uid://kvftxgmpx6vs" path="res://default_theme.tres" id="7_dsxsq"]
 [ext_resource type="Script" uid="uid://bcwnxlurhav2k" path="res://src/design/world/inventory_ui.gd" id="7_owkdv"]
+[ext_resource type="StyleBox" uid="uid://ua0bvhq8ua3y" path="res://new_style_box_flat.tres" id="8_bny3t"]
 [ext_resource type="Texture2D" uid="uid://bs5ji6olcmdbx" path="res://assets/ui_cole/generic_close.png" id="9_j4jsl"]
+[ext_resource type="Texture2D" uid="uid://b852b1ufmmm7o" path="res://assets/ui_cole/qm_beige.png" id="9_kno14"]
 [ext_resource type="PackedScene" uid="uid://c2ivy5l3tce6" path="res://src/global/ui/popup.tscn" id="10_gaaai"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gaaai"]
+bg_color = Color(0.7529412, 0.5803922, 0.4509804, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.6784314, 0.46666667, 0.34117648, 1)
 
 [node name="DesignWorld" type="Node2D" unique_id=1925217490]
 y_sort_enabled = true
@@ -94,13 +104,25 @@ furniture_data = ExtResource("4_k1s3p")
 is_active = true
 
 [node name="PlaceButton" type="Button" parent="DesignGUI" unique_id=117102537]
-offset_left = 27.0
+custom_minimum_size = Vector2(61.045, 0)
+offset_left = 14.35
 offset_top = 91.0
-offset_right = 63.0
+offset_right = 75.39501
 offset_bottom = 110.0
 theme = ExtResource("7_dsxsq")
+theme_type_variation = &"FlatButton"
 theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_gaaai")
+theme_override_styles/hover = ExtResource("8_bny3t")
+theme_override_styles/hover_pressed = ExtResource("8_bny3t")
 text = "Place"
+
+[node name="HelpButton" type="TextureButton" parent="DesignGUI" unique_id=350954208]
+offset_left = 30.0
+offset_top = 120.0
+offset_right = 62.0
+offset_bottom = 152.0
+texture_normal = ExtResource("9_kno14")
 
 [node name="InventoryUI" type="CanvasLayer" parent="." unique_id=894941456]
 unique_name_in_owner = true

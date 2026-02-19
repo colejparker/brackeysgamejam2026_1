@@ -5,6 +5,7 @@ signal marketplace_closed
 @onready var cards: VBoxContainer = $CanvasLayer/MarginContainer/ScrollContainer/Cards
 @onready var close_button: TextureButton = $CanvasLayer/CloseButton
 @onready var popup_menu: CanvasLayer = $CanvasLayer/PopupMenu
+@onready var help_button: TextureButton = $CanvasLayer/HelpButton
 
 var card_scene: PackedScene = preload("res://src/marketplace/card.tscn")
 
@@ -14,6 +15,7 @@ func _ready():
 		Game.first_time_in_marketplace = false
 	close_button.pressed.connect(_close_marketplace)
 	Game.card_selected.connect(_close_marketplace)
+	help_button.pressed.connect(open_popup)
 	_populate_cards()
 
 func _populate_cards():
@@ -28,3 +30,6 @@ func _populate_cards():
 func _close_marketplace():
 	marketplace_closed.emit()
 	self.queue_free()
+
+func open_popup():
+	popup_menu.visible = true

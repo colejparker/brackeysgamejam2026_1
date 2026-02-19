@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dypemrquvykom" path="res://assets/ui_cole/close_marketplace.png" id="2_tm7s7"]
 [ext_resource type="Texture2D" uid="uid://b7h1d34mgokfi" path="res://assets/ui_cole/marketplace_card.png" id="4_xlqdp"]
 [ext_resource type="PackedScene" uid="uid://c2ivy5l3tce6" path="res://src/global/ui/popup.tscn" id="5_lb87s"]
+[ext_resource type="Texture2D" uid="uid://dfccwbdrvxqw7" path="res://assets/ui_cole/qm_white.png" id="6_yk8es"]
 
 [node name="Marketplace" type="Node" unique_id=706726760]
 script = ExtResource("1_tm7s7")
@@ -86,3 +87,10 @@ text = "Marketplace"
 visible = false
 title_text = "Bugbook Marketplace"
 body_text = "On Bugbook Marketplace, you can contact sellers to purchase furniture they no longer want to design your room. Clicking on the message button will indicate your interest in purchasing their item, and when you go out to meet them you'll need to travel to their home to pick-up your new furniture. You can close the menu without choosing to buy an item by clicking the X at the top-right."
+
+[node name="HelpButton" type="TextureButton" parent="CanvasLayer" unique_id=1659996496]
+offset_left = 591.0
+offset_top = 33.0
+offset_right = 623.0
+offset_bottom = 65.0
+texture_normal = ExtResource("6_yk8es")
