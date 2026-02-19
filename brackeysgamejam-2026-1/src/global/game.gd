@@ -26,6 +26,10 @@ signal card_selected()
 
 var furniture_catalog: Dictionary[String, FurnitureData] = {}
 
+var first_time_in_marketplace: bool = true
+var first_time_in_room: bool = true
+var first_time_in_frogger: bool = true
+
 @export var garden_level: PackedScene = preload("res://src/bugger/levels/bugger_1.tscn")
 
 func _ready():

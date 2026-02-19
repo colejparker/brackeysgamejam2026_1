@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://ci0gudkjrl3ad"]
 
-[ext_resource type="Script" path="res://src/design/world/design_world.gd" id="1_j4jsl"]
+[ext_resource type="Script" uid="uid://ibtgbgnggkrm" path="res://src/design/world/design_world.gd" id="1_j4jsl"]
 [ext_resource type="TileSet" uid="uid://cjdsmsgb2bvy" path="res://testgroundtileset.tres" id="2_wl84k"]
 [ext_resource type="PackedScene" uid="uid://dn2p4k0ih7jgv" path="res://src/design/player/design_player.tscn" id="4_cfd1e"]
 [ext_resource type="Resource" uid="uid://boc4fqv6k6vb7" path="res://src/global/Furniture(Resources)/poster.tres" id="4_k1s3p"]
@@ -9,6 +9,7 @@
 [ext_resource type="Theme" uid="uid://kvftxgmpx6vs" path="res://default_theme.tres" id="7_dsxsq"]
 [ext_resource type="Script" uid="uid://bcwnxlurhav2k" path="res://src/design/world/inventory_ui.gd" id="7_owkdv"]
 [ext_resource type="Texture2D" uid="uid://bs5ji6olcmdbx" path="res://assets/ui_cole/generic_close.png" id="9_j4jsl"]
+[ext_resource type="PackedScene" uid="uid://c2ivy5l3tce6" path="res://src/global/ui/popup.tscn" id="10_gaaai"]
 
 [node name="DesignWorld" type="Node2D" unique_id=1925217490]
 y_sort_enabled = true
@@ -127,3 +128,8 @@ offset_top = 47.0
 offset_right = 318.0
 offset_bottom = 313.0
 columns = 6
+
+[node name="PopUp Menu" parent="." unique_id=1863548252 instance=ExtResource("10_gaaai")]
+visible = false
+title_text = "Design Your Strange Place"
+body_text = "You are a small bug seeking a rug, and other furniture to arrange your very own strange place. Navigate to the computer to contact sellers, then navigate into the world where you can spend your bugbucks on new furnishings. Once you return, access your new furniture in the inventory menu in the top-left. You can move items around your room by dragging them, and rotate them with the R key. Right-clicking inside your inventory will delete the item forever."

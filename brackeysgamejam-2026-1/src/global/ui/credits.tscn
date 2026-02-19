@@ -1,8 +1,8 @@
-[gd_scene format=3 uid="uid://c2ivy5l3tce6"]
+[gd_scene format=3 uid="uid://e7wyv5papyw7"]
 
 [ext_resource type="Script" uid="uid://vud8ke2erxqf" path="res://src/global/ui/credits.gd" id="1_rni5x"]
+[ext_resource type="Theme" uid="uid://kvftxgmpx6vs" path="res://default_theme.tres" id="2_ec0kd"]
 [ext_resource type="Texture2D" uid="uid://c3uto7ohirkj0" path="res://assets/ui_cole/rect.png" id="2_rni5x"]
-[ext_resource type="Texture2D" uid="uid://bs5ji6olcmdbx" path="res://assets/ui_cole/generic_close.png" id="3_mjlca"]
 
 [node name="CreditsMenu" type="CanvasLayer" unique_id=1863548252]
 script = ExtResource("1_rni5x")
@@ -24,25 +24,26 @@ size_flags_vertical = 4
 theme_override_constants/margin_top = 108
 
 [node name="NinePatchRect" type="NinePatchRect" parent="PauseMenuBase" unique_id=2113206318]
-custom_minimum_size = Vector2(400, 200)
+custom_minimum_size = Vector2(400, 218.22)
 layout_mode = 2
 texture = ExtResource("2_rni5x")
 
-[node name="TextureButton" type="TextureButton" parent="PauseMenuBase/NinePatchRect" unique_id=315484442]
+[node name="Button" type="Button" parent="PauseMenuBase/NinePatchRect" unique_id=353391110]
+custom_minimum_size = Vector2(13.425, 0)
 layout_mode = 0
-offset_left = 333.83
-offset_top = 22.12
-offset_right = 349.83
-offset_bottom = 38.12001
-texture_normal = ExtResource("3_mjlca")
-stretch_mode = 0
-metadata/_edit_use_anchors_ = true
+offset_left = 150.0
+offset_top = 169.36
+offset_right = 250.0
+offset_bottom = 189.36003
+theme = ExtResource("2_ec0kd")
+theme_override_font_sizes/font_size = 14
+text = "Close"
 
 [node name="MarginContainer" type="MarginContainer" parent="PauseMenuBase" unique_id=1142623068]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
-theme_override_constants/margin_top = 33
+theme_override_constants/margin_top = 32
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PauseMenuBase/MarginContainer" unique_id=59701409]
 layout_mode = 2
@@ -76,7 +77,7 @@ Font"
 
 [node name="MarginContainer" type="MarginContainer" parent="PauseMenuBase/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer" unique_id=1817961826]
 layout_mode = 2
-theme_override_constants/margin_right = 16
+theme_override_constants/margin_right = -25
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="PauseMenuBase/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer" unique_id=1752652660]
 layout_mode = 2
@@ -88,7 +89,7 @@ text = "Keegan Parker
 Cole Parker
 Kiran Hughes
 Cole Parker
-Cole Parker
+Keegan Parker
 Kate Lindsay
 Raphaël Bastide and Jérémy Landes"
 horizontal_alignment = 1

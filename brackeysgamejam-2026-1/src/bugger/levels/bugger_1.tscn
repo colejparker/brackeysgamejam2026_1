@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" path="res://src/bugger/obstacles/lilypad.tscn" id="14_5fgvd"]
 [ext_resource type="Texture2D" uid="uid://b48sbwcfvqhue" path="res://assets/sprites/mushroomhouse.png" id="14_swf3x"]
 [ext_resource type="PackedScene" path="res://src/bugger/obstacles/log.tscn" id="18_5uudm"]
+[ext_resource type="PackedScene" uid="uid://c2ivy5l3tce6" path="res://src/global/ui/popup.tscn" id="21_6qsc3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_acv4o"]
 texture = ExtResource("1_l7hx8")
@@ -363,3 +364,8 @@ theme_override_font_sizes/font_size = 16
 text = "Cancel"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2021864747]
+
+[node name="PopUp Menu" parent="." unique_id=1863548252 instance=ExtResource("21_6qsc3")]
+visible = false
+title_text = "Small Bug, Big World"
+body_text = "As a small bug, you must navigate a world that is endlessly hostile to you in order to pick-up your furniture. The mini-map shows you your home's location, your location and the location of where you need to go to pick up your furniture. Along the way, avoid dangerous birds, bugs, thorns and water and pick-up leaves, nuts and even berries for more bugbucks."

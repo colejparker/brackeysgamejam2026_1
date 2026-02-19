@@ -4,10 +4,14 @@ signal marketplace_closed
 
 @onready var cards: VBoxContainer = $CanvasLayer/MarginContainer/ScrollContainer/Cards
 @onready var close_button: TextureButton = $CanvasLayer/CloseButton
+@onready var popup_menu: CanvasLayer = $CanvasLayer/PopupMenu
 
 var card_scene: PackedScene = preload("res://src/marketplace/card.tscn")
 
 func _ready():
+	if Game.first_time_in_marketplace:
+		popup_menu.visible = true
+		Game.first_time_in_marketplace = false
 	close_button.pressed.connect(_close_marketplace)
 	Game.card_selected.connect(_close_marketplace)
 	_populate_cards()

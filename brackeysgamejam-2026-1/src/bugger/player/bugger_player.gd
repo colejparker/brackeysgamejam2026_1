@@ -23,8 +23,12 @@ var is_resetting: bool = false
 @onready var home: Area2D = $"../ObstacleLayer/Home"
 @onready var end_house: Area2D = $"../ObstacleLayer/EndHouse"
 @onready var water_layer: TileMapLayer = $"../TileMap/WaterLayer"
+@onready var pop_up_menu: CanvasLayer = $"../PopUp Menu"
 
 func _ready():
+	if Game.first_time_in_frogger:
+		Game.first_time_in_frogger = false
+		pop_up_menu.visible = true
 	return_home_menu.visible = false
 		
 	START_X = home.global_position[0]
