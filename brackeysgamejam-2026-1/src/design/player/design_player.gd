@@ -66,5 +66,5 @@ func _on_marketplace_closed() -> void:
 	gui.visible = true
 
 func update_blend_positions(direction_vector: Vector2) -> void:
-	animation_tree.set("parameters/StateMachine/MoveState/RunState/blend_position", direction_vector)
-	animation_tree.set("parameters/StateMachine/MoveState/StandState/blend_position", direction_vector)
+	animation_tree.set("parameters/StateMachine/StandState/blend_position", direction_vector)
+	animation_tree.set("parameters/StateMachine/RunState/blend_position", direction_vector)
