@@ -14,6 +14,8 @@ extends Area2D
 @onready var enemy: Area2D = $"."
 
 var velocity: Vector2 = Vector2.ZERO
+var _accumulated_distance: float = 0.0
+const GRID_SIZE: int = 32
 
 func _ready():
 	if sprite_texture != null and has_node("Sprite2D"):
@@ -53,7 +55,14 @@ func _process(_delta: float) -> void:
 				queue_free()
 
 func _physics_process(delta):
-	global_position += velocity * delta
+	if is_water_safe:
+		_accumulated_distance += speed * delta
+		if _accumulated_distance >= GRID_SIZE:
+			_accumulated_distance -= GRID_SIZE
+			global_position += velocity.normalized() * GRID_SIZE
+			global_position = global_position.snapped(Vector2(GRID_SIZE, GRID_SIZE))
+	else:
+		global_position += velocity * delta
 
 func _on_body_entered(body: Node2D):
 	if is_lethal and body.has_method("die"):

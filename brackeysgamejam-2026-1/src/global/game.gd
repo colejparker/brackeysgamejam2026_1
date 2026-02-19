@@ -35,7 +35,7 @@ func _ready():
 	remove_item_from_room.connect(_on_remove_item_from_room)
 	update_item_in_room.connect(_on_update_item_in_room)
 
-var money: int = 5:
+var money: float = 5.0:
 	set(value):
 		money = value
 		money_changed.emit(money)
@@ -141,3 +141,14 @@ func _on_update_item_in_room(name: String, furniture: FurnitureData, location: V
 	room_entry.initialize(name, furniture, location, frame)
 	room.set(name, room_entry)
 	print(room)
+
+func _attempt_purchase_furniture() -> bool:
+	if (money >= selected_card_data.price):
+		money -= selected_card_data.price
+		for i in selected_card_data.quantity:
+			_on_add_item_to_inventory(selected_card_data.furniture.name)
+		generate_new_cards()
+		selected_card_data = null
+		return true
+	else:
+		return false
