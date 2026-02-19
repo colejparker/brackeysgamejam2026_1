@@ -23,7 +23,7 @@ func update_for_change() -> void:
 	active_slot.visible = is_active
 	
 func _input(event):
-	if event is InputEventMouseButton and event.pressed:
+	if event is InputEventMouseButton and event.pressed and is_visible_in_tree():
 		if frame_sprite.get_rect().has_point(frame_sprite.to_local(event.position)):
 			if event.button_index == MOUSE_BUTTON_LEFT:
 				_on_pressed_button_left()
@@ -36,5 +36,5 @@ func _on_pressed_button_left() -> void:
 		Game.inventory_updated.emit()
 
 func _on_pressed_button_right() -> void:
-	if slot_id >= 0:
+	if slot_id >= 0 and furniture_data != null:
 		Game.remove_item_from_inventory.emit(furniture_data.name)

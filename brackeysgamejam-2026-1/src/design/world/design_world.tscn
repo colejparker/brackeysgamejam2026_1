@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://ci0gudkjrl3ad"]
 
-[ext_resource type="Script" path="res://src/design/world/design_world.gd" id="1_j4jsl"]
+[ext_resource type="Script" uid="uid://ibtgbgnggkrm" path="res://src/design/world/design_world.gd" id="1_j4jsl"]
 [ext_resource type="TileSet" uid="uid://cjdsmsgb2bvy" path="res://testgroundtileset.tres" id="2_wl84k"]
 [ext_resource type="PackedScene" uid="uid://dn2p4k0ih7jgv" path="res://src/design/player/design_player.tscn" id="4_cfd1e"]
 [ext_resource type="Resource" uid="uid://boc4fqv6k6vb7" path="res://src/global/Furniture(Resources)/poster.tres" id="4_k1s3p"]
