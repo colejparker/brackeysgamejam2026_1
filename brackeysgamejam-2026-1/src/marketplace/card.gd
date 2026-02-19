@@ -15,6 +15,9 @@ func _ready():
 		furniture_picture.hframes = 2
 	else:
 		furniture_picture.hframes = 4
+	if card_data.furniture.size_config == FurnitureData.SizeConfig.TWO_BY_ONE:
+		furniture_picture.scale = Vector2(.8, .8)
+		furniture_picture.position = Vector2(65, 55.5)
 	item_label.text = "Item: " + str(card_data.quantity) + " " + card_data.furniture.name
 	if card_data.quantity > 1:
 		item_label.text += "s"

@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://c5yx25ns5ekqj" path="res://src/design/furniture/furniture.gd" id="1_mt2d8"]
 [ext_resource type="Texture2D" uid="uid://bk0px62wyxmdc" path="res://assets/sprites/Matchbox.bed.png" id="2_mt2d8"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mt2d8"]
+
 [node name="Furniture" type="CharacterBody2D" unique_id=438672004]
 motion_mode = 1
 script = ExtResource("1_mt2d8")
@@ -10,11 +12,10 @@ script = ExtResource("1_mt2d8")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=112837345]
 texture = ExtResource("2_mt2d8")
 hframes = 4
-frame = 2
+frame = 3
 
-[node name="OneByOneCollision" type="CollisionPolygon2D" parent="." unique_id=1325081727]
-polygon = PackedVector2Array(-16, -16, -16, 16, 16, 16, 16, -16)
-disabled = true
+[node name="OneByOneCollision" type="CollisionShape2D" parent="." unique_id=2087875814]
+shape = SubResource("RectangleShape2D_mt2d8")
 
 [node name="TwoByOneCollisionOne" type="CollisionPolygon2D" parent="." unique_id=2116646454]
 polygon = PackedVector2Array(-51, -3, -51, 8, -19, 24, 31, -5, 31, -15, -1, -31)

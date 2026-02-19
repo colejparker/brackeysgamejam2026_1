@@ -23,7 +23,7 @@ func _physics_process(delta: float) -> void:
 		visible = !visible
 		
 	if Input.is_action_just_pressed("test_action"):
-		Game.add_item_to_inventory.emit("Apple")
+		Game.add_item_to_inventory.emit("Bed")
 
 func update_with_inventory() -> void:
 	for i in slots.size():

@@ -16,6 +16,8 @@ func update_for_change() -> void:
 		sprite.texture = furniture_data.texture
 		sprite.hframes = 2 if furniture_data.is_wall else 4
 		sprite.frame = 0
+		sprite.scale = Vector2(0.75, 0.75) if sprite.texture.get_height() > 64 else Vector2(1,1)
+		sprite.position = Vector2(50, 43) if furniture_data.size_config == FurnitureData.SizeConfig.TWO_BY_ONE else Vector2(43,43)
 	else:
 		sprite.texture = null
 	active_slot.visible = is_active
