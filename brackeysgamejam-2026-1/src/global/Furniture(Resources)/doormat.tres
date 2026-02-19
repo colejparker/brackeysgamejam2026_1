@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FurnitureData" format=3 uid="uid://b0fw55rpltoj5"]
+
+[ext_resource type="Script" uid="uid://d016a04k3j3ob" path="res://src/global/Furniture(Resources)/FurnitureData.gd" id="1_gx6w8"]
+[ext_resource type="Texture2D" uid="uid://dgpxyhthxv5fp" path="res://assets/sprites/welcome.png" id="2_gx6w8"]
+
+[resource]
+script = ExtResource("1_gx6w8")
+name = "DoorOut"
+texture = ExtResource("2_gx6w8")
+metadata/_custom_type_script = "uid://d016a04k3j3ob"

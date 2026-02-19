@@ -61,7 +61,7 @@ func load_next_bugger_level():
 func prepare_furniture_catalog():
 	const FURNITURE_RESOURCE_DIR = "res://src/global/Furniture(Resources)/"
 	for file_name in DirAccess.get_files_at(FURNITURE_RESOURCE_DIR):
-		if file_name.ends_with(".tres"):
+		if file_name.ends_with(".tres") and !file_name.contains("apple") and !file_name.contains("doormat"):
 			var furniture_data = ResourceLoader.load(FURNITURE_RESOURCE_DIR + file_name) as FurnitureData
 			furniture_catalog.set(furniture_data.name, furniture_data)
 
@@ -128,13 +128,9 @@ func _on_remove_item_from_inventory(name: String):
 	
 func create_initial_room():
 	var computer = RoomEntry.new().initialize("Computer", preload("res://src/global/Furniture(Resources)/apple.tres"), Vector2(352,80), 0)
-	var door = RoomEntry.new().initialize("DoorOut", preload("res://src/global/Furniture(Resources)/apple.tres"), Vector2(322,316), 2)
-	var poster = RoomEntry.new().initialize("Poster", preload("res://src/global/Furniture(Resources)/poster.tres"), Vector2(170,80), 0)
-	var bed = RoomEntry.new().initialize("Bed", preload("res://src/global/Furniture(Resources)/bed.tres"), Vector2(200,200), 0)
+	var door = RoomEntry.new().initialize("DoorOut", preload("res://src/global/Furniture(Resources)/doormat.tres"), Vector2(322,316), 2)
 	room.set(computer.name, computer)
 	room.set(door.name, door)
-	room.set(poster.name, poster)
-	room.set(bed.name, bed)
 
 func select_card_data(card_data: CardData):
 	selected_card_data = card_data

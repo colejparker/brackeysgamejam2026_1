@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="FurnitureData" format=3 uid="uid://clgkmt32bd35e"]
 
 [ext_resource type="Script" uid="uid://d016a04k3j3ob" path="res://src/global/Furniture(Resources)/FurnitureData.gd" id="1_qnfg1"]
-[ext_resource type="Texture2D" uid="uid://drnap4nwfhevq" path="res://applesheet.png" id="2_5ofqf"]
+[ext_resource type="Texture2D" uid="uid://dwqgk8lylg5if" path="res://assets/sprites/apple.png" id="2_5ofqf"]
 
 [resource]
 script = ExtResource("1_qnfg1")

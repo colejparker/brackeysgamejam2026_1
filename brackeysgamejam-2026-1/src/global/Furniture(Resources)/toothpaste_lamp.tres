@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FurnitureData" format=3 uid="uid://dhr6re8py2dsn"]
+
+[ext_resource type="Script" uid="uid://d016a04k3j3ob" path="res://src/global/Furniture(Resources)/FurnitureData.gd" id="1_obvvm"]
+[ext_resource type="Texture2D" uid="uid://dvmvrse3d5gc2" path="res://assets/sprites/toothpastecap.png" id="2_obvvm"]
+
+[resource]
+script = ExtResource("1_obvvm")
+name = "ToothpasteLamp"
+texture = ExtResource("2_obvvm")
+metadata/_custom_type_script = "uid://d016a04k3j3ob"

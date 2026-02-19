@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FurnitureData" format=3 uid="uid://bpq0g7jie18gb"]
+
+[ext_resource type="Script" uid="uid://d016a04k3j3ob" path="res://src/global/Furniture(Resources)/FurnitureData.gd" id="1_fft3w"]
+[ext_resource type="Texture2D" uid="uid://cxo173unn227l" path="res://assets/sprites/bottlecap.png" id="2_alvvv"]
+
+[resource]
+script = ExtResource("1_fft3w")
+name = "BottlecapTable"
+texture = ExtResource("2_alvvv")
+metadata/_custom_type_script = "uid://d016a04k3j3ob"
