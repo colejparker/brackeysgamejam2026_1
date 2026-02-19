@@ -7,6 +7,9 @@ var selected_inventory_slot = 0
 
 var current_cards: Array[CardData] = []
 
+var music_on: bool = true
+var fx_on: bool = true
+
 var pause_menu: PackedScene = preload("res://src/global/ui/pause_menu.tscn")
 var card_scene: PackedScene = preload("res://src/marketplace/card.tscn")
 var holding_object = false
@@ -101,6 +104,9 @@ func _input(event):
 			var pause_node = get_tree().current_scene.get_node_or_null("PauseMenu")
 			if pause_node:
 				pause_node.queue_free()
+			var settings_node = get_tree().current_scene.get_node_or_null("SettingsMenu")
+			if settings_node:
+				settings_node.queue_free()
 				
 func _on_add_item_to_inventory(name: String):
 	inventory.append(furniture_catalog.get(name))
@@ -154,3 +160,9 @@ func _attempt_purchase_furniture() -> bool:
 		return true
 	else:
 		return false
+
+func _toggle_music():
+	music_on = !music_on
+
+func _toggle_fx():
+	fx_on = !fx_on

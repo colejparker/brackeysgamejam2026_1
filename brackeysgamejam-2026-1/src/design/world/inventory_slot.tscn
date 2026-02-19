@@ -24,7 +24,7 @@ script = ExtResource("1_mpd28")
 [node name="ActiveSlot" type="ColorRect" parent="." unique_id=1111453072]
 visible = false
 layout_mode = 2
-color = Color(0.4509804, 0.74509805, 0.827451, 1)
+color = Color(0.14509805, 0.3372549, 0.18039216, 1)
 
 [node name="Frame" type="Sprite2D" parent="." unique_id=1912419157]
 position = Vector2(43, 43)

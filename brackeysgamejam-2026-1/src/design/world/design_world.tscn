@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://ci0gudkjrl3ad"]
 
-[ext_resource type="Script" uid="uid://ibtgbgnggkrm" path="res://src/design/world/design_world.gd" id="1_j4jsl"]
+[ext_resource type="Script" path="res://src/design/world/design_world.gd" id="1_j4jsl"]
 [ext_resource type="TileSet" uid="uid://cjdsmsgb2bvy" path="res://testgroundtileset.tres" id="2_wl84k"]
 [ext_resource type="PackedScene" uid="uid://dn2p4k0ih7jgv" path="res://src/design/player/design_player.tscn" id="4_cfd1e"]
 [ext_resource type="Resource" uid="uid://boc4fqv6k6vb7" path="res://src/global/Furniture(Resources)/poster.tres" id="4_k1s3p"]
@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://ed6vn467no5r" path="res://src/design/world/inventory_slot.tscn" id="6_k1s3p"]
 [ext_resource type="Theme" uid="uid://kvftxgmpx6vs" path="res://default_theme.tres" id="7_dsxsq"]
 [ext_resource type="Script" uid="uid://bcwnxlurhav2k" path="res://src/design/world/inventory_ui.gd" id="7_owkdv"]
-[ext_resource type="Texture2D" uid="uid://dypemrquvykom" path="res://assets/ui_cole/close_marketplace.png" id="10_gaaai"]
+[ext_resource type="Texture2D" uid="uid://bs5ji6olcmdbx" path="res://assets/ui_cole/generic_close.png" id="9_j4jsl"]
 
 [node name="DesignWorld" type="Node2D" unique_id=1925217490]
 y_sort_enabled = true
@@ -38,7 +38,7 @@ polygon = PackedVector2Array(59, 203, 322, 333, 619, 187, 619, 205, 321, 351, 61
 [node name="Void" type="ColorRect" parent="." unique_id=1038339942]
 offset_right = 640.0
 offset_bottom = 360.0
-color = Color(0.37665847, 0.37665847, 0.37665847, 1)
+color = Color(0.03529412, 0.039215688, 0.078431375, 1)
 
 [node name="Wall" type="ColorRect" parent="." unique_id=68030018]
 offset_left = 96.0
@@ -109,15 +109,17 @@ script = ExtResource("7_owkdv")
 [node name="TextureRect" type="ColorRect" parent="InventoryUI" unique_id=1542083720]
 offset_right = 640.0
 offset_bottom = 360.0
-color = Color(0.6556008, 0.6556009, 0.6556008, 1)
+color = Color(0.27450982, 0.50980395, 0.19607843, 0.4627451)
 
 [node name="CloseButton" type="TextureButton" parent="InventoryUI" unique_id=1306706567]
-offset_left = 624.0
-offset_right = 640.0
-offset_bottom = 16.0
-texture_normal = ExtResource("10_gaaai")
-texture_pressed = ExtResource("10_gaaai")
-texture_hover = ExtResource("10_gaaai")
+offset_left = 600.0
+offset_top = 7.0
+offset_right = 632.0
+offset_bottom = 39.0
+texture_normal = ExtResource("9_j4jsl")
+texture_pressed = ExtResource("9_j4jsl")
+texture_hover = ExtResource("9_j4jsl")
+stretch_mode = 0
 
 [node name="Inv" type="GridContainer" parent="InventoryUI" unique_id=12437318]
 offset_left = 52.0
