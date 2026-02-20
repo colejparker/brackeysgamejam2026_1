@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://b7h1d34mgokfi" path="res://assets/ui_cole/marketplace_card.png" id="1_0gvlx"]
 [ext_resource type="Script" uid="uid://8il8ayotibnj" path="res://src/marketplace/card.gd" id="1_hng1h"]
 [ext_resource type="Texture2D" uid="uid://hpkyll4bilxb" path="res://assets/ui_cole/message_button.png" id="2_d1wf7"]
-[ext_resource type="Texture2D" uid="uid://mpl0x0nriwag" path="res://apple.png" id="3_d1wf7"]
+[ext_resource type="Texture2D" uid="uid://cbrjeire3leut" path="res://assets/ui_cole/paintbucket.png" id="4_paint"]
 
 [node name="TextureRect" type="TextureRect" unique_id=1223153702]
 offset_right = 40.0
@@ -53,6 +53,13 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.5058824, 0.5921569, 0.5882353, 1)
 text = "Price:"
 
+[node name="PaintColorRect" type="ColorRect" parent="." unique_id=1261378246]
+layout_mode = 0
+offset_left = 53.0
+offset_top = 49.0
+offset_right = 66.0
+offset_bottom = 64.0
+
 [node name="FurniturePicture" type="Sprite2D" parent="." unique_id=1555412586]
 position = Vector2(60, 55.5)
-texture = ExtResource("3_d1wf7")
+texture = ExtResource("4_paint")

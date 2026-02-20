@@ -26,6 +26,11 @@ signal card_selected()
 
 var furniture_catalog: Dictionary[String, FurnitureData] = {}
 
+var wall_color: Color = Color.WHITE
+signal wall_color_changed(new_color: Color)
+
+var paint_catalog: Array[PaintEntry] = []
+
 var first_time_in_marketplace: bool = true
 var first_time_in_room: bool = true
 var first_time_in_frogger: bool = true
@@ -35,6 +40,7 @@ var first_time_in_frogger: bool = true
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	prepare_furniture_catalog()
+	prepare_paint_catalog()
 	create_initial_room()
 	generate_new_cards()
 	add_item_to_inventory.connect(_on_add_item_to_inventory)
@@ -65,6 +71,25 @@ func prepare_furniture_catalog():
 			var furniture_data = ResourceLoader.load(FURNITURE_RESOURCE_DIR + file_name) as FurnitureData
 			furniture_catalog.set(furniture_data.name, furniture_data)
 
+func prepare_paint_catalog():
+	paint_catalog.append(add_paint_to_cataog("Marketplace White", Color(0.92, 0.93, 0.92)))
+	paint_catalog.append(add_paint_to_cataog("Light Grey", Color(0.78, 0.81, 0.80)))
+	paint_catalog.append(add_paint_to_cataog("Title Screen Olive", Color(0.82, 0.85, 0.57)))
+	paint_catalog.append(add_paint_to_cataog("Pink", Color(0.86, 0.52, 0.65)))
+	paint_catalog.append(add_paint_to_cataog("Sky Blue", Color(0.45, 0.75, 0.83)))
+	paint_catalog.append(add_paint_to_cataog("Green", Color(0.66, 0.80, 0.35)))
+	paint_catalog.append(add_paint_to_cataog("Menu Beige", Color(0.84, 0.71, 0.58)))
+	paint_catalog.append(add_paint_to_cataog("Bugbook Slate", Color(0.51, 0.59, 0.59)))
+	paint_catalog.append(add_paint_to_cataog("Red No. 40", Color(0.65, 0.19, 0.19)))
+	paint_catalog.append(add_paint_to_cataog("Gooey Brown", Color(0.68, 0.47, 0.34)))
+	paint_catalog.append(add_paint_to_cataog("Beige", Color(0.91, 0.84, 0.70)))
+	
+func add_paint_to_cataog(paint_name: String, paint_color: Color) -> PaintEntry:
+	var paint_entry = PaintEntry.new()
+	paint_entry.name = paint_name
+	paint_entry.color = paint_color
+	return paint_entry
+
 var first_names: Array[String] = ["Grub", "Anthony", "Beeatrice", "Buzz", "Bugs", "Mariposa", "Archer", "Phoebee", "Luna", "Flutter", "Jiminy", "Honey", "Lady", "Dotty", "June", "Hercules"]
 var last_names: Array[String] = ["Bub", "Beedle", "Queen", "Schmetterling", "Papillon", "Cricket", "Scarab", "Hornet", "Moth"]
 
@@ -94,6 +119,16 @@ func generate_new_cards():
 
 		current_cards.append(card_data)
 
+	var paint_entry = paint_catalog.pick_random()
+	var paint_card = CardData.new()
+	paint_card.is_paint = true
+	paint_card.color = paint_entry["color"]
+	paint_card.quantity = 1
+	paint_card.price = rng.randf_range(3.0, 10.0)
+	paint_card.price = round(paint_card.price * 100.0) / 100.0
+	paint_card.location = "Garden"
+	paint_card.seller_name = first_names.pick_random() + " " + last_names.pick_random()
+	current_cards.append(paint_card)
 
 func _input(event):
 	if event.is_action_pressed("escape"):
@@ -153,8 +188,12 @@ func _on_update_item_in_room(name: String, furniture: FurnitureData, location: V
 func _attempt_purchase_furniture() -> bool:
 	if (money >= selected_card_data.price):
 		money -= selected_card_data.price
-		for i in selected_card_data.quantity:
-			_on_add_item_to_inventory(selected_card_data.furniture.name)
+		if selected_card_data.is_paint:
+			wall_color = selected_card_data.color
+			wall_color_changed.emit(wall_color)
+		else:
+			for i in selected_card_data.quantity:
+				_on_add_item_to_inventory(selected_card_data.furniture.name)
 		generate_new_cards()
 		selected_card_data = null
 		return true
