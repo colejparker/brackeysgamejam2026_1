@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FurnitureData" format=3 uid="uid://dvk8q53cx3moj"]
+
+[ext_resource type="Script" uid="uid://d016a04k3j3ob" path="res://src/global/Furniture(Resources)/FurnitureData.gd" id="1_fmt0p"]
+[ext_resource type="Texture2D" uid="uid://drwchnsq0a005" path="res://assets/sprites/buttonshelf.png" id="2_fmt0p"]
+
+[resource]
+script = ExtResource("1_fmt0p")
+name = "Button Shelf"
+texture = ExtResource("2_fmt0p")
+metadata/_custom_type_script = "uid://d016a04k3j3ob"

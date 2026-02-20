@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_7vtgu")
-name = "Bed"
+name = "Matchbox Bed"
 texture = ExtResource("2_7vtgu")
 size_config = 1
 metadata/_custom_type_script = "uid://d016a04k3j3ob"

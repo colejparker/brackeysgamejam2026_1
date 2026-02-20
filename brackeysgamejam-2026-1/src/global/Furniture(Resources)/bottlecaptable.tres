@@ -5,6 +5,6 @@
 
 [resource]
 script = ExtResource("1_fft3w")
-name = "BottlecapTable"
+name = "Bottlecap Table"
 texture = ExtResource("2_alvvv")
 metadata/_custom_type_script = "uid://d016a04k3j3ob"

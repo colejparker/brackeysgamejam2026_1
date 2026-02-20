@@ -5,6 +5,6 @@
 
 [resource]
 script = ExtResource("1_obvvm")
-name = "ToothpasteLamp"
+name = "Toothpaste Cap Lamp"
 texture = ExtResource("2_obvvm")
 metadata/_custom_type_script = "uid://d016a04k3j3ob"
