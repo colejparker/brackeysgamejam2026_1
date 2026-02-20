@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://brpjl2vstn226"
-path="res://.godot/imported/tempspritesheet.png-48e671bc2a1d993c95e94c82917154f6.ctex"
+uid="uid://ggk7hr0bhut1"
+path="res://.godot/imported/indoorfloortilesmall.png-dc5d6e8e75a0e3f2ecda1f31a6bf0d16.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tempspritesheet.png"
-dest_files=["res://.godot/imported/tempspritesheet.png-48e671bc2a1d993c95e94c82917154f6.ctex"]
+source_file="res://assets/sprites/indoorfloortilesmall.png"
+dest_files=["res://.godot/imported/indoorfloortilesmall.png-dc5d6e8e75a0e3f2ecda1f31a6bf0d16.ctex"]
 
 [params]
 
