@@ -5,7 +5,7 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_quvic"]
 radius = 21.666666
-height = 53.333332
+height = 46.666664
 
 [sub_resource type="Animation" id="Animation_61h3v"]
 length = 0.001
