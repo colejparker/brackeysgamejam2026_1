@@ -158,5 +158,6 @@ offset_bottom = 313.0
 columns = 6
 
 [node name="PopUp Menu" parent="." unique_id=1863548252 instance=ExtResource("10_gaaai")]
+visible = false
 title_text = "Design Your Strange Place"
 body_text = "You are a small bug seeking a rug, and other furniture to arrange your very own strange place. Navigate to the computer to contact sellers, then navigate into the world where you can spend your bugbucks on new furnishings. Once you return, access your new furniture in the inventory menu in the top-left. You can move items around your room by dragging them, put them away into your inventpry with the Q key and rotate them with the R key. Right-clicking inside your inventory will delete the item forever."

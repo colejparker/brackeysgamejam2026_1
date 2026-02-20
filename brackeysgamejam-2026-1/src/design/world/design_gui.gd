@@ -8,6 +8,8 @@ extends CanvasLayer
 var shake_amount = 5.0
 var shake_duration = 1
 var current_shake = 0
+const CLICK = preload("uid://dbj0nhfjsue07")
+const CANTBUY = preload("uid://bxqrh6ln0jnwk")
 
 func _ready():
 	update_with_inventory()
@@ -20,12 +22,15 @@ func update_with_inventory() -> void:
 	inventory_slot.update_for_change()
 
 func open_inventory():
+	SoundFxPlayer._play_sound(CLICK)
 	%InventoryUI.visible = true
 
 func place():
 	if Game.selected_inventory_slot >= Game.inventory.size():
+		SoundFxPlayer._play_sound(CANTBUY)
 		current_shake = shake_amount
 		return
+	SoundFxPlayer._play_sound(CLICK)
 	var furniture_data = Game.inventory[Game.selected_inventory_slot]
 	var proposed_position = get_place_position(furniture_data)
 	if !can_place(furniture_data, proposed_position):

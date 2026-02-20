@@ -7,6 +7,8 @@ const PULSE_SPEED: float = 4.0
 
 var time: float = 0.0
 
+const PICKUP = preload("uid://clwfpnvorqn5k")
+
 func _ready():
 	body_entered.connect(_on_body_entered)
 
@@ -20,5 +22,6 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node2D):
 	if body is CharacterBody2D:
+		SoundFxPlayer._play_sound(PICKUP)
 		Game.add_money(value)
 		queue_free()

@@ -209,6 +209,10 @@ func _attempt_purchase_furniture() -> bool:
 
 func _toggle_music():
 	music_on = !music_on
+	if (music_on):
+		MusicPlayer.start()
+	else:
+		MusicPlayer.stop()
 
 func _toggle_fx():
 	fx_on = !fx_on

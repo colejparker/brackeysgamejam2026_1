@@ -5,6 +5,7 @@ extends CanvasLayer
 @export var body_text: String = ""
 @onready var title: Label = $PauseMenuBase/MarginContainer/VBoxContainer/Title
 @onready var body: RichTextLabel = $PauseMenuBase/MarginContainer/VBoxContainer/Body
+const CLICK = preload("uid://dbj0nhfjsue07")
 
 func _ready() -> void:
 	button.pressed.connect(close_popup)
@@ -12,4 +13,5 @@ func _ready() -> void:
 	body.text = body_text
 	
 func close_popup():
+	SoundFxPlayer._play_sound(CLICK)
 	self.visible = false

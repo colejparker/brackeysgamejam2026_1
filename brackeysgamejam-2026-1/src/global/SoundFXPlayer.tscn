@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://3hkicef5jwn2"]
+
+[ext_resource type="Script" uid="uid://2nyvifvakv8d" path="res://src/global/sound_fx_player.gd" id="1_ga5bk"]
+
+[node name="SoundFxPlayer" type="Node" unique_id=841743099]
+script = ExtResource("1_ga5bk")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=80598711]

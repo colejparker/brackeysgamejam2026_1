@@ -7,6 +7,7 @@ const inv_slot_scene = preload("res://src/design/world/inventory_slot.tscn")
 @onready var close_button = $CloseButton
 
 var slots = []
+const CLICK = preload("uid://dbj0nhfjsue07")
 
 func _ready():
 	for i in range(INVSIZE):
@@ -35,4 +36,5 @@ func update_with_inventory() -> void:
 		slots[i].update_for_change()
 
 func close_inventory() -> void:
+	SoundFxPlayer._play_sound(CLICK)
 	visible = false

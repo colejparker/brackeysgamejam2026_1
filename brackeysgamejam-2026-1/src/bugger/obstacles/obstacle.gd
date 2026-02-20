@@ -16,6 +16,8 @@ extends Area2D
 var velocity: Vector2 = Vector2.ZERO
 var _accumulated_distance: float = 0.0
 const GRID_SIZE: int = 32
+const BIRD = preload("uid://irnl6mbfg6km")
+const DIE = preload("uid://dnpksxkq663mf")
 
 func _ready():
 	if sprite_texture != null and has_node("Sprite2D"):
@@ -66,4 +68,9 @@ func _physics_process(delta):
 
 func _on_body_entered(body: Node2D):
 	if is_lethal and body.has_method("die"):
-		body.die()		
+		print (self.name)
+		if self.name == "EnemyBird":
+			SoundFxPlayer._play_sound(BIRD)
+		else:
+			SoundFxPlayer._play_sound(DIE)
+		body.die()

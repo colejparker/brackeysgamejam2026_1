@@ -8,6 +8,7 @@ extends CanvasLayer
 @onready var selected_card_label: Label = $SelectedCardLabel
 
 var settings_menu: PackedScene = preload("res://src/global/ui/settings.tscn")
+const CLICK = preload("uid://dbj0nhfjsue07")
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -19,12 +20,15 @@ func _ready() -> void:
 		selected_card_label.visible = false
 
 func _unpause():
+	SoundFxPlayer._play_sound(CLICK)
 	get_tree().paused = !get_tree().paused
 	queue_free()
 
 func _open_settings():
+	SoundFxPlayer._play_sound(CLICK)
 	var settings_node = settings_menu.instantiate()
 	get_tree().current_scene.add_child(settings_node)
 
 func _quit_game():
+	SoundFxPlayer._play_sound(CLICK)
 	get_tree().quit()

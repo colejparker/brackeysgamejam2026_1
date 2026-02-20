@@ -12,6 +12,7 @@ extends Control
 
 var settings_menu: PackedScene = preload("res://src/global/ui/settings.tscn")
 var credits_menu: PackedScene = preload("res://src/global/ui/credits.tscn")
+const WALK = preload("uid://dbj0nhfjsue07")
 
 
 func _ready():
@@ -20,13 +21,16 @@ func _ready():
 	credits.pressed.connect(_credits)
 
 func _start_game():
+	SoundFxPlayer._play_sound(WALK)
 	get_tree().change_scene_to_packed(load_room)
 	
 func _settings():
+	SoundFxPlayer._play_sound(WALK)
 	var settings_node = settings_menu.instantiate()
 	get_tree().current_scene.add_child(settings_node)
 	
 func _credits():
+	SoundFxPlayer._play_sound(WALK)
 	var credits_node = credits_menu.instantiate()
 	get_tree().current_scene.add_child(credits_node)
 	

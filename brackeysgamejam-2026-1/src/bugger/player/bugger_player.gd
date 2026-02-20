@@ -27,6 +27,11 @@ var is_resetting: bool = false
 @onready var pop_up_menu: CanvasLayer = $"../PopUp Menu"
 @onready var money_tracker: Label = $"../BuggerLayer/MoneyTracker"
 
+const DOOR = preload("uid://bavngralj27vb")
+const CANTBUY = preload("uid://bxqrh6ln0jnwk")
+const WALK = preload("uid://yhk2h2mv02w1")
+const PICKUPFURNITURE = preload("uid://bq1qml4ejxf4y")
+
 func _ready():
 	if Game.first_time_in_frogger:
 		Game.first_time_in_frogger = false
@@ -71,6 +76,7 @@ func _process(_delta):
 		var new_position: Vector2 = (global_position + input_dir * GRID_SIZE).snapped(Vector2(GRID_SIZE, GRID_SIZE))
 
 		if not _is_position_blocked(new_position):
+			SoundFxPlayer._play_sound(WALK)
 			global_position = new_position
 			target_position = new_position
 			current_log = _get_water_safe_area_at(global_position)
@@ -82,10 +88,12 @@ func _process(_delta):
 			return_home_menu.visible = true
 		elif _is_touching_end_house(new_position) and !picked_up_furniture:
 			if (Game._attempt_purchase_furniture()):
+				SoundFxPlayer._play_sound(PICKUPFURNITURE)
 				picked_up_furniture = true
 				START_X = end_house.global_position[0]
 				START_Y = end_house.global_position[1]+32.0
 			else:
+				SoundFxPlayer._play_sound(CANTBUY)
 				money_tracker._cannot_afford()
 			
 			
@@ -139,6 +147,7 @@ func _dismiss_return_menu():
 	return_home_menu.visible = false
 	
 func _return_home():
+	SoundFxPlayer._play_sound(DOOR)
 	get_tree().change_scene_to_packed(load_room)
 
 func die():
@@ -148,7 +157,7 @@ func die():
 	is_resetting = true
 	current_log = null
 	sprite_2d.texture = texture_dead
-
+	
 	Game.die_lose_money()
 
 	await get_tree().create_timer(0.5).timeout

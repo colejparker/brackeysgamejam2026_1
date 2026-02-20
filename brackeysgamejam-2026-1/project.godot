@@ -22,6 +22,8 @@ config/icon="uid://nqaoeiy65820"
 [autoload]
 
 Game="*res://src/global/game.gd"
+MusicPlayer="*uid://unhogc8ch7qm"
+SoundFxPlayer="*uid://3hkicef5jwn2"
 
 [display]
 

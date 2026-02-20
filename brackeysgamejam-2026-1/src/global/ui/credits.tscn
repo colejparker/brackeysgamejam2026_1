@@ -32,9 +32,9 @@ texture = ExtResource("2_rni5x")
 custom_minimum_size = Vector2(13.425, 0)
 layout_mode = 0
 offset_left = 150.0
-offset_top = 169.36
+offset_top = 163.28
 offset_right = 250.0
-offset_bottom = 189.36003
+offset_bottom = 183.28003
 theme = ExtResource("2_ec0kd")
 theme_override_font_sizes/font_size = 14
 text = "Close"
@@ -51,12 +51,12 @@ layout_mode = 2
 [node name="Settings" type="Label" parent="PauseMenuBase/MarginContainer/VBoxContainer" unique_id=183897439]
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
-text = "Credits"
+text = "Team"
 horizontal_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="PauseMenuBase/MarginContainer/VBoxContainer" unique_id=694778147]
 layout_mode = 2
-theme_override_constants/margin_top = 0
+theme_override_constants/margin_top = 10
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PauseMenuBase/MarginContainer/VBoxContainer/MarginContainer" unique_id=429780928]
 layout_mode = 2
@@ -67,13 +67,9 @@ layout_mode = 2
 [node name="Label" type="Label" parent="PauseMenuBase/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=2062632750]
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
-text = "Programming
-
-Art
-Music
-Sound Effects
-
-Font"
+text = "Keegan Parker
+Kiran Hughes
+Cole Parker"
 
 [node name="MarginContainer" type="MarginContainer" parent="PauseMenuBase/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer" unique_id=1817961826]
 layout_mode = 2
@@ -85,11 +81,18 @@ layout_mode = 2
 [node name="Label" type="Label" parent="PauseMenuBase/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=858832840]
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
-text = "Keegan Parker
-Cole Parker
-Kiran Hughes
-Cole Parker
-Keegan Parker
-Kate Lindsay
-Raphaël Bastide and Jérémy Landes"
+text = "Programming
+Art
+Programming and Sound"
+horizontal_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="PauseMenuBase/MarginContainer/VBoxContainer" unique_id=1834256110]
+layout_mode = 2
+theme_override_constants/margin_top = 7
+
+[node name="Label" type="Label" parent="PauseMenuBase/MarginContainer/VBoxContainer/MarginContainer2" unique_id=1252066941]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Font is Terminal Grotesque, designed by Raphaël 
+Bastide, with the contribution of Jérémy Landes"
 horizontal_alignment = 1

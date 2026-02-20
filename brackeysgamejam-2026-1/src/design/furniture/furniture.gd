@@ -7,6 +7,7 @@ extends CharacterBody2D
 @export var starting_frame: int = 0
 
 var selected_collision_shapes: Array[CollisionPolygon2D] = []
+const CLICK = preload("uid://dbj0nhfjsue07")
 
 enum State {
 	STATIONARY,
@@ -32,6 +33,7 @@ func _physics_process(delta: float) -> void:
 
 	
 	if Input.is_action_just_pressed("rotate") and state == State.MOVING and !furniture_data.is_wall:
+		SoundFxPlayer._play_sound(CLICK)
 		get_collision_shape().disabled = true
 		sprite.frame = (sprite.frame + 1) % sprite.hframes
 		get_collision_shape().disabled = false

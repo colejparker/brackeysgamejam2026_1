@@ -12,6 +12,9 @@ var can_trigger_computer: bool = true
 var is_touching_computer: bool = false
 @onready var gui: CanvasLayer = $"../DesignGUI"
 
+const TYPING = preload("uid://b66ovycj8usa4")
+const DOOR = preload("uid://bavngralj27vb")
+
 func _physics_process(delta: float) -> void:
 	if marketplace_open:
 		velocity = Vector2.ZERO
@@ -38,6 +41,7 @@ func _physics_process(delta: float) -> void:
 		var collider = collision.get_collider()
 		
 		if collider and collider.name == "DoorOut":
+			SoundFxPlayer._play_sound(DOOR)
 			Game.load_next_bugger_level()
 		elif collider and collider.name == "Computer":
 			currently_touching_computer = true
@@ -52,7 +56,8 @@ func _physics_process(delta: float) -> void:
 func _open_marketplace() -> void:
 	if get_tree().current_scene.has_node("Marketplace"):
 		return
-
+	
+	SoundFxPlayer._play_sound(TYPING)
 	marketplace_open = true
 	can_trigger_computer = false
 	var marketplace_node = marketplace.instantiate()

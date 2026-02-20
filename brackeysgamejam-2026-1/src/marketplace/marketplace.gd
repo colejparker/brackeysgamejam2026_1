@@ -8,6 +8,7 @@ signal marketplace_closed
 @onready var help_button: TextureButton = $CanvasLayer/HelpButton
 
 var card_scene: PackedScene = preload("res://src/marketplace/card.tscn")
+const CLICK = preload("uid://dbj0nhfjsue07")
 
 func _ready():
 	if Game.first_time_in_marketplace:
@@ -28,6 +29,7 @@ func _populate_cards():
 		cards.add_child(card)
 
 func _close_marketplace():
+	SoundFxPlayer._play_sound(CLICK)
 	marketplace_closed.emit()
 	self.queue_free()
 
