@@ -64,12 +64,19 @@ func load_next_bugger_level():
 		if selected_card_data.location == "Garden":
 			get_tree().change_scene_to_packed(garden_level)
 	
+var _furniture_resources: Array[FurnitureData] = [
+	preload("res://src/global/Furniture(Resources)/bed.tres"),
+	preload("res://src/global/Furniture(Resources)/bookshelf.tres"),
+	preload("res://src/global/Furniture(Resources)/bottlecaptable.tres"),
+	preload("res://src/global/Furniture(Resources)/buttonshelf.tres"),
+	preload("res://src/global/Furniture(Resources)/couch.tres"),
+	preload("res://src/global/Furniture(Resources)/poster.tres"),
+	preload("res://src/global/Furniture(Resources)/toothpaste_lamp.tres"),
+]
+
 func prepare_furniture_catalog():
-	const FURNITURE_RESOURCE_DIR = "res://src/global/Furniture(Resources)/"
-	for file_name in DirAccess.get_files_at(FURNITURE_RESOURCE_DIR):
-		if file_name.ends_with(".tres") and !file_name.contains("apple") and !file_name.contains("doormat"):
-			var furniture_data = ResourceLoader.load(FURNITURE_RESOURCE_DIR + file_name) as FurnitureData
-			furniture_catalog.set(furniture_data.name, furniture_data)
+	for furniture_data in _furniture_resources:
+		furniture_catalog.set(furniture_data.name, furniture_data)
 
 func prepare_paint_catalog():
 	paint_catalog.append(add_paint_to_cataog("Marketplace White", Color(0.92, 0.93, 0.92)))

@@ -97,7 +97,6 @@ polygon = PackedVector2Array(69, 207, 322, 333, 603, 193, 351, 66)
 unique_name_in_owner = true
 z_index = 1
 position = Vector2(360, 197)
-scale = Vector2(1, 1)
 
 [node name="DesignGUI" type="CanvasLayer" parent="." unique_id=1463266298]
 script = ExtResource("6_j4jsl")
