@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://ci0gudkjrl3ad"]
 
 [ext_resource type="Script" uid="uid://ibtgbgnggkrm" path="res://src/design/world/design_world.gd" id="1_j4jsl"]
-[ext_resource type="TileSet" uid="uid://cjdsmsgb2bvy" path="res://testgroundtileset.tres" id="2_wl84k"]
+[ext_resource type="TileSet" uid="uid://6xpg4jlylpox" path="res://dirt_tileset.tres" id="2_kno14"]
 [ext_resource type="PackedScene" uid="uid://dn2p4k0ih7jgv" path="res://src/design/player/design_player.tscn" id="4_cfd1e"]
 [ext_resource type="Resource" uid="uid://boc4fqv6k6vb7" path="res://src/global/Furniture(Resources)/poster.tres" id="4_k1s3p"]
 [ext_resource type="Script" uid="uid://iiqcu7cpas7" path="res://src/design/world/design_gui.gd" id="6_j4jsl"]
@@ -12,6 +12,12 @@
 [ext_resource type="Texture2D" uid="uid://bs5ji6olcmdbx" path="res://assets/ui_cole/generic_close.png" id="9_j4jsl"]
 [ext_resource type="Texture2D" uid="uid://b852b1ufmmm7o" path="res://assets/ui_cole/qm_beige.png" id="9_kno14"]
 [ext_resource type="PackedScene" uid="uid://c2ivy5l3tce6" path="res://src/global/ui/popup.tscn" id="10_gaaai"]
+
+[sub_resource type="TileSet" id="TileSet_kno14"]
+tile_shape = 1
+tile_size = Vector2i(64, 32)
+physics_layer_0/collision_layer = 1
+navigation_layer_0/layers = 1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gaaai"]
 bg_color = Color(0.7529412, 0.5803922, 0.4509804, 1)
@@ -30,7 +36,7 @@ position = Vector2(32, 0)
 
 [node name="TopBorders" type="CollisionPolygon2D" parent="TopBorderArea" unique_id=1162866942]
 z_index = 2
-polygon = PackedVector2Array(66, 208, 352, 65, 610, 194, 621, 188, 352, 57, 59, 202)
+polygon = PackedVector2Array(49, 218, 352, 65, 610, 194, 621, 188, 352, 57, 59, 202)
 
 [node name="LeftBorder" type="StaticBody2D" parent="." unique_id=389452714]
 position = Vector2(32, 0)
@@ -44,7 +50,7 @@ position = Vector2(32, 0)
 
 [node name="BottomBorders" type="CollisionPolygon2D" parent="BottomBorderArea" unique_id=2042852773]
 z_index = 2
-polygon = PackedVector2Array(59, 203, 322, 333, 619, 187, 619, 205, 321, 351, 61, 219)
+polygon = PackedVector2Array(63, 209, 320, 337, 619, 187, 619, 205, 321, 351, 65, 224)
 
 [node name="Void" type="ColorRect" parent="." unique_id=1038339942]
 offset_right = 640.0
@@ -54,7 +60,7 @@ color = Color(0.03529412, 0.039215688, 0.078431375, 1)
 [node name="Wall" type="ColorRect" parent="." unique_id=68030018]
 offset_left = 96.0
 offset_right = 639.0
-offset_bottom = 211.0
+offset_bottom = 208.0
 
 [node name="WallLine" type="ColorRect" parent="." unique_id=414590734]
 offset_left = 382.0
@@ -65,15 +71,15 @@ color = Color(0, 0, 0, 1)
 [node name="GroundLayer" type="TileMapLayer" parent="." unique_id=1885438664]
 y_sort_enabled = true
 position = Vector2(32, 0)
-tile_map_data = PackedByteArray("AAABAAsAAAADAAAAAAABAAwAAAADAAAAAAABAA0AAAADAAAAAAACAAkAAAADAAAAAAACAAoAAAADAAAAAAACAAsAAAADAAAAAAACAAwAAAADAAAAAAACAA0AAAADAAAAAAACAA4AAAADAAAAAAACAA8AAAADAAAAAAADAAcAAAADAAAAAAADAAgAAAADAAAAAAADAAkAAAADAAAAAAADAAoAAAADAAAAAAADAAsAAAADAAAAAAADAAwAAAADAAAAAAADAA0AAAADAAAAAAADAA4AAAADAAAAAAADAA8AAAADAAAAAAADABAAAAADAAAAAAADABEAAAADAAAAAAAEAAUAAAADAAAAAAAEAAYAAAADAAAAAAAEAAcAAAADAAAAAAAEAAgAAAADAAAAAAAEAAkAAAADAAAAAAAEAAoAAAADAAAAAAAEAAsAAAADAAAAAAAEAAwAAAADAAAAAAAEAA0AAAADAAAAAAAEAA4AAAADAAAAAAAEAA8AAAADAAAAAAAEABAAAAADAAAAAAAEABEAAAADAAAAAAAEABIAAAADAAAAAAAEABMAAAADAAAAAAAFAAQAAAADAAAAAAAFAAUAAAADAAAAAAAFAAYAAAADAAAAAAAFAAcAAAADAAAAAAAFAAgAAAADAAAAAAAFAAkAAAADAAAAAAAFAAoAAAADAAAAAAAFAAsAAAADAAAAAAAFAAwAAAADAAAAAAAFAA0AAAADAAAAAAAFAA4AAAADAAAAAAAFAA8AAAADAAAAAAAFABAAAAADAAAAAAAFABEAAAADAAAAAAAFABIAAAADAAAAAAAGAAYAAAADAAAAAAAGAAcAAAADAAAAAAAGAAgAAAADAAAAAAAGAAkAAAADAAAAAAAGAAoAAAADAAAAAAAGAAsAAAADAAAAAAAGAAwAAAADAAAAAAAGAA0AAAADAAAAAAAGAA4AAAADAAAAAAAGAA8AAAADAAAAAAAGABAAAAADAAAAAAAHAAgAAAADAAAAAAAHAAkAAAADAAAAAAAHAAoAAAADAAAAAAAHAAsAAAADAAAAAAAHAAwAAAADAAAAAAAHAA0AAAADAAAAAAAHAA4AAAADAAAAAAAIAAoAAAADAAAAAAAIAAsAAAADAAAAAAAIAAwAAAADAAAAAAA=")
-tile_set = ExtResource("2_wl84k")
+tile_map_data = PackedByteArray("AAABAAwAAAAAAAAAAAABAA0AAAAAAAAAAAACAA4AAAAAAAAAAAACAA8AAAAAAAAAAAADABAAAAAAAAAAAAADABEAAAAAAAAAAAAEABIAAAAAAAAAAAAEABEAAAAAAAAAAAAFABAAAAAAAAAAAAAEAA8AAAAAAAAAAAAFAA4AAAAAAAAAAAAFAA8AAAAAAAAAAAAGAA4AAAAAAAAAAAAGAA0AAAAAAAAAAAAHAAwAAAAAAAAAAAAHAAsAAAAAAAAAAAAIAAoAAAAAAAAAAAAHAAkAAAAAAAAAAAAHAAgAAAAAAAAAAAAGAAcAAAAAAAAAAAAGAAYAAAAAAAAAAAAFAAUAAAAAAAAAAAAFAAQAAAAAAAAAAAABAAsAAAAAAAAAAAACAAoAAAAAAAAAAAACAAkAAAAAAAAAAAADAAgAAAAAAAAAAAADAAcAAAAAAAAAAAAEAAYAAAAAAAAAAAAEAAUAAAAAAAAAAAAFAAYAAAAAAAAAAAAFAAcAAAAAAAAAAAAGAAgAAAAAAAAAAAAGAAkAAAAAAAAAAAAHAAoAAAAAAAAAAAAGAAsAAAAAAAAAAAAGAAwAAAAAAAAAAAAFAA0AAAAAAAAAAAAEABAAAAAAAAAAAAADAA8AAAAAAAAAAAADAA4AAAAAAAAAAAACAA0AAAAAAAAAAAACAAwAAAAAAAAAAAACAAsAAAAAAAAAAAADAAoAAAAAAAAAAAADAAkAAAAAAAAAAAAEAAgAAAAAAAAAAAAEAAcAAAAAAAAAAAAEAAkAAAAAAAAAAAAEAAoAAAAAAAAAAAADAAsAAAAAAAAAAAADAAwAAAAAAAAAAAAEAAwAAAAAAAAAAAAEAAsAAAAAAAAAAAAFAAoAAAAAAAAAAAAFAAkAAAAAAAAAAAADAA0AAAAAAAAAAAAFAAgAAAAAAAAAAAAEAA4AAAAAAAAAAAAEAA0AAAAAAAAAAAAFAAwAAAAAAAAAAAAFAAsAAAAAAAAAAAAGAAoAAAAAAAAAAAAIAAsAAAAAAAAAAAAIAAwAAAAAAAAAAAAHAA0AAAAAAAAAAAAHAA4AAAAAAAAAAAAGAA8AAAAAAAAAAAAGABAAAAAAAAAAAAAFABEAAAAAAAAAAAAFABIAAAAAAAAAAAAEABMAAAAAAAAAAAA=")
+tile_set = ExtResource("2_kno14")
 
 [node name="DecorationLayer" type="TileMapLayer" parent="." unique_id=1775596092]
 unique_name_in_owner = true
 z_index = 1
 y_sort_enabled = true
 position = Vector2(32, 0)
-tile_set = ExtResource("2_wl84k")
+tile_set = SubResource("TileSet_kno14")
 
 [node name="WallPolygon" type="Polygon2D" parent="DecorationLayer" unique_id=1206934633]
 unique_name_in_owner = true
@@ -91,6 +97,7 @@ polygon = PackedVector2Array(69, 207, 322, 333, 603, 193, 351, 66)
 unique_name_in_owner = true
 z_index = 1
 position = Vector2(360, 197)
+scale = Vector2(1, 1)
 
 [node name="DesignGUI" type="CanvasLayer" parent="." unique_id=1463266298]
 script = ExtResource("6_j4jsl")

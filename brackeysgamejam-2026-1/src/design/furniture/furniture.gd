@@ -16,6 +16,8 @@ enum State {
 var state = State.STATIONARY
 
 func _physics_process(delta: float) -> void:
+	if name == "DoorOut":
+		return
 	var has_changed = false
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		var mouse_pos = get_local_mouse_position()
@@ -35,7 +37,7 @@ func _physics_process(delta: float) -> void:
 		get_collision_shape().disabled = false
 		has_changed = true
 		
-	if Input.is_action_just_pressed("stash") and (mouse_in_rect() or state == State.MOVING):
+	if Input.is_action_just_pressed("stash") and (mouse_in_rect() or state == State.MOVING) and name != "Computer":
 		Game.add_item_to_inventory.emit(furniture_data.name)
 		Game.remove_item_from_room.emit(name)
 		queue_free()

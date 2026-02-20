@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://r1m77majxk00"]
 
 [ext_resource type="Script" uid="uid://c5yx25ns5ekqj" path="res://src/design/furniture/furniture.gd" id="1_mt2d8"]
-[ext_resource type="Texture2D" uid="uid://bk0px62wyxmdc" path="res://assets/sprites/Matchbox.bed.png" id="2_mt2d8"]
+[ext_resource type="Texture2D" uid="uid://dwqgk8lylg5if" path="res://assets/sprites/apple.png" id="2_mt2d8"]
 
 [node name="Furniture" type="CharacterBody2D" unique_id=438672004]
 motion_mode = 1
@@ -10,10 +10,10 @@ script = ExtResource("1_mt2d8")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=112837345]
 texture = ExtResource("2_mt2d8")
 hframes = 4
-frame = 2
 
 [node name="OneByOneCollision" type="CollisionPolygon2D" parent="." unique_id=1325081727]
-polygon = PackedVector2Array(-16, -16, -16, 16, 16, 16, 16, -16)
+position = Vector2(0, -2.585)
+polygon = PackedVector2Array(-1, -15, -20, -6, -20, 10, 0, 19, 19, 11, 19, -6)
 disabled = true
 
 [node name="TwoByOneCollisionOne" type="CollisionPolygon2D" parent="." unique_id=2116646454]

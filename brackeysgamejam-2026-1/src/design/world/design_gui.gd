@@ -59,12 +59,11 @@ func _physics_process(delta: float) -> void:
 	place_button.position = base_place_button_position + Vector2(randf_range(-current_shake, current_shake), randf_range(-current_shake, current_shake))
 	
 func can_place(furniture_data: FurnitureData, proposed_position: Vector2) -> bool:
-	const BOX_VECTOR_OFFSET = 8
-	const BOX_VECTORS = [Vector2(0,0), Vector2(-BOX_VECTOR_OFFSET, -BOX_VECTOR_OFFSET), Vector2(-BOX_VECTOR_OFFSET, BOX_VECTOR_OFFSET), Vector2(BOX_VECTOR_OFFSET, BOX_VECTOR_OFFSET), Vector2(BOX_VECTOR_OFFSET, -BOX_VECTOR_OFFSET)]
+	const ONE_BY_ONE_VECTORS = [Vector2(0,0), Vector2(-1, -15), Vector2(-20,-6), Vector2(-20,10), Vector2(0, 19), Vector2(19,11), Vector2(19,-6)]
 	const TWO_BY_ONE_VECTORS = [Vector2(0,0), Vector2(-51, -3), Vector2(-51, 8), Vector2(-19,24), Vector2(31,-5), Vector2(31, -15), Vector2(-1, -31)]
 	var boxed_points = []
 	match furniture_data.size_config: 
-		FurnitureData.SizeConfig.ONE_BY_ONE: boxed_points = BOX_VECTORS.map(func(p): return proposed_position + p)
+		FurnitureData.SizeConfig.ONE_BY_ONE: boxed_points = ONE_BY_ONE_VECTORS.map(func(p): return proposed_position + p)
 		FurnitureData.SizeConfig.TWO_BY_ONE: boxed_points = TWO_BY_ONE_VECTORS.map(func(p): return proposed_position + p)
 	for point in boxed_points:
 		if !furniture_data.is_wall and !Geometry2D.is_point_in_polygon(point, %FloorPolygon.polygon):

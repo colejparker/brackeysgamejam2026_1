@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://bch7mf46coiar" path="res://assets/sprites/insidebugfull.png" id="2_quvic"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_quvic"]
-radius = 16.0
-height = 48.0
+radius = 21.666666
+height = 53.333332
 
 [sub_resource type="Animation" id="Animation_61h3v"]
 length = 0.001
@@ -106,7 +106,7 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1.0),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5]
@@ -245,7 +245,6 @@ transitions = ["Start", "StandState", SubResource("AnimationNodeStateMachineTran
 graph_offset = Vector2(-506, 22)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_glphf"]
-graph_offset = Vector2(-184.66667, 70)
 nodes/output/position = Vector2(613.3333, 93.333336)
 nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_61h3v")
 nodes/StateMachine/position = Vector2(253.33333, 66.666664)
@@ -262,7 +261,7 @@ hframes = 92
 frame = 3
 
 [node name="CollisionPolygon2D" type="CollisionShape2D" parent="." unique_id=787940000]
-position = Vector2(0, 5)
+position = Vector2(9.473906e-15, 8.333333)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_quvic")
 
