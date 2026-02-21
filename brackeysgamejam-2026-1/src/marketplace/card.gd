@@ -11,6 +11,7 @@ var card_data: CardData
 @onready var message_button: TextureButton = $MessageButton
 
 func _ready():
+	paint_color_rect.visible = false
 	if card_data:
 		_setup(card_data)
 		message_button.pressed.connect(_click_card)
@@ -31,6 +32,11 @@ func _setup(assigned_card_data: CardData):
 		paint_color_rect.visible = true
 		var paint_name = _get_paint_name(assigned_card_data.color)
 		item_label.text = "Paint: " + paint_name
+	elif assigned_card_data.furniture.name == "Rug":
+		furniture_picture.texture = preload("res://assets/sprites/rug2.png")
+		furniture_picture.hframes = 1
+		furniture_picture.scale = Vector2(0.5, 0.5)
+		item_label.text = "Item: A Beautiful Rug"
 	else:
 		furniture_picture.texture = assigned_card_data.furniture.texture
 		if assigned_card_data.furniture.is_wall:
@@ -43,7 +49,7 @@ func _setup(assigned_card_data: CardData):
 		item_label.text = "Item: " + str(assigned_card_data.quantity) + " " + assigned_card_data.furniture.name
 		if assigned_card_data.quantity > 1:
 			item_label.text += "s"
-	price_label.text = "Price: " + str(assigned_card_data.price)
+	price_label.text = "Price: " + str("%.2f" % assigned_card_data.price)
 	seller_label.text = "Seller: " + assigned_card_data.seller_name
 	location_label.text = "Location: " + assigned_card_data.location
 

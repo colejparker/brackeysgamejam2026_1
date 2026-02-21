@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="FurnitureData" format=3 uid="uid://dhlc83wh7ya15"]
+
+[ext_resource type="Script" uid="uid://d016a04k3j3ob" path="res://src/global/Furniture(Resources)/FurnitureData.gd" id="1_ml76r"]
+[ext_resource type="Texture2D" uid="uid://ds8afx2y8d7x" path="res://assets/sprites/popsiclestick.png" id="2_ml76r"]
+
+[resource]
+script = ExtResource("1_ml76r")
+name = "Popsicle Stick Bench"
+texture = ExtResource("2_ml76r")
+size_config = 1
+metadata/_custom_type_script = "uid://d016a04k3j3ob"

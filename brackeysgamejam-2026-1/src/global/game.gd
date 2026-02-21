@@ -9,6 +9,8 @@ var current_cards: Array[CardData] = []
 
 var music_on: bool = true
 var fx_on: bool = true
+var rug_is_visible: bool = false
+var items_acquired: int = 0
 
 var pause_menu: PackedScene = preload("res://src/global/ui/pause_menu.tscn")
 var card_scene: PackedScene = preload("res://src/marketplace/card.tscn")
@@ -34,8 +36,11 @@ var paint_catalog: Array[PaintEntry] = []
 var first_time_in_marketplace: bool = true
 var first_time_in_room: bool = true
 var first_time_in_frogger: bool = true
+var show_winner_popup: bool = false
 
 @export var garden_level: PackedScene = preload("res://src/bugger/levels/bugger_1.tscn")
+@export var river_level: PackedScene = preload("res://src/bugger/levels/bugger_2.tscn")
+
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -63,6 +68,8 @@ func load_next_bugger_level():
 	if selected_card_data:
 		if selected_card_data.location == "Garden":
 			get_tree().change_scene_to_packed(garden_level)
+		if selected_card_data.location == "River":
+			get_tree().change_scene_to_packed(river_level)
 	
 var _furniture_resources: Array[FurnitureData] = [
 	preload("res://src/global/Furniture(Resources)/bed.tres"),
@@ -72,6 +79,10 @@ var _furniture_resources: Array[FurnitureData] = [
 	preload("res://src/global/Furniture(Resources)/couch.tres"),
 	preload("res://src/global/Furniture(Resources)/poster.tres"),
 	preload("res://src/global/Furniture(Resources)/toothpaste_lamp.tres"),
+	preload("res://src/global/Furniture(Resources)/stool.tres"),
+	preload("res://src/global/Furniture(Resources)/creamerplant.tres"),
+	preload("res://src/global/Furniture(Resources)/leafchair.tres"),
+	preload("res://src/global/Furniture(Resources)/popsiclebench.tres"),
 ]
 
 func prepare_furniture_catalog():
@@ -106,6 +117,17 @@ func generate_new_cards():
 	if furniture_catalog.is_empty():
 		return
 
+	if (items_acquired >= 10):
+		var rug_card = CardData.new()
+		rug_card.is_paint = false
+		rug_card.quantity = 1
+		rug_card.price = 10.00
+		rug_card.location = _generate_location()
+		rug_card.seller_name = "Kiran Hughes"
+		var furniture = FurnitureData.new()
+		furniture.name = "Rug"
+		rug_card.furniture = furniture
+		current_cards.append(rug_card)
 	var num_cards = rng.randi_range(3, 6)
 
 	for n in num_cards:
@@ -121,7 +143,7 @@ func generate_new_cards():
 		card_data.quantity = num_items
 		card_data.price = rng.randf_range(3.0, 10.0) * (num_items * 0.75)
 		card_data.price = round(card_data.price * 100.0) / 100.0
-		card_data.location = "Garden"
+		card_data.location = _generate_location()
 		card_data.seller_name = first_names.pick_random() + " " + last_names.pick_random()
 
 		current_cards.append(card_data)
@@ -133,7 +155,7 @@ func generate_new_cards():
 	paint_card.quantity = 1
 	paint_card.price = rng.randf_range(3.0, 10.0)
 	paint_card.price = round(paint_card.price * 100.0) / 100.0
-	paint_card.location = "Garden"
+	paint_card.location =  _generate_location()
 	paint_card.seller_name = first_names.pick_random() + " " + last_names.pick_random()
 	current_cards.append(paint_card)
 
@@ -198,7 +220,12 @@ func _attempt_purchase_furniture() -> bool:
 		if selected_card_data.is_paint:
 			wall_color = selected_card_data.color
 			wall_color_changed.emit(wall_color)
+			items_acquired += 1
+		elif selected_card_data.furniture.name == "Rug":
+			rug_is_visible = true
+			show_winner_popup = true
 		else:
+			items_acquired += selected_card_data.quantity
 			for i in selected_card_data.quantity:
 				_on_add_item_to_inventory(selected_card_data.furniture.name)
 		generate_new_cards()
@@ -216,3 +243,7 @@ func _toggle_music():
 
 func _toggle_fx():
 	fx_on = !fx_on
+	
+func _generate_location() -> String:
+	var level_array: Array[String] = ["Garden", "River"]
+	return level_array.pick_random()

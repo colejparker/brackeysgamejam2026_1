@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ibtgbgnggkrm" path="res://src/design/world/design_world.gd" id="1_j4jsl"]
 [ext_resource type="TileSet" uid="uid://6xpg4jlylpox" path="res://dirt_tileset.tres" id="2_kno14"]
+[ext_resource type="Texture2D" uid="uid://ctkgqwphfxq28" path="res://assets/sprites/rug2.png" id="3_ei245"]
 [ext_resource type="PackedScene" uid="uid://dn2p4k0ih7jgv" path="res://src/design/player/design_player.tscn" id="4_cfd1e"]
 [ext_resource type="Resource" uid="uid://boc4fqv6k6vb7" path="res://src/global/Furniture(Resources)/poster.tres" id="4_k1s3p"]
 [ext_resource type="Script" uid="uid://iiqcu7cpas7" path="res://src/design/world/design_gui.gd" id="6_j4jsl"]
@@ -53,11 +54,13 @@ z_index = 2
 polygon = PackedVector2Array(63, 209, 320, 337, 619, 187, 619, 205, 321, 351, 65, 224)
 
 [node name="Void" type="ColorRect" parent="." unique_id=1038339942]
+z_index = -2
 offset_right = 640.0
 offset_bottom = 360.0
 color = Color(0.03529412, 0.039215688, 0.078431375, 1)
 
 [node name="Wall" type="ColorRect" parent="." unique_id=68030018]
+z_index = -2
 offset_left = 96.0
 offset_right = 639.0
 offset_bottom = 208.0
@@ -68,7 +71,16 @@ offset_right = 388.0
 offset_bottom = 66.0
 color = Color(0, 0, 0, 1)
 
+[node name="Rug" type="Sprite2D" parent="." unique_id=453801804]
+visible = false
+z_as_relative = false
+y_sort_enabled = true
+position = Vector2(364, 191)
+scale = Vector2(2, 2)
+texture = ExtResource("3_ei245")
+
 [node name="GroundLayer" type="TileMapLayer" parent="." unique_id=1885438664]
+z_index = -1
 y_sort_enabled = true
 position = Vector2(32, 0)
 tile_map_data = PackedByteArray("AAABAAwAAAAAAAAAAAABAA0AAAAAAAAAAAACAA4AAAAAAAAAAAACAA8AAAAAAAAAAAADABAAAAAAAAAAAAADABEAAAAAAAAAAAAEABIAAAAAAAAAAAAEABEAAAAAAAAAAAAFABAAAAAAAAAAAAAEAA8AAAAAAAAAAAAFAA4AAAAAAAAAAAAFAA8AAAAAAAAAAAAGAA4AAAAAAAAAAAAGAA0AAAAAAAAAAAAHAAwAAAAAAAAAAAAHAAsAAAAAAAAAAAAIAAoAAAAAAAAAAAAHAAkAAAAAAAAAAAAHAAgAAAAAAAAAAAAGAAcAAAAAAAAAAAAGAAYAAAAAAAAAAAAFAAUAAAAAAAAAAAAFAAQAAAAAAAAAAAABAAsAAAAAAAAAAAACAAoAAAAAAAAAAAACAAkAAAAAAAAAAAADAAgAAAAAAAAAAAADAAcAAAAAAAAAAAAEAAYAAAAAAAAAAAAEAAUAAAAAAAAAAAAFAAYAAAAAAAAAAAAFAAcAAAAAAAAAAAAGAAgAAAAAAAAAAAAGAAkAAAAAAAAAAAAHAAoAAAAAAAAAAAAGAAsAAAAAAAAAAAAGAAwAAAAAAAAAAAAFAA0AAAAAAAAAAAAEABAAAAAAAAAAAAADAA8AAAAAAAAAAAADAA4AAAAAAAAAAAACAA0AAAAAAAAAAAACAAwAAAAAAAAAAAACAAsAAAAAAAAAAAADAAoAAAAAAAAAAAADAAkAAAAAAAAAAAAEAAgAAAAAAAAAAAAEAAcAAAAAAAAAAAAEAAkAAAAAAAAAAAAEAAoAAAAAAAAAAAADAAsAAAAAAAAAAAADAAwAAAAAAAAAAAAEAAwAAAAAAAAAAAAEAAsAAAAAAAAAAAAFAAoAAAAAAAAAAAAFAAkAAAAAAAAAAAADAA0AAAAAAAAAAAAFAAgAAAAAAAAAAAAEAA4AAAAAAAAAAAAEAA0AAAAAAAAAAAAFAAwAAAAAAAAAAAAFAAsAAAAAAAAAAAAGAAoAAAAAAAAAAAAIAAsAAAAAAAAAAAAIAAwAAAAAAAAAAAAHAA0AAAAAAAAAAAAHAA4AAAAAAAAAAAAGAA8AAAAAAAAAAAAGABAAAAAAAAAAAAAFABEAAAAAAAAAAAAFABIAAAAAAAAAAAAEABMAAAAAAAAAAAA=")
@@ -161,3 +173,8 @@ columns = 6
 visible = false
 title_text = "Design Your Strange Place"
 body_text = "You are a small bug seeking a rug, and other furniture to arrange your very own strange place. Navigate to the computer to contact sellers, then navigate into the world where you can spend your bugbucks on new furnishings. Once you return, access your new furniture in the inventory menu in the top-left. You can move items around your room by dragging them, put them away into your inventpry with the Q key and rotate them with the R key. Right-clicking inside your inventory will delete the item forever."
+
+[node name="Winner PopUp" parent="." unique_id=1253613572 instance=ExtResource("10_gaaai")]
+visible = false
+title_text = "Congrats!"
+body_text = "You've purchased a rug that really ties the whole room together! Share a screenshot of your finished room in the comments or keep working at it. Thank you for playing our game!"

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FurnitureData" format=3 uid="uid://wat0mxyljjg7"]
+
+[ext_resource type="Script" uid="uid://d016a04k3j3ob" path="res://src/global/Furniture(Resources)/FurnitureData.gd" id="1_tgldi"]
+[ext_resource type="Texture2D" uid="uid://dkwvahxnffco1" path="res://assets/sprites/creamerpot.png" id="2_tgldi"]
+
+[resource]
+script = ExtResource("1_tgldi")
+name = "Creamer Pot and Plant"
+texture = ExtResource("2_tgldi")
+metadata/_custom_type_script = "uid://d016a04k3j3ob"

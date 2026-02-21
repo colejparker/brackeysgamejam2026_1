@@ -1,13 +1,27 @@
 [gd_resource type="TileSet" format=3 uid="uid://6xpg4jlylpox"]
 
 [ext_resource type="Texture2D" uid="uid://ggk7hr0bhut1" path="res://assets/sprites/indoorfloortilesmall.png" id="1_ro2e2"]
+[ext_resource type="Texture2D" uid="uid://cmm4tjs6mgugu" path="res://assets/sprites/rug.png" id="2_qlpfy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qcxkw"]
 texture = ExtResource("1_ro2e2")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3um1r"]
+texture = ExtResource("2_qlpfy")
+texture_region_size = Vector2i(64, 64)
+0:3/0 = 0
+1:3/0 = 0
+1:2/0 = 0
+0:2/0 = 0
+1:1/0 = 0
+0:1/0 = 0
+0:0/0 = 0
+1:0/0 = 0
+
 [resource]
 tile_shape = 1
 tile_size = Vector2i(64, 32)
 sources/0 = SubResource("TileSetAtlasSource_qcxkw")
+sources/1 = SubResource("TileSetAtlasSource_3um1r")

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FurnitureData" format=3 uid="uid://dwowm4gtsp5bh"]
+
+[ext_resource type="Script" uid="uid://d016a04k3j3ob" path="res://src/global/Furniture(Resources)/FurnitureData.gd" id="1_y6c4t"]
+[ext_resource type="Texture2D" uid="uid://bnxonuiw0emyt" path="res://assets/sprites/mushroomstool.png" id="2_y6c4t"]
+
+[resource]
+script = ExtResource("1_y6c4t")
+name = "Mushroom Stool"
+texture = ExtResource("2_y6c4t")
+metadata/_custom_type_script = "uid://d016a04k3j3ob"

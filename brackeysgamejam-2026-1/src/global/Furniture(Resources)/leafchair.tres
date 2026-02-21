@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FurnitureData" format=3 uid="uid://cgcsmt6fje6s3"]
+
+[ext_resource type="Script" uid="uid://d016a04k3j3ob" path="res://src/global/Furniture(Resources)/FurnitureData.gd" id="1_t15de"]
+[ext_resource type="Texture2D" uid="uid://by55lxihifywc" path="res://assets/sprites/leafchair.png" id="2_t15de"]
+
+[resource]
+script = ExtResource("1_t15de")
+name = "Leaf Chair"
+texture = ExtResource("2_t15de")
+metadata/_custom_type_script = "uid://d016a04k3j3ob"
