@@ -83,6 +83,8 @@ var _furniture_resources: Array[FurnitureData] = [
 	preload("res://src/global/Furniture(Resources)/creamerplant.tres"),
 	preload("res://src/global/Furniture(Resources)/leafchair.tres"),
 	preload("res://src/global/Furniture(Resources)/popsiclebench.tres"),
+	preload("res://src/global/Furniture(Resources)/poptab.tres"),
+	preload("res://src/global/Furniture(Resources)/stamp.tres"),
 ]
 
 func prepare_furniture_catalog():

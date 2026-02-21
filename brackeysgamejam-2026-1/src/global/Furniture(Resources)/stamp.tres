@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="FurnitureData" format=3 uid="uid://chnodgn22xi8j"]
+
+[ext_resource type="Script" uid="uid://d016a04k3j3ob" path="res://src/global/Furniture(Resources)/FurnitureData.gd" id="1_mx4k4"]
+[ext_resource type="Texture2D" uid="uid://bhg45vr2c5ds1" path="res://assets/sprites/stamp.png" id="2_mx4k4"]
+
+[resource]
+script = ExtResource("1_mx4k4")
+is_wall = true
+name = "Stamp"
+texture = ExtResource("2_mx4k4")
+metadata/_custom_type_script = "uid://d016a04k3j3ob"

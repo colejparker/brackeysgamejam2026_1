@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="FurnitureData" format=3 uid="uid://budh6xjddfk12"]
+
+[ext_resource type="Script" uid="uid://d016a04k3j3ob" path="res://src/global/Furniture(Resources)/FurnitureData.gd" id="1_r8guo"]
+[ext_resource type="Texture2D" uid="uid://bijeb7vvkcdky" path="res://assets/sprites/poptab.png" id="2_r8guo"]
+
+[resource]
+script = ExtResource("1_r8guo")
+is_wall = true
+name = "Pop Tab"
+texture = ExtResource("2_r8guo")
+metadata/_custom_type_script = "uid://d016a04k3j3ob"
