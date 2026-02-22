@@ -40,6 +40,7 @@ var show_winner_popup: bool = false
 
 @export var garden_level: PackedScene = preload("res://src/bugger/levels/bugger_1.tscn")
 @export var river_level: PackedScene = preload("res://src/bugger/levels/bugger_2.tscn")
+@export var city_level: PackedScene = preload("res://src/bugger/levels/bugger_3.tscn")
 
 
 func _ready():
@@ -70,6 +71,8 @@ func load_next_bugger_level():
 			get_tree().change_scene_to_packed(garden_level)
 		if selected_card_data.location == "River":
 			get_tree().change_scene_to_packed(river_level)
+		if selected_card_data.location == "The City":
+			get_tree().change_scene_to_packed(city_level)
 	
 var _furniture_resources: Array[FurnitureData] = [
 	preload("res://src/global/Furniture(Resources)/bed.tres"),
@@ -247,5 +250,5 @@ func _toggle_fx():
 	fx_on = !fx_on
 	
 func _generate_location() -> String:
-	var level_array: Array[String] = ["Garden", "River"]
+	var level_array: Array[String] = ["Garden", "River", "The City"]
 	return level_array.pick_random()
