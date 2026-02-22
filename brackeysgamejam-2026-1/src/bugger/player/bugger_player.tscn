@@ -17,3 +17,13 @@ shape = SubResource("RectangleShape2D_upnm8")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=183733717]
 position_smoothing_enabled = true
+
+[node name="ItemAcquiredLabel" type="Label" parent="." unique_id=864746453]
+visible = false
+offset_left = -50.0
+offset_top = -40.0
+offset_right = 50.0
+offset_bottom = -20.0
+text = "Item acquired!"
+horizontal_alignment = 1
+vertical_alignment = 1

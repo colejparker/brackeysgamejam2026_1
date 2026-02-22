@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var item_acquired_label: Label = $ItemAcquiredLabel
 const GRID_SIZE: int = 32
 var START_X: int = 0
 var START_Y: int = 0
@@ -92,6 +93,7 @@ func _process(_delta):
 				picked_up_furniture = true
 				START_X = end_house.global_position[0]
 				START_Y = end_house.global_position[1]+32.0
+				_show_item_acquired_label()
 			else:
 				SoundFxPlayer._play_sound(CANTBUY)
 				money_tracker._cannot_afford()
@@ -171,3 +173,12 @@ func reset_position():
 
 func open_popup():
 	pop_up_menu.visible = true
+
+func _show_item_acquired_label():
+	item_acquired_label.visible = true
+	item_acquired_label.modulate.a = 1.0
+	var tween = create_tween()
+	tween.set_parallel(true)
+	tween.tween_property(item_acquired_label, "modulate:a", 0.0, 1.2).set_delay(0.5)
+	tween.tween_property(item_acquired_label, "position:y", item_acquired_label.position.y - 10, 1.2)
+	tween.finished.connect(func(): item_acquired_label.visible = false)

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="FurnitureData" format=3 uid="uid://ceauh34786ojd"]
+
+[ext_resource type="Script" uid="uid://d016a04k3j3ob" path="res://src/global/Furniture(Resources)/FurnitureData.gd" id="1_wkwdw"]
+[ext_resource type="Texture2D" uid="uid://ckohroi2xr5r1" path="res://assets/sprites/breadtab.png" id="2_wkwdw"]
+
+[resource]
+script = ExtResource("1_wkwdw")
+is_wall = true
+name = "Bread Tab"
+texture = ExtResource("2_wkwdw")
+metadata/_custom_type_script = "uid://d016a04k3j3ob"

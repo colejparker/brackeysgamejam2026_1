@@ -6,6 +6,6 @@
 [resource]
 script = ExtResource("1_mx4k4")
 is_wall = true
-name = "Pop Tab"
+name = "Stamp"
 texture = ExtResource("2_mx4k4")
 metadata/_custom_type_script = "uid://d016a04k3j3ob"
